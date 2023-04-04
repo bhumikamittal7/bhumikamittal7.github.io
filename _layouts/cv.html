@@ -9,27 +9,14 @@ layout: default
             <p class="post-description">{{ page.description }}</p>
           </header>
 
-          <article>
-            <div class="cv">
-              {% for entry in site.data.cv %}
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
-                  <div>
-                  {% if entry.type == "list" %}
-                    {% include cv/list.html %}
-                  {% elsif entry.type == "map" %}
-                    {% include cv/map.html %}
-                  {% elsif entry.type == "nested_list" %}
-                    {% include cv/nested_list.html %}
-                  {% elsif entry.type == "time_table" %}
-                   {% include cv/time_table.html %}
-                  {% else %}
-                    {{ entry.contents }}
-                  {% endif %}
-                  </div>
-                </div>
-              {% endfor %}
-              </div>
-          </article>
+            <iframe
+              src="../assets/pdf/cv.pdf#toolbar=0" 
+              width="100%"
+              height="500"
+              border="0"
+              marginwidth="0"
+              marginheight="0"
+            ></iframe>
 
+            Will be updating the CV soon. In the meantime, please feel free to contact me for an updated version.
         </div>
