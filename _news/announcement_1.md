@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My first paper got accepted to Discrete Mathematics Journel by Science Direct.
+My first paper got accepted to Discrete Mathematics Journel by Elsevier.
