@@ -11,7 +11,10 @@ nav_order: 5
 
 - **Discrete Mathematics (Spring 2023)**<br/>
   Prof Partha Pratim Das [[syllabus](../assets/pdf/Course Catalogue - Discrete Mathematics.pdf)] 
-  
+
+- **Strategy through Board Games (Spring 2023)**<br/>
+  Prof Priyank Narayan [[syllabus](../assets/pdf/STBG.pdf)] 
+
 - **Introduction to Computer Programming (Monsoon 2022)**<br/>
   Prof Goutam Paul [[syllabus](../assets/pdf/L1_Introduction.pdf)] 
 
