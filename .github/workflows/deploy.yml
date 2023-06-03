@@ -41,7 +41,7 @@ jobs:
                     --src ${{ steps.setup.outputs.SRC_BRANCH }} 
                     --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }} 
     - name: Fix Permission
-        run:  | 
+        run:  |
           chmod a+x bin/*
           git commit -am "add execute permssion to bin/deploy"
     - name: Sync from template
