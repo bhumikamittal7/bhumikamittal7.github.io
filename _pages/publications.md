@@ -2,7 +2,7 @@
 layout: page
 permalink: /research/
 title: research
-description: List of published and ongoing studies (* indicates equal contributions)
+description: List of published and ongoing studies
 years: [2023]
 type: [published]
 nav: true
