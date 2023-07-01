@@ -20,6 +20,6 @@ social: true  # includes social icons at the bottom of the page
 
 I am a junior at Ashoka University, India, pursuing a computer science major along with a mathematics minor. Currently, I am exploring frameworks for designing and evaluating DNN accelerators from various paradigms under Professor [Manu Awasthi](https://manuawasthi.in/) and [Tom Glint](https://scholar.google.com/citations?user=Yon_i1gAAAAJ&hl=en). 
 
-While I have a broad interest in computer science, I am still exploring different fields, such as cloud computing, HCI, computational creativity, and computational learning, to discover my research interests. Beyond academics, I like to play board games and read random wikipedia articles when bored.
+My current research interests span Computer Architecture, Systems for ML, Operating Systems, Computer Networks and Cloud Computing. <b>I am actively seeking opportunities to contribute in research projects focused on these or closely related areas. </b>
 
-I am actively looking for the research opportunities. 
+Beyond academics, I like to play board games and read random wikipedia articles when bored.
