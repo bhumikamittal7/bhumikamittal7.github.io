@@ -29,7 +29,7 @@ nav_order: 5
 - **Existence of Balanced Generalized De Bruijn Sequences (Spring 2022)**<br/>
   Mathematics Colloquium [[video](https://www.youtube.com/watch?v=loDKHJ98rWM&list=PLaTCrA79FLSxwfBlJCTS9-YKd7N7h9Ejl)]
 
-  ## Courses
+## Courses
 
 - **Microcontrollers & ESP32 chipset (Summer 2023)**<br/>
   Young Tech Scholars (Plaksha University) [[slides](../assets/pdf/Microcontroller.pdf)]
