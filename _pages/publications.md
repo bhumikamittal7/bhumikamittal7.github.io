@@ -4,7 +4,7 @@ permalink: /research/
 title: research
 description: List of published and ongoing studies
 years: [2023]
-type: [published]
+type: [published, ongoing]
 nav: true
 display_categories: [themes]
 nav_order: 1
@@ -18,3 +18,4 @@ nav_order: 1
 {% endfor %}
 
 </div>
+
