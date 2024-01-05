@@ -9,16 +9,18 @@ nav_order: 5
 
 ## Teaching Assistantships
 
+- **Tech Law & Policy (Spring 2024)**<br/>
+  Prof Nikhil Sud [[syllabus](../assets/pdf/techlaw.pdf)]
 - **Data Structures (Monsoon 2023)**<br/>
-  Prof Debayan Gupta [[syllabus](../assets/pdf/data-structures-course-information.pdf)] 
+  Prof Debayan Gupta [[syllabus](../assets/pdf/DataStructures.pdf)] 
 - **Science Communication (Summer 2023)**<br/>
   Siddharth Kankaria [[syllabus](../assets/pdf/ScienceComm.pdf)] 
 - **Discrete Mathematics (Spring 2023)**<br/>
-  Prof Partha Pratim Das [[syllabus](../assets/pdf/Course Catalogue - Discrete Mathematics.pdf)] 
+  Prof Partha Pratim Das [[syllabus](../assets/pdf/DiscreteMathematics.pdf)] 
 - **Strategy through Board Games (Spring 2023)**<br/>
   Prof Priyank Narayan [[syllabus](../assets/pdf/STBG.pdf)] 
 - **Introduction to Computer Programming (Monsoon 2022)**<br/>
-  Prof Goutam Paul [[syllabus](../assets/pdf/L1_Introduction.pdf)] 
+  Prof Goutam Paul [[syllabus](../assets/pdf/ICP.pdf)] 
 
 ## Courses Taught
 
