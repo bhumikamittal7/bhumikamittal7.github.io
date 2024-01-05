@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Student Volunteer for ACM SIGPLAN [SPLASH 2023](https://2023.splashcon.org/).
+I will be one of the student volunteers for ACM SIGPLAN [SPLASH 2023](https://2023.splashcon.org/). 

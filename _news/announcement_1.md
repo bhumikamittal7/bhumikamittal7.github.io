@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My paper on deBruijn Sequences got accepted to Discrete Mathematics Journal.
+Our paper on deBruijn Sequences got accepted to Discrete Mathematics Journal.
