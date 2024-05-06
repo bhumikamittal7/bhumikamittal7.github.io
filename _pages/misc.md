@@ -9,7 +9,7 @@ nav_order: 5
 
 ## Teaching Assistantships
 
-- **Tech Law & Policy (Spring 2024)**<br/>
+- **Technology Law & Policy (Spring 2024)**<br/>
   Prof Nikhil Sud [[syllabus](../assets/pdf/techlaw.pdf)]
 - **Data Structures (Monsoon 2023)**<br/>
   Prof Debayan Gupta [[syllabus](../assets/pdf/DataStructures.pdf)] 
