@@ -23,8 +23,5 @@ I am a third year undergraduate student at Ashoka University, India, pursuing a 
 Currently, I am working with [Prof Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home) on designing and implementing an indigenous lattice-based post-quantum public key encryption and signature scheme and with [Prof Laurent Bindschaedler](https://binds.ch/) on analyzing graph data access patterns during the execution of algorithms. Previously, I have worked on designing a dedicated hardware accelerator tailored for encoder-based models under [Tom Glint](https://sites.google.com/view/tomglint/home) from IIT Gandhinagar.
 
 <!-- Beyond academics, I like to play board games and read random wikipedia articles when bored. -->
-
-<!-- and Professor [Joycee Mekie](https://joycee.people.iitgn.ac.in/) -->
-
 <!-- I am specifically interested in the building secure computer systems in a post-quantum world - let’s chat if this sounds exciting! -->
 <!-- Currently, I am open to contribute to projects focused on these or closely related areas. -->
