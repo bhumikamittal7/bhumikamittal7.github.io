@@ -18,10 +18,9 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a third year undergraduate student at Ashoka University, India, pursuing a computer science major along with mathematics. My current research interests broadly span <b>Modern Cryptography</b> and <b>Computer Architecture</b>. I am always open to chat about these or any other interesting topics!
+I recently graduated Summa cum Laude from [Ashoka University](https://www.ashoka.edu.in/) with a Silver Medal in Computer Science, along with double minor in mathematics and entrepreneurial leadership. My research interests broadly span <b>Cryptography</b>, specifically lattice-based post-quantum cryptography. I am also interested in exploring topics in Computer Architecture. I am always open to chat about these or any other interesting topics!
 
-Currently, I am working with [Prof Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home) on designing and implementing an indigenous lattice-based post-quantum public key encryption and signature scheme and with [Prof Laurent Bindschaedler](https://binds.ch/) on analyzing graph data access patterns during the execution of algorithms. Previously, I have worked on designing a dedicated hardware accelerator tailored for encoder-based models under [Tom Glint](https://sites.google.com/view/tomglint/home) from IIT Gandhinagar.
+Currently, I am working at CAIR, DRDO under [Prof Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home) on designing and implementing an indigenous lattice-based post-quantum public key encryption and signature scheme and at Max Planck Institute for Software Systems under [Prof Laurent Bindschaedler](https://binds.ch/).
 
-<!-- Beyond academics, I like to play board games and read random wikipedia articles when bored. -->
+Previously, I have worked at IIT Gandhinagar with [Tom Glint](https://sites.google.com/view/tomglint/home) on designing a dedicated hardware accelerator tailored for encoder-based models. Beyond academics, I like to play board games.
 <!-- I am specifically interested in the building secure computer systems in a post-quantum world - let’s chat if this sounds exciting! -->
-<!-- Currently, I am open to contribute to projects focused on these or closely related areas. -->
