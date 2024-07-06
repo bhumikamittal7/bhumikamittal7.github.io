@@ -18,9 +18,8 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I recently graduated Summa cum Laude from [Ashoka University](https://www.ashoka.edu.in/) with a Silver Medal in Computer Science, along with minors in Mathematics and Entrepreneurial Leadership. My research interests broadly span <b>Cryptography</b>, specifically lattice-based post-quantum cryptography. I am also interested in exploring topics in Computer Architecture. I am always open to chat about these or any other interesting topics!
+I recently graduated Summa Cum Laude from [Ashoka University](https://www.ashoka.edu.in/) with a Silver Medal in Computer Science. My research interests broadly span <b>Cryptography</b>, specifically lattice-based cryptography. I am also interested in exploring topics in Computer Architecture. I am always open to chatting about these or any other interesting topics!
 
-Currently, I am working with [Prof. Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home) on designing and implementing an indigenous lattice-based post-quantum public key encryption and signature scheme. I am also working at Max Planck Institute for Software Systems under [Laurent Bindschaedler](https://binds.ch/) on benchmarking different structures that can serve a variety of graph workloads on dynamic graphs with transactional updates.
+Currently, I am working with [Prof. Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home) on designing and implementing an indigenous lattice-based post-quantum public key encryption and signature scheme. I am also part of the Data Systems Group at the Max Planck Institute for Software Systems, advised by [Laurent Bindschaedler](https://binds.ch/).
 
-Previously, I have worked at IIT Gandhinagar with [Tom Glint](https://sites.google.com/view/tomglint/home) on designing a dedicated hardware accelerator tailored for encoder-based models. Beyond academics, I like to play board games.
-<!-- I am specifically interested in the building secure computer systems in a post-quantum world - let’s chat if this sounds exciting! -->
+Previously, I interned at nanoDC Lab at IIT Gandhinagar under [Tom Glint](https://sites.google.com/view/tomglint/home), designing a dedicated hardware accelerator tailored for encoder-based models. Beyond academics, I enjoy playing board games.
