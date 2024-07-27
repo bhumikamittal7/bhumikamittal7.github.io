@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2024-05-07
+date: 2024-06-07
 inline: true
 related_posts: false
 ---
 
-Visiting the Max Planck Institute for Software Systems (MPI SWS) in Saarbrücken, Germany, this summer as a research scholar.
+I will be attending the [Undergrad Architecture Mentoring Workshop (uArch)](https://sites.google.com/view/6th-uarch) at ISCA 2024 in Buenos Aires. Excited to meet people interested in computer architecture and systems!

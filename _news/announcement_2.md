@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2023-09-23
+date: 2024-05-07
 inline: true
 related_posts: false
 ---
 
-I will be one of the student volunteers for ACM SIGPLAN [SPLASH 2023](https://2023.splashcon.org/). 
+Looking forward to visiting the Data Systems Group at the Max Planck Institute for Software Systems in Saarbrücken this summer as a research fellow

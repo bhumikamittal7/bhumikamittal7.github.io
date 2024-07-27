@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: /misc/
-title: miscellaneous
-description: Teaching Assistantships, Courses & Talks/Workshop
+title: teaching & talks
+description: Teaching Assistantships & Talks
 nav: true
 nav_order: 5
 ---
@@ -10,24 +10,21 @@ nav_order: 5
 ## Teaching Assistantships
 
 - **Technology Law & Policy (Spring 2024)**<br/>
-  Prof Nikhil Sud [[syllabus](../assets/pdf/techlaw.pdf)]
+  Ashoka University | Prof Nikhil Sud [[syllabus](../assets/pdf/techlaw.pdf)]
 - **Data Structures (Monsoon 2023)**<br/>
-  Prof Debayan Gupta [[syllabus](../assets/pdf/DataStructures.pdf)] 
-- **Science Communication (Summer 2023)**<br/>
-  Siddharth Kankaria [[syllabus](../assets/pdf/ScienceComm.pdf)] 
-- **Discrete Mathematics (Spring 2023)**<br/>
-  Prof Partha Pratim Das [[syllabus](../assets/pdf/DiscreteMathematics.pdf)] 
-- **Strategy through Board Games (Spring 2023)**<br/>
-  Prof Priyank Narayan [[syllabus](../assets/pdf/STBG.pdf)] 
-- **Introduction to Computer Programming (Monsoon 2022)**<br/>
-  Prof Goutam Paul [[syllabus](../assets/pdf/ICP.pdf)] 
-
-## Courses Taught
-
+  Ashoka University | Prof Debayan Gupta [[syllabus](../assets/pdf/DataStructures.pdf)] 
 - **Microcontrollers & ESP32 chipset (Summer 2023)**<br/>
-  Young Tech Scholars (Plaksha University) [[slides](../assets/pdf/Microcontroller.pdf)]
+  Plaksha University | Module designed & delivered at Young Tech Scholars [[slides](../assets/pdf/Microcontroller.pdf)]
 - **Game Design Module (Summer 2023)**<br/>
-  Young Tech Scholars (Plaksha University) [[slides](../assets/pdf/GameDesign.pdf)]
+  Plaksha University | Module designed & delivered at Young Tech Scholars [[slides](../assets/pdf/GameDesign.pdf)]
+- **Science Communication (Summer 2023)**<br/>
+  Lodha Genius Program | Siddharth Kankaria [[syllabus](../assets/pdf/ScienceComm.pdf)] 
+- **Discrete Mathematics (Spring 2023)**<br/>
+  Ashoka University | Prof Partha Pratim Das [[syllabus](../assets/pdf/DiscreteMathematics.pdf)] 
+- **Strategy through Board Games (Spring 2023)**<br/>
+  Ashoka University | Prof Priyank Narayan [[syllabus](../assets/pdf/STBG.pdf)] 
+- **Introduction to Computer Programming (Monsoon 2022)**<br/>
+  Ashoka University | Prof Goutam Paul [[syllabus](../assets/pdf/ICP.pdf)] 
 
 ## Talks and Workshops
 
