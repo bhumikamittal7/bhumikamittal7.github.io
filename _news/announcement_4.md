@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2024-05-07
+date: 2024-08-15
 inline: true
 related_posts: false
 ---
 
-Received a full grant to attend the [Undergrad Architecture Mentoring Workshop (uArch)](https://sites.google.com/view/6th-uarch). I will be at ISCA 2024 from June 29 to July 3, 2024, say hi if you are around!
+I will be in Budapest attending the [Mathematics for post-quantum cryptanalysis](https://www.esat.kuleuven.be/cosic/events/math-pqc/) conference. Excited to meet new and old friends and anyone interested in PQC!
