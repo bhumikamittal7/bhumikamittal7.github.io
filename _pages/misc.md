@@ -7,7 +7,7 @@ nav: true
 nav_order: 5
 ---
 
-## Teaching Assistantships
+## Teaching
 
 - **Technology Law & Policy (Spring 2024)**<br/>
   Ashoka University | Prof Nikhil Sud [[syllabus](../assets/pdf/techlaw.pdf)]
