@@ -2,9 +2,9 @@
 layout: page
 permalink: /research/
 title: research
-description: List of published and ongoing studies
-years: [2023]
-type: [published, ongoing]
+description: 
+years: [2020, 2023, 2024]
+type: [published, in review, exposition]
 nav: true
 display_categories: [themes]
 nav_order: 1
