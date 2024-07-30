@@ -20,7 +20,6 @@ One of my favorite aspects of academia is the sense of community, and I am very 
 - [Glenn H. Stevens](https://math.bu.edu/people/ghs/)
 - [Henry Cohn](https://cohn.mit.edu/)
 - [Marjory Baruch](https://ecs.syr.edu/faculty/baruch/)
-- [Soham De](https://sohamde.in/)
 - [Nachiket Kotalwar](https://in.linkedin.com/in/nachiket-kotalwar)
 - [Kushagra Gupta](https://kushagragupta02.github.io/)
 
