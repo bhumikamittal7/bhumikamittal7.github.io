@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2024-08-15
+date: 2024-07-28
 inline: true
 related_posts: false
 ---
 
-I will be in Budapest attending the [Mathematics for post-quantum cryptanalysis](https://www.esat.kuleuven.be/cosic/events/math-pqc/) conference. Excited to meet new and old friends and anyone interested in PQC!
+Attended [The Cornell, Maryland, Max Planck Pre-doctoral Research School in Computer Science](https://cmmrs.mpi-sws.org/)(CMMRS) 2024. Super long, exciting and exhausting week!
