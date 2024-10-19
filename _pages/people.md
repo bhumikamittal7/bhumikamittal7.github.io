@@ -3,7 +3,7 @@ layout: page
 permalink: /people/
 title: people
 description: Collaborators, Mentors and Friends in research and beyond
-nav: true
+nav: false
 nav_order: 7
 ---
 One of my favorite aspects of academia is the sense of community, and I am very grateful to have found an incredibly supportive and inspiring group in my area of interest. I feel extremely fortunate to have collaborated with and been mentored by such amazing individuals. They have been very instrumental in my journey and continue to inspire me. Here are some of them, listed in no particular order.

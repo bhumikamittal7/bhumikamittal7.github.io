@@ -18,8 +18,10 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a fourth-year student at [Ashoka University](https://www.ashoka.edu.in/), studying Computer Science and Mathematics. I am writing my undergraduate thesis on “Optimizing Falcon: Compact Signatures over NTRU Lattices” under [Prof. Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home). My research interests broadly span <b>cryptography</b>, specifically lattice-based and post-quantum cryptography. I am also interested in exploring topics in computer architecture.
+I am a fourth-year undergraduate at [Ashoka University](https://www.ashoka.edu.in/) majoring in Computer Science and Mathematics. My research interests include <b>cryptography</b> and <b>computational complexity</b>, with a focus on lattice-based cryptography.
 
-At present, I am visiting the Data Systems Group, led by [Laurent Bindschaedler](https://binds.ch/), at the Max Planck Institute for Software Systems. I am also working on designing and implementing an indigenous lattice-based post-quantum public key encryption and signature scheme.
+I am currently writing my undergraduate thesis on "Threshold Pre-Image Samplable Trapdoor Functions" under the supervision of [Prof. Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home) and [Prof. Eike Kiltz](https://www.crypto.ruhr-uni-bochum.de/staff/kiltz.html.en). In addition, I am working with [Prof. Rajendra Kumar](https://sites.google.com/view/rajendrak/home) and [Prof. Priyanka Golia](https://priyanka-golia.github.io/) on the fine-grained complexity of lattice problems.
 
-Previously, I interned at [nanoDC Lab](https://www.linkedin.com/company/nanodc-lab/about/) at IIT Gandhinagar. I graduated Summa Cum Laude from Ashoka University with a Silver Medal in Computer Science. Beyond academics, I enjoy playing board games.
+Previously, I worked with Prof. Jhawar on lattice-based post-quantum public key encryption and signature schemes. I have also interned with the Data Systems Group, led by [Laurent Bindschaedler](https://binds.ch/), at the Max Planck Institute for Software Systems, and at the [nanoDC Lab](https://www.linkedin.com/company/nanodc-lab/about/) at IIT Gandhinagar. 
+
+<!-- I graduated summa cum laude from Ashoka University with a Silver Medal in Computer Science. -->
