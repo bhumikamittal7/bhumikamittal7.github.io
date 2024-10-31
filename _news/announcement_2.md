@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Looking forward to visiting the Data Systems Group at the Max Planck Institute for Software Systems in Saarbrücken this summer as a research fellow
+I will be visiting the Data Systems Group at the Max Planck Institute for Software Systems in Saarbrücken this summer as a research fellow

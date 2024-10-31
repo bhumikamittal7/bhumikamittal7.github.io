@@ -10,7 +10,7 @@ display_categories: [themes]
 nav_order: 1
 ---
 
-I am currently interested in cryptography and computational complexity. My goal is to understand and address fundamental issues in cryptography using tools from theoretical computer science and mathematics.
+I am currently interested in cryptography and computational complexity. In particular, I am working on the fine-grained complexity of lattice problems and pre-image samplable trapdoor functions. I am also interested in quantum cryptography and quantum computing. My goal is to understand and address fundamental challenges in cryptography using tools from theoretical computer science and mathematics.
 
 In the past, I have worked on projects related to discrete mathematics and computer architecture and systems.
 
