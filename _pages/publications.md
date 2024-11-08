@@ -4,7 +4,7 @@ permalink: /research/
 title: research
 description: 
 years: [2020, 2023, 2024]
-type: [published, in review, exposition]
+type: [published, exposition]
 nav: true
 display_categories: [themes]
 nav_order: 1
