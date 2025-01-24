@@ -9,6 +9,8 @@ nav_order: 5
 
 ## Teaching Assistantships
 
+- **Information Security (Spring 2025)**<br/>
+  Ashoka University | Prof Subhashis Banerjee [[course webpage](../infosec-spring25/)]
 - **Technology Law & Policy (Spring 2024)**<br/>
   Ashoka University | Prof Nikhil Sud [[syllabus](../assets/pdf/techlaw.pdf)]
 - **Data Structures (Monsoon 2023)**<br/>
