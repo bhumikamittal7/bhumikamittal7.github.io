@@ -57,4 +57,4 @@ From Ashoka's Academic Integrity Policy (MyAshoka → Information and Documents 
 The recommended method for contacting course staff is through the email. Please ensure to CC everyone in the course staff when sending an email. Individual emails to course staff will not be answered. 
 
 ### Support
-Students are encouraged to reach out to University offices such as the [Office of Learning Support](https://www.ashoka.edu.in/page/office-of-learning-support/), [Ashoka Center for Well-Being](https://acwb.ashoka.edu.in/), and [Center for Writing and Communication](https://aalok-thakkar.github.io/teaching/ics2025/ics2025.html) for additional support.
+Students are encouraged to reach out to University offices such as the [Office of Learning Support](https://www.ashoka.edu.in/page/office-of-learning-support/), and [Ashoka Center for Well-Being](https://acwb.ashoka.edu.in/) for additional support.
