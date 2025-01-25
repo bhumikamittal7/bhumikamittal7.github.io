@@ -60,7 +60,7 @@ We will also provide additional reading materials and resources as the course pr
 From Ashoka's Academic Integrity Policy (MyAshoka → Information and Documents → Office of Academic Affairs): plagiarism—which is a matter of producing academic work that borrows, without acknowledging, from another person's work—is a serious academic offense. All violations of Academic Integrity Policy (including but not limited to plagiarism) will be reported to the Academic Integrity Committee. Please familiarize yourself with the policies and sanctions.
 
 ### Contacting Course Staff: 
-The recommended method for contacting course staff is through the email. Please ensure to CC everyone in the course staff when sending an email. Individual emails to course staff will not be answered. 
+The recommended method for contacting the course staff is via email. Please ensure that everyone on the course staff is CC’d when sending an email. Individual emails to course staff members will not be answered.
 
 ### Support
 Students are encouraged to reach out to University offices such as the [Office of Learning Support](https://www.ashoka.edu.in/page/office-of-learning-support/), and [Ashoka Center for Well-Being](https://acwb.ashoka.edu.in/) for additional support.
