@@ -4,7 +4,7 @@ permalink: /infosec-spring25/
 title: Information Security
 description: Spring 2025 | CS-3610
 nav: false
-nav_order: 10
+nav_order: 8
 ---
 
 ### Logistics:
