@@ -54,7 +54,7 @@ The course requires 100% attendance, and attendance will be recorded in every cl
 We will also provide additional reading materials and resources as the course progresses.
 
 ### Discussion Sessions
-(To be updated)
+Please sign up for the discussion sessions on the AMS.
 
 ### Academic Honor Code
 From Ashoka's Academic Integrity Policy (MyAshoka → Information and Documents → Office of Academic Affairs): plagiarism—which is a matter of producing academic work that borrows, without acknowledging, from another person's work—is a serious academic offense. All violations of Academic Integrity Policy (including but not limited to plagiarism) will be reported to the Academic Integrity Committee and will result in an F grade for the entire course, no exceptions. Please familiarize yourself with the policies and sanctions.
