@@ -24,6 +24,8 @@ nav_order: 8
 ### Lecture Notes and Slides
 - [Compiled TA notes](../assets/pdf/infosec/InfoSec_Lecture_Notes.pdf) (I will keep updating this file. Drop me an email if you spot any errors or have suggestions for improvement.)
 - [Lecture 1 and 2 Slides](../assets/pdf/infosec/Lecture1and2.pdf)
+- [Lecture 3 Slides](../assets/pdf/infosec/Lecture3.pdf)
+- [Lecture 4 Notes](../assets/pdf/infosec/Lecture4.pdf)
 
 ### Course Overview
 This course provides a foundational understanding of information security, focusing on the principles of trust, verifiability, and adversarial threat models. It explores key concepts such as secrecy, privacy, and security, along with the basics of cryptography, including symmetric and public-key encryption, authentication, hash functions, digital signatures, certificates, cryptographic protocols, and applications. The course also introduces cryptographic security definitions to provide a rigorous framework for reasoning about security. Key topics include models of authentication and authorization, biometrics, identity systems, and the challenges associated with verifying hardware and software integrity; the frameworks of formal verification and model checking. The course also addresses trust assumptions and strategies for distributing trust through secure multiparty computations, hardware trust models, trusted computing environments, and remote attestation. The curriculum also covers elements of operating system and network security, offering a comprehensive perspective on addressing real-world security challenges with rigor and precision.
