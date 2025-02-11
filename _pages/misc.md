@@ -24,6 +24,8 @@ nav_order: 5
 
 ## Others
 
+- **Partially Observable Markov Decision Process (Spring 2025)**<br/>
+  Ashoka University [[slides](../assets/pdf/POMDP.pdf)]
 - **Microcontrollers & ESP32 chipset (Summer 2023)**<br/>
   Plaksha University | Module designed & delivered at Young Tech Scholars [[slides](../assets/pdf/Microcontroller.pdf)]
 - **Game Design Module (Summer 2023)**<br/>
