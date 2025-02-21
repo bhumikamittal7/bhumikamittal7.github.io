@@ -16,7 +16,6 @@ nav_order: 8
 | **Teaching Fellow**               | [Abhay Kumar](mailto:abhay.kumar_tf@ashoka.edu.in)         |
 | **Graduate Assistant**            | [Adityavir Singh](mailto:adityavir.singh_phd22@ashoka.edu.in) |
 | **Teaching Assistants**           | [Bhumika Mittal](mailto:bhumika.mittal_asp25@ashoka.edu.in), [Karthik Sridhar](mailto:karthik.sridhar_asp25@ashoka.edu.in), [Pranit Sinha](mailto:pranit.sinha_asp25@ashoka.edu.in)                     |
-| **Office Hours**                  | By appointment (email)                                     |
 | **Communication**                 | Google Classroom                                           |
 
 <br>
@@ -26,6 +25,7 @@ nav_order: 8
 - [Lecture 1 and 2 Slides](../assets/pdf/infosec/Lecture1and2.pdf)
 - [Lecture 3 Slides](../assets/pdf/infosec/Lecture3.pdf)
 - [Lecture 4 Notes](../assets/pdf/infosec/Lecture4.pdf)
+- [Lecture 5 Notes](../assets/pdf/infosec/Lecture5.pdf)
 
 ### Course Overview
 This course provides a foundational understanding of information security, focusing on the principles of trust, verifiability, and adversarial threat models. It explores key concepts such as secrecy, privacy, and security, along with the basics of cryptography, including symmetric and public-key encryption, authentication, hash functions, digital signatures, certificates, cryptographic protocols, and applications. The course also introduces cryptographic security definitions to provide a rigorous framework for reasoning about security. Key topics include models of authentication and authorization, biometrics, identity systems, and the challenges associated with verifying hardware and software integrity; the frameworks of formal verification and model checking. The course also addresses trust assumptions and strategies for distributing trust through secure multiparty computations, hardware trust models, trusted computing environments, and remote attestation. The curriculum also covers elements of operating system and network security, offering a comprehensive perspective on addressing real-world security challenges with rigor and precision.
