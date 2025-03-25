@@ -18,7 +18,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a fourth-year undergraduate at [Ashoka University](https://www.ashoka.edu.in/) majoring in Computer Science and Mathematics. My current research interests are broadly within theoretical computer science, and span several topics including foundational cryptography (both classical and quantum), complexity theory, and formal logic. 
+I am a fourth-year undergraduate at [Ashoka University](https://www.ashoka.edu.in/) majoring in Computer Science and Mathematics. My current research interests are broadly within <b>theoretical computer science</b>, and span several topics including foundational cryptography (both classical and quantum), complexity theory, and formal logic. 
 
 My research experience primarily lies in theoretical cryptography, with a focus on lattice-based cryptography. I am currently writing my undergraduate thesis on "Ring Pre-Image Samplable Trapdoor Functions" under the supervision of [Prof. Eike Kiltz](https://www.crypto.ruhr-uni-bochum.de/staff/kiltz.html.en) and [Prof. Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home).
 
