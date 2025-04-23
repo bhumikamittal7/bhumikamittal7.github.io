@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: "<span style='color: red;'>I am actively seeking PhD positions (Fall 2025)!</span>" #<a href='https://www.ashoka.edu.in/'>Ashoka University</a>
+subtitle: "<a href='https://www.ashoka.edu.in/'>Ashoka University</a>" #"<span style='color: red;'>I am actively seeking PhD positions (Fall 2025)!</span>"
 
 profile:
   align: right
