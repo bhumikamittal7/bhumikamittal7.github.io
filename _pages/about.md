@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: "<a href='https://www.ashoka.edu.in/'>Ashoka University</a>" #"<span style='color: red;'>I am actively seeking PhD positions (Fall 2025)!</span>"
+subtitle: "<a href='https://amuselabs.com/'>Amuse Labs</a>" #"<span style='color: red;'>I am actively seeking PhD positions (Fall 2025)!</span>"
 
 profile:
   align: right
@@ -18,10 +18,11 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a fourth-year undergraduate at [Ashoka University](https://www.ashoka.edu.in/) majoring in Computer Science and Mathematics. My current research interests are broadly within <b>theoretical computer science</b>, and span several topics including foundational cryptography (both classical and quantum), complexity theory, and formal logic. 
+I am a software engineer at Amuse Labs. I recently graduated from [Ashoka University](https://www.ashoka.edu.in/), where I studied Computer Science and Mathematics. My current research interests are broadly within <b>theoretical computer science</b>, and span several topics including foundational cryptography (both classical and quantum), complexity theory, and formal logic. 
 
-My research experience primarily lies in theoretical cryptography, with a focus on lattice-based cryptography. I am currently writing my undergraduate thesis on "Ring Pre-Image Samplable Trapdoor Functions" under the supervision of [Prof. Eike Kiltz](https://www.crypto.ruhr-uni-bochum.de/staff/kiltz.html.en) and [Prof. Mahavir Jhawar](https://sites.google.com/site/homeofmahavir/Home).
+My undergraduate thesis, titled “Ring Pre-Image Samplable Trapdoor Functions”, focused on the theory of lattice-based cryptographic primitives. As part of this and related work, I have primarily worked on lattice-based post-quantum public-key encryption and signature schemes, as well as the fine-grained complexity of lattice problems.
 
-Previously, I worked on lattice-based post-quantum public-key encryption and signature schemes, as well as the fine-grained complexity of lattice problems and their reduction to Weighted MaxSAT. I have also interned with the Data Systems Group, led by [Laurent Bindschaedler](https://binds.ch/), at the Max Planck Institute for Software Systems, and at the [nanoDC Lab](https://www.linkedin.com/company/nanodc-lab/about/) at IIT Gandhinagar. 
+Previously, I have worked with the Data Systems Group at the Max Planck Institute for Software Systems, the Centre for Artificial Intelligence and Robotics (CAIR) at DRDO, IIT Delhi, and the nanoDC Lab at IIT Gandhinagar.
 
-<!-- I graduated summa cum laude from Ashoka University with a Silver Medal in Computer Science. -->
+> 📢 **I am actively seeking PhD positions starting in Fall 2026.**  
+>  If you're interested in collaborating or know of relevant opportunities, feel free to reach out!

@@ -25,7 +25,9 @@ nav_order: 5
 ## Others
 
 - **Partially Observable Markov Decision Process (Spring 2025)**<br/>
-  Ashoka University [[slides](../assets/pdf/POMDP.pdf)]
+  Reinforcement Learning, Ashoka University [[slides](../assets/pdf/POMDP.pdf)]
+- **Number Theoretic Transform (Spring 2024)**<br/>
+  Workshop on Lattice-based Post-quantum Cryptography 2024 [[slides](../assets/pdf/ntt_presentation.pdf)]
 - **Microcontrollers & ESP32 chipset (Summer 2023)**<br/>
   Plaksha University | Module designed & delivered at Young Tech Scholars [[slides](../assets/pdf/Microcontroller.pdf)]
 - **Game Design Module (Summer 2023)**<br/>
@@ -34,12 +36,8 @@ nav_order: 5
   Lodha Genius Program | Siddharth Kankaria [[syllabus](../assets/pdf/ScienceComm.pdf)] 
 - **Bugs&Bytes: Pong with Pi Pico (Spring 2023)**<br/>
   Hands-On Workshop, IEEE Ashoka Student Branch [[slides](../assets/pdf/PiPong.pdf) [| code](https://github.com/bhumikamittal7/Python-Projects/blob/main/picopong.py)]
-
-<!-- ## Talks and Workshops
-
-- **Number Theoretic Transform: Implementation Issues**<br/>
-  Workshop on Lattice-based Post-quantum Cryptography 2024
-- **PySci: Introdction to Computational STEM (Monsoon 2023)**<br/>
-  Hands-On Workshop, IEEE Ashoka Student Branch
 - **Existence of Balanced Generalized De Bruijn Sequences (Spring 2022)**<br/>
-  Department of Mathematics Colloquium [[video](https://www.youtube.com/watch?v=loDKHJ98rWM&list=PLaTCrA79FLSxwfBlJCTS9-YKd7N7h9Ejl)] -->
+  Department of Mathematics Colloquium, Ashoka University [[slides](../assets/pdf/deBruijn_presentation.pdf)]
+
+<!-- - **PySci: Introdction to Computational STEM (Monsoon 2023)**<br/>
+  Hands-On Workshop, IEEE Ashoka Student Branch -->
