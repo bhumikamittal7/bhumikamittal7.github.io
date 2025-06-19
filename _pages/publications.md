@@ -10,7 +10,7 @@ display_categories: [themes]
 nav_order: 1
 ---
 
-My current research interests are broadly within theoretical computer science, and span several topics including foundational cryptography (both classical and quantum), complexity theory, formal logic, and automata theory. In particular, I am currently working on ring pre-image samplable trapdoor functions.
+My research interests lie broadly in theoretical computer science, with a primary focus on foundational cryptography—both classical and quantum. In particular, I am interested in the theory of cryptographic constructions and assumptions, with an emphasis on lattice-based cryptography. My current interests also include complexity theory, formal logic, and automata theory.
 
 In the past, I have worked on projects related to discrete mathematics and computer architecture and systems.
 
