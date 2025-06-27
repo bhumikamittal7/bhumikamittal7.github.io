@@ -24,5 +24,5 @@ My undergraduate thesis, titled “Ring Trapdoor Functions”, focused on the th
 
 Previously, I have worked with the Data Systems Group at the Max Planck Institute for Software Systems, the Centre for Artificial Intelligence and Robotics (CAIR) at DRDO, IIT Delhi, and the nanoDC Lab at IIT Gandhinagar.
 
-> 📢 **I am actively seeking PhD positions starting in Fall 2026.**  
->  If you're interested in collaborating or know of relevant opportunities, feel free to reach out!
+<!-- > 📢 **I am actively seeking PhD positions starting in Fall 2026.**  
+>  If you're interested in collaborating or know of relevant opportunities, feel free to reach out! -->
