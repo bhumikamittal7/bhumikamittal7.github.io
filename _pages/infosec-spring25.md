@@ -7,35 +7,30 @@ nav: false
 nav_order: 8
 ---
 
-### Logistics:
+### Logistics
 
-| **Instructor**                    | [Subhashis Banerjee](mailto:suban@ashoka.edu.in)           |
-| **Credits**                       | 2                                                          |
-| **Time**                          | Tuesdays, 11:50am to 1:20pm                                |
-| **Venue**                         | AC-01-LR-106                                               |
-| **Teaching Fellow**               | [Abhay Kumar](mailto:abhay.kumar_tf@ashoka.edu.in)         |
-| **Graduate Assistant**            | [Adityavir Singh](mailto:adityavir.singh_phd22@ashoka.edu.in) |
-| **Teaching Assistants**           | [Bhumika Mittal](mailto:bhumika.mittal_asp25@ashoka.edu.in), [Karthik Sridhar](mailto:karthik.sridhar_asp25@ashoka.edu.in), [Pranit Sinha](mailto:pranit.sinha_asp25@ashoka.edu.in)                     |
-| **Communication**                 | Google Classroom                                           |
-
-<br>
-
-### Lecture Notes and Slides
-- [Compiled TA notes](../assets/pdf/infosec/InfoSec_Lecture_Notes.pdf) (I will keep updating this file. Drop me an email if you spot any errors or have suggestions for improvement.)
-- [Lecture 1 and 2 Slides](../assets/pdf/infosec/Lecture1and2.pdf)
-- [Lecture 3 Slides](../assets/pdf/infosec/Lecture3.pdf)
-- [Lecture 4 Notes](../assets/pdf/infosec/Lecture4.pdf)
-- [Lecture 5 Slides](../assets/pdf/infosec/Lecture5.pdf)
-- [Lecture 6 Slides](../assets/pdf/infosec/Lecture6.pdf)
-- [Lecture 7 Slides](../assets/pdf/infosec/Lecture7.pdf)
-- [Lecture 8 Slides](../assets/pdf/infosec/Lecture8.pdf)
-- [Lecture 9 Slides](../assets/pdf/infosec/Lecture9.pdf)
+| **Instructor** | Subhashis Banerjee |
+| **Teaching Team** | Bhumika Mittal, Karthik Sridhar, Pranit Sinha, Abhay Kumar, Adityavir Singh |
+| **Time** | Tuesdays, 11:50am to 1:20pm |
+| **Venue** | AC-01-LR-106 |
 
 ### Course Overview
 This course provides a foundational understanding of information security, focusing on the principles of trust, verifiability, and adversarial threat models. It explores key concepts such as secrecy, privacy, and security, along with the basics of cryptography, including symmetric and public-key encryption, authentication, hash functions, digital signatures, certificates, cryptographic protocols, and applications. The course also introduces cryptographic security definitions to provide a rigorous framework for reasoning about security. Key topics include models of authentication and authorization, biometrics, identity systems, and the challenges associated with verifying hardware and software integrity; the frameworks of formal verification and model checking. The course also addresses trust assumptions and strategies for distributing trust through secure multiparty computations, hardware trust models, trusted computing environments, and remote attestation. The curriculum also covers elements of operating system and network security, offering a comprehensive perspective on addressing real-world security challenges with rigor and precision.
 
-### Prerequisites
-Data Structures and Algorithms, Probability and Statistics
+
+
+### Coverage
+
+- Introduction to security
+- Trust vs verifiability
+- Adversarial threat models
+- Notions of secrecy, privacy, and security
+- Basics of cryptography – symmetric and public key encryption, authentication, hash functions, digital signatures, certificates, cryptographic protocols, and applications
+- Cryptographic security definitions
+- Models of authentication and authorisation; biometrics; identity
+- Issues with verification of hardware and software integrity; the frameworks of formal verification and model checking
+- Trust assumptions, distributing trust with secure multiparty computations, hardware trust models, trusted computing environments and remote attestation
+- Elements of OS and Network security
 
 ### Grading
 - Quizzes: 20%
@@ -48,16 +43,13 @@ The grading policy will be absolute, meaning your grade will be based on your pe
 ### Attendance
 The course requires 100% attendance, and attendance will be recorded in every class. There will be material covered in class that is not present in textbooks. In addition, some portion of the lectures will be used for discussions. It is in your best interests to attend the lectures as they happen, and get your questions answered during the discussions, rather than waiting till the end of the semester. Additionally, there will be no make-up provisions for missed quizzes or class participation for whatever reason. 
 
-### Resources and Reading Materials
-**Text-books:**
-- [Silverman, Joseph H., Jill Pipher, and Jeffrey Hoffstein. An introduction to mathematical cryptography. Vol. 1. Springer New York, 2008.](https://link.springer.com/book/10.1007/978-0-387-77993-5)
-- [Katz, Jonathan, and Yehuda Lindell. Introduction to modern cryptography. CRC press, 2014.](https://www.cs.umd.edu/~jkatz/imc.html)
+### Reading List
 
-**Tools, Software, and Languages:**
-- Install [Python](https://www.python.org/downloads/)
-- [OpenSSL documentation](https://www.pyopenssl.org/en/latest/)
-
-We will also provide additional reading materials and resources as the course progresses.
+- Matthew A. Bishop, Computer Security: Art and Science, 2nd Edition, Pearson, 2018
+- Bruce Schneier, Applied Cryptography, John Wiley & Sons, 1996
+- William Stallings, Cryptography and Network Security: Principles and Practice, 8th Edition, Pearson, 2022
+- Ross Anderson, Security Engineering: A Guide to Building Dependable Distributed Systems, 3rd Edition, Wiley, 2020
+- Charlie Kaufman, Radia Perlman, and Mike Speciner, Network Security: Private Communication in a Public World, 3rd Edition, Pearson
 
 ### Discussion Sessions
 Please sign up for the discussion sessions on the AMS.

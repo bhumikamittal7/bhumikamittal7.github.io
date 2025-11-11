@@ -5,13 +5,10 @@
         <div class="col-sm-2 {% if entry.preview %}preview{% else %}abbr{% endif %}">
         {%- if entry.preview -%}
           {% if entry.preview contains '://' -%}
-          <img class="preview z-depth-0 rounded" src="{{ entry.preview }}">
+          <img class="preview z-depth-0 rounded" src="{{ entry.preview }}" alt="Publication preview">
           {%- else -%}
             {%- assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' -%}
-            {% include figure.html
-            path=entry_path
-            class="preview z-depth-0 rounded"
-            alt=entry.preview -%}
+            <img class="preview z-depth-0 rounded" src="{{ entry_path | relative_url }}" alt="Publication preview">
           {%- endif -%}
         {%- elsif entry.abbr -%}
           {%- if site.data.venues[entry.abbr] -%}
@@ -90,16 +87,16 @@
               class="more-authors"
               title="click to view {{more_authors_hide}}"
               onclick="
-                var element = $(this);
-                element.attr('title', '');
-                var more_authors_text = element.text() == '{{more_authors_hide}}' ? '{{more_authors_show}}' : '{{more_authors_hide}}';
+                var element = this;
+                element.setAttribute('title', '');
+                var more_authors_text = element.textContent == '{{more_authors_hide}}' ? '{{more_authors_show}}' : '{{more_authors_hide}}';
                 var cursorPosition = 0;
                 var textAdder = setInterval(function(){
-                  element.text(more_authors_text.substring(0, cursorPosition + 1));
+                  element.textContent = more_authors_text.substring(0, cursorPosition + 1);
                   if (++cursorPosition == more_authors_text.length){
                     clearInterval(textAdder);
                   }
-              }, '{{site.more_authors_animation_delay}}');
+                }, '{{site.more_authors_animation_delay}}');
               "
           >{{more_authors_hide}}</span>
         {%- endif -%}
@@ -138,21 +135,24 @@
           {%- if entry.abstract %}
             <a class="abstract btn btn-sm z-depth-0" role="button">Abstract</a>
           {%- endif %}
-          {%- if entry.arxiv %}
-            <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
-          {%- endif %}
-          {%- if entry.bibtex_show %}
-            <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
-          {%- endif %}
-          {%- if entry.doi %}
-            <a href="{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">WEB</a>
-          {%- endif %}
           {%- if entry.pdf %}
             {% if entry.pdf contains '://' -%}
             <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
             {%- else -%}
             <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
             {%- endif %}
+          {%- endif %}
+          {%- if entry.doi %}
+            <a href="{{ entry.doi }}" target="_blank" class="btn btn-sm z-depth-0" role="button">DOI</a>
+          {%- endif %}
+          {%- if entry.bibtex or entry.bibtex_show %}
+            <a class="copy-bibtex btn btn-sm z-depth-0" role="button" {% if entry.bibtex %}data-bibtex="{{ entry.bibtex | hideCustomBibtex | escape }}"{% endif %}>Copy BibTeX</a>
+          {%- endif %}
+          {%- if entry.arxiv %}
+            <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+          {%- endif %}
+          {%- if entry.bibtex_show %}
+            <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
           {%- endif %}
           {%- if entry.supp %}
             {% if entry.supp contains '://' -%}
@@ -219,7 +219,9 @@
           {% if entry.abstract -%}
           <!-- Hidden abstract block -->
           <div class="abstract hidden">
+            {% if entry.abstract %}
             <p>{{ entry.abstract }}</p>
+            {% endif %}
           </div>
           {%- endif -%}
 
