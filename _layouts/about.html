@@ -2,69 +2,67 @@
 layout: default
 ---
 
-<!-- about.html -->
-      <div class="post">
-        <header class="post-header">
-          <h1 class="post-title">
-           {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
-          </h1>
-          <p class="desc">{{ page.subtitle }}</p>
-        </header>
-
-        <article>
-          {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if page.profile.image %}
-              {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
-
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-0 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-0 rounded" -%}
-              {% endif %}
-
-              {% include figure.html 
-              path=profile_image_path 
-              class=profile_image_class
-              alt=page.profile.image -%}
-            {% endif -%}
-            {%- if page.profile.address %}
-            <div class="address">
-              {{ page.profile.address }}
-            </div>
-            {%- endif %}
-          </div>
-          {%- endif %}
-
-          <div class="clearfix">
-            {{ content }}
-          </div>
-
-          <!-- News -->
-          {% if page.news -%}
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">updates</a></h2>
-            {%- include news.html %}
-          {%- endif %}
-
-          <!-- Selected papers -->
-          {% if page.selected_papers -%}
-            <h2><a href="{{ '/research/' | relative_url }}" style="color: inherit;">selected work</a></h2>
-            {%- include selected_papers.html %}
-          {%- endif %}
-
-          <!-- Social -->
-          {%- if page.social %}
-            <div class="social">
-              <div class="contact-icons">
-                {% include social.html %}
-              </div>
-
-              <div class="contact-note">
-                {{ site.contact_note }}
-              </div>
-              
-            </div>
-          {%- endif %}
-        </article>
-
+{% if page.url == "/" %}
+<div class="header">
+    {% if page.profile and page.profile.image %}
+    <img src="/assets/img/{{ page.profile.image }}" alt="{{ site.first_name }} {{ site.last_name }}" class="profile-img">
+    {% endif %}
+    <div class="header-content">
+        <h1>
+            <span class="first-name">{{ site.first_name }}</span>
+            {% if site.middle_name %}{{ site.middle_name }} {% endif %}
+            <span class="last-name">{{ site.last_name }}</span>
+        </h1>
+        {% if page.subtitle %}
+        <p>{{ page.subtitle }}</p>
+        {% endif %}
+        {% if site.email %}
+        <p>{{ site.email | replace: '@', '[AT]' }}</p>
+        {% endif %}
+        <div class="social-links">
+            {% if site.twitter_username %}
+            <a href="https://twitter.com/{{ site.twitter_username }}" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+            {% endif %}
+            {% if site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fab fa-github"></i></a>
+            {% endif %}
+            {% if site.scholar_userid %}
+            <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+            {% endif %}
+            <a href="/assets/pdf/cv.pdf" class="link-button social-cv">View CV</a>
+        </div>
+    </div>
 </div>
+{% endif %}
+
+{% if page.url == "/" %}
+{{ content }}
+{% else %}
+{{ content }}
+{% endif %}
+
+{% if page.selected_papers %}
+<h2>Selected Publications <a href="/research/" class="link-button">View all</a></h2>
+<div class="publications-list">
+    {% bibliography -f papers -q @*[selected=true]* %}
+</div>
+{% endif %}
+
+{% if page.news %}
+<h2>Recent News <a href="/news/" class="link-button">View all</a></h2>
+<div class="news-list">
+    {% assign news = site.news | reverse %}
+    {% for item in news limit:3 %}
+           <div class="news-item">
+               <div class="news-date">{{ item.date | date: "%B, %Y" }}</div>
+               <div class="news-content">
+                   {% if item.inline %}
+                       {{ item.content | remove: '<p>' | remove: '</p>' | markdownify }}
+                   {% else %}
+                       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                   {% endif %}
+               </div>
+           </div>
+    {% endfor %}
+</div>
+{% endif %}

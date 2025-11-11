@@ -1,7 +1,21 @@
 ---
 layout: page
-title: news
+title: News
 permalink: /news/
 ---
 
-{% include news.html %}
+<div class="news-list">
+    {% assign news = site.news | reverse %}
+    {% for item in news %}
+    <div class="news-item">
+        <div class="news-date">{{ item.date | date: "%B, %Y" }}</div>
+        <div class="news-content">
+            {% if item.inline %}
+                {{ item.content | markdownify }}
+            {% else %}
+                <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>

@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /resources/
-title: resources
+title: Resources
 description: Curated list of resources based on my experiences
 nav: false
 nav_order: 6
