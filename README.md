@@ -87,11 +87,3 @@ The built site will be in the `_site/` directory.
 
 This website design is inspired by:
 - [Soham De](https://sohamde.in)
-
-## License
-
-This website is licensed under the MIT License. Feel free to use and modify as needed.
-
-## Acknowledgments
-
-Built with [Jekyll](https://jekyllrb.com/) and styled with a minimalist approach. Uses [jekyll-scholar](https://github.com/inukshuk/jekyll-scholar) for bibliography management.
