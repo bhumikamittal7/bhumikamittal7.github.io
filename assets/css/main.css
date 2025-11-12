@@ -615,6 +615,13 @@ table tr:hover {
     margin-bottom: 0.5em;
 }
 
+.post-content ul li,
+.post-content ol li {
+    font-size: 15px;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
 /* Publications page styles */
 .publications-header {
     margin-bottom: 40px;

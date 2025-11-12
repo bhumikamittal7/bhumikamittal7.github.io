@@ -1,9 +1,242 @@
 ---
-layout: page
+layout: null
 permalink: /404.html
-title: "Page not found"
-description: "Looks like there has been a mistake. Nothing exists here."
-redirect: true
 ---
 
-<p>You will be redirected to the main page within 3 seconds. If not redirected, please go back to the <a href="{{ site.baseurl }}/">home page</a>.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .error-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .error-title {
+            font-size: 30px;
+            color: var(--text-color);
+        }
+
+        .error-subtitle {
+            font-size: 15px;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .error-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
+            gap: 60px;
+        }
+
+        .error-left {
+            flex: 1;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .error-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 500px;
+        }
+
+        .error-artwork {
+            max-width: 80%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .artwork-caption {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .poetry {
+            margin: 30px 0;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .poetry-urdu {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Arial Unicode MS', serif;
+            font-size: 18px;
+            direction: rtl;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .poetry-english {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .poetry-author {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .report-link,
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--link-hover);
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .report-link:hover,
+        .home-link:hover {
+            opacity: 0.8;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 40px;
+            }
+
+            .error-header {
+                margin-bottom: 30px;
+            }
+
+            .error-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .error-left,
+            .error-right {
+                max-width: 100%;
+            }
+
+            .error-artwork {
+                max-width: 60%;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-header">
+        <h1 class="error-title">error 404</h1>
+        <p class="error-subtitle">This page seems to have been lost, much like this lost artwork.</p>
+    </div>
+
+    <div class="error-container">
+        <div class="error-left">
+            <div class="poetry">
+                <div class="poetry-urdu">
+                    سرف اک قدم اٹھا تھا غلط راہ شوق میں<br>
+                    منزل تمام عمر مجھے ڈھونڈتی رہی
+                </div>
+                <div class="poetry-english">
+                    sirf ek qadam utha tha ghalat rah-e-shauq men<br>
+                    manzil tamam umr mujhe dhundhti rahi
+                </div>
+                <div class="poetry-author">— Abdul Hamid Adam</div>
+            </div>
+
+            <div class="button-container">
+                <a href="#" id="report-link" class="report-link">Report this</a>
+                <a href="/" class="home-link">Return to home</a>
+            </div>
+        </div>
+
+        <div class="error-right">
+            <img id="lost-artwork" class="error-artwork" alt="Lost Artwork" />
+            <div id="artwork-caption" class="artwork-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mapping of artwork filenames to their proper names
+        const artworkNames = {
+            '1070px-Vermeer_The_concert.jpeg': 'The Concert by Johannes Vermeer',
+            '1570px-Rembrandt_Harmensz._van_Rijn_076.jpg': 'Portrait of a Young Man by Rembrandt',
+            'Caravaggio_005.jpg': 'Nativity with St. Francis and St. Lawrence by Caravaggio',
+            'Édouard_Manet_Chez_Tortoni.jpg': 'Chez Tortoni by Édouard Manet',
+            'Raphael_missing.jpg': 'Portrait of a Young Man by Raphael',
+            'Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg': 'Christ in the Storm on the Lake of Galilee by Rembrandt',
+            'Van_Gogh_-_Vase_mit_Pechnelken.jpeg': 'Vase with Lychnis by Vincent van Gogh',
+            'View_of_Auvers-sur-Oise_Paul_Cezanne.png': 'View of Auvers-sur-Oise by Paul Cézanne'
+        };
+
+        // List of lost artwork images
+        const lostArtworks = [
+            '1070px-Vermeer_The_concert.jpeg',
+            '1570px-Rembrandt_Harmensz._van_Rijn_076.jpg',
+            'Caravaggio_005.jpg',
+            'Édouard_Manet_Chez_Tortoni.jpg',
+            'Raphael_missing.jpg',
+            'Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg',
+            'Van_Gogh_-_Vase_mit_Pechnelken.jpeg',
+            'View_of_Auvers-sur-Oise_Paul_Cezanne.png'
+        ];
+
+        // Randomly select an artwork
+        const randomArtwork = lostArtworks[Math.floor(Math.random() * lostArtworks.length)];
+        const baseUrl = '{{ site.baseurl }}' || '';
+        const artworkPath = baseUrl + '/assets/img/lost/' + randomArtwork;
+        
+        // Set image source
+        document.getElementById('lost-artwork').src = artworkPath;
+        
+        // Set caption
+        const artworkName = artworkNames[randomArtwork] || 'Lost Artwork';
+        document.getElementById('artwork-caption').textContent = artworkName;
+
+        // Get current page URL for email body
+        const currentUrl = window.location.href;
+        const email = '{{ site.email }}';
+        const subject = encodeURIComponent('404 Error Report - Broken Link');
+        const body = encodeURIComponent('Hi Bhumika,\n\nI encountered a 404 error on your website.\n\nHere is the broken URL: ' + currentUrl);
+        const mailtoLink = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+
+        // Set up report link
+        document.getElementById('report-link').href = mailtoLink;
+    </script>
+</body>
+</html>
