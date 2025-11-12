@@ -83,7 +83,6 @@ bundle exec jekyll build
 
 The built site will be in the `_site/` directory.
 
-## Design Inspiration
-
-This website design is inspired by:
-- [Soham De](https://sohamde.in)
+## Acknowledgments
+- This website design is inspired by [Soham De](https://sohamde.in).
+- The 404 page is inspired by this [404 page](https://aalok-thakkar.github.io/404).

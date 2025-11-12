@@ -1,0 +1,75 @@
+URDU:سرف اک قدم اٹھا تھا غلط راہ شوق میں
+منزل تمام عمر مجھے ڈھونڈتی رہی
+TRANSLIT:sirf ek qadam utha tha ghalat rah-e-shauq men
+manzil tamam umr mujhe dhundhti rahi
+AUTHOR:- Abdul Hamid Adam
+---
+URDU:کوئی امید بر نہیں آتی
+کوئی صورت نظر نہیں آتی
+TRANSLIT:koi ummeed bar nahin aati
+koi soorat nazar nahin aati
+AUTHOR:- Mirza Ghalib
+---
+URDU:راه تمنا میں کون سا منزل ہے جو نہی
+ہم نے تو ہر نشان سفر کھو دیا
+TRANSLIT:rah-e-tamanna mein kaun sa manzil hai jo nahi
+hum ne to har nishaan-e-safar kho diya
+AUTHOR:- Mirza Ghalib
+---
+URDU:دل ہی تو ہے نہ سنگ و خشت، درد سے بھر نہ آئے کیوں
+روئیں گے ہم ہزار بار، کوئی ہمیں ستائے کیوں
+TRANSLIT:dil hi to hai na sang-o-khisht, dard se bhar na aaye kyun
+roenge hum hazaar baar, koi humein sataaye kyun
+AUTHOR:- Mirza Ghalib
+---
+URDU:میر کے دین و مذہب کو اب پوچھتے کیا ہو انہوں تو
+کشکہ کھینچا، دیر میں بیٹھا، کب کا ترک اسلام کیا
+TRANSLIT:mir ke deen-o-mazhab ko ab puchte kya ho unne to
+kashka khincha, dair mein baitha, kab ka tark Islam kiya
+AUTHOR:- Mir Taqi Mir
+---
+URDU:ہم ہوئے تم ہوئے کہ میر ہوئے
+اسکی زلفوں کے سب اسیر ہوئے
+TRANSLIT:hum hue tum hue ke mir hue
+uski zulfon ke sab aseer hue
+AUTHOR:- Mir Taqi Mir
+---
+URDU:کھو گئے ہم کہیں راہ میں ڈھونڈھتے ہوئے خواب اپنے
+TRANSLIT:kho gaye hum kahin raah mein 
+dhoondhte hue khwab apne
+AUTHOR:- Faiz Ahmed Faiz
+---
+URDU:اور بھی دکھ ہیں زمانے میں محبت کے سوا
+راحتیں اور بھی ہیں وصل کی راحت کے سوا
+TRANSLIT:aur bhi dukh hain zamane mein mohabbat ke siwa
+rahatein aur bhi hain vasl ki rahat ke siwa
+AUTHOR:- Faiz Ahmed Faiz
+---
+URDU:راہ ملتی نہی، منزل نہی ملتی مجھے
+مجھ کو اپنے ہی سفر کا کوئی نشان نہی ملتا
+TRANSLIT:raah milti nahi, manzil nahi milti mujhe
+mujhko apne hi safar ka koi nishan nahi milta
+AUTHOR:- Allama Iqbal
+---
+URDU:راستے کھو گئے، منزلیں کھو گئیں
+جانے کس موڑ پر زندگی کھو گئی
+TRANSLIT:raaste kho gaye, manzilain kho gayin
+jaane kis mod par zindagi kho gayi
+AUTHOR:- Firaq Gorakhpuri
+---
+URDU:راه عشق آسان نیست، اول من ذلت است
+آخر من قتل است
+TRANSLIT:raah-e-eshq aasan nist, awal-e-man zillet ast
+akhir-e-man qatl ast
+AUTHOR:- Hafez Shirazi
+---
+URDU:ما را باز آورد از این راه گمراه
+کی منزل راه عشق است و ما راه گم شد
+TRANSLIT:ma ra baaz aawar az in raah-e-gumrah
+ki manzil raah-e-ishq ast o ma raah gum shud
+AUTHOR:- Jalaluddin Rumi
+---
+URDU:ہر کہ راه عشق پیمود، از جہاں رفت و بر نگشت
+TRANSLIT:har ke raah-e-ishq pemaad, 
+az jahan raft o bar nagasht
+AUTHOR:- Saadi Shirazi
