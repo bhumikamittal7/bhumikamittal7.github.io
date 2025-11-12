@@ -168,15 +168,9 @@ permalink: /404.html
     <div class="error-container">
         <div class="error-left">
             <div class="poetry">
-                <div class="poetry-urdu">
-                    سرف اک قدم اٹھا تھا غلط راہ شوق میں<br>
-                    منزل تمام عمر مجھے ڈھونڈتی رہی
-                </div>
-                <div class="poetry-english">
-                    sirf ek qadam utha tha ghalat rah-e-shauq men<br>
-                    manzil tamam umr mujhe dhundhti rahi
-                </div>
-                <div class="poetry-author">— Abdul Hamid Adam</div>
+                <div id="poetry-urdu" class="poetry-urdu"></div>
+                <div id="poetry-translit" class="poetry-english"></div>
+                <div id="poetry-author" class="poetry-author"></div>
             </div>
 
             <div class="button-container">
@@ -192,6 +186,65 @@ permalink: /404.html
     </div>
 
     <script>
+        // Function to load and display random poem
+        async function loadRandomPoem() {
+            try {
+                const baseUrl = '{{ site.baseurl }}' || '';
+                const response = await fetch(baseUrl + '/assets/data/poems.txt');
+                const text = await response.text();
+                
+                // Parse poems (split by ---)
+                const poems = text.split('---').map(poem => poem.trim()).filter(poem => poem.length > 0);
+                
+                // Randomly select a poem
+                const randomPoem = poems[Math.floor(Math.random() * poems.length)];
+                
+                // Parse poem sections
+                let urduLines = [];
+                let translitLines = [];
+                let author = '';
+                
+                const lines = randomPoem.split('\n');
+                let currentSection = '';
+                
+                for (const line of lines) {
+                    const trimmedLine = line.trim();
+                    if (!trimmedLine) continue;
+                    
+                    if (trimmedLine.startsWith('URDU:')) {
+                        currentSection = 'urdu';
+                        const urduText = trimmedLine.substring(5).trim();
+                        if (urduText) urduLines.push(urduText);
+                    } else if (trimmedLine.startsWith('TRANSLIT:')) {
+                        currentSection = 'translit';
+                        const translitText = trimmedLine.substring(9).trim();
+                        if (translitText) translitLines.push(translitText);
+                    } else if (trimmedLine.startsWith('AUTHOR:')) {
+                        author = trimmedLine.substring(7).trim();
+                    } else if (currentSection === 'urdu') {
+                        urduLines.push(trimmedLine);
+                    } else if (currentSection === 'translit') {
+                        translitLines.push(trimmedLine);
+                    }
+                }
+                
+                // Display poem
+                const poetryUrduEl = document.getElementById('poetry-urdu');
+                const poetryTranslitEl = document.getElementById('poetry-translit');
+                const poetryAuthorEl = document.getElementById('poetry-author');
+                
+                poetryUrduEl.innerHTML = urduLines.join('<br>');
+                poetryTranslitEl.innerHTML = translitLines.join('<br>');
+                poetryAuthorEl.textContent = author ? author : '';
+            } catch (error) {
+                console.error('Error loading poem:', error);
+                // Fallback to default poem
+                document.getElementById('poetry-urdu').innerHTML = 'سرف اک قدم اٹھا تھا غلط راہ شوق میں<br>منزل تمام عمر مجھے ڈھونڈتی رہی';
+                document.getElementById('poetry-translit').innerHTML = 'sirf ek qadam utha tha ghalat rah-e-shauq men<br>manzil tamam umr mujhe dhundhti rahi';
+                document.getElementById('poetry-author').textContent = '— Abdul Hamid Adam';
+            }
+        }
+
         // Mapping of artwork filenames to their proper names
         const artworkNames = {
             '1070px-Vermeer_The_concert.jpeg': 'The Concert by Johannes Vermeer',
@@ -237,6 +290,9 @@ permalink: /404.html
 
         // Set up report link
         document.getElementById('report-link').href = mailtoLink;
+
+        // Load random poem
+        loadRandomPoem();
     </script>
 </body>
 </html>
