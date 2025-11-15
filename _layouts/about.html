@@ -17,7 +17,7 @@ layout: default
         <p>{{ page.subtitle }}</p>
         {% endif %}
         {% if site.email %}
-        <p>{{ site.email | replace: '@', '[AT]' }}</p>
+        <p>{{ site.email | replace: '@', ' @ ' }}</p>
         {% endif %}
         <div class="social-links">
             {% if site.twitter_username %}

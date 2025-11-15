@@ -7,6 +7,8 @@ nav: true
 nav_order: 2
 ---
 
+## Courses
+
 <div class="teaching-list">
     <div class="teaching-item">
         <div class="teaching-item-content">
@@ -69,26 +71,16 @@ nav_order: 2
     </div>
 </div>
 
-## Talks & Workshops
+## Other Teaching Activities
 
 <div class="teaching-list">
     <div class="teaching-item">
         <div class="teaching-item-content">
-            <h3>Partially Observable Markov Decision Process</h3>
-            <span class="teaching-meta">Reinforcement Learning, Ashoka University | Spring 2025</span>
+            <h3>Science Communication</h3>
+            <span class="teaching-meta">Lodha Genius Program | Siddharth Kankaria | Summer 2023</span>
         </div>
         <div class="teaching-links">
-            <a href="/assets/pdf/POMDP.pdf">slides</a>
-        </div>
-    </div>
-
-    <div class="teaching-item">
-        <div class="teaching-item-content">
-            <h3>Number Theoretic Transform</h3>
-            <span class="teaching-meta">Workshop on Lattice-based Post-quantum Cryptography 2024 | Spring 2024</span>
-        </div>
-        <div class="teaching-links">
-            <a href="/assets/pdf/ntt_presentation.pdf">slides</a>
+            <a href="/assets/pdf/ScienceComm.pdf">syllabus</a>
         </div>
     </div>
 
@@ -114,11 +106,34 @@ nav_order: 2
 
     <div class="teaching-item">
         <div class="teaching-item-content">
-            <h3>Science Communication</h3>
-            <span class="teaching-meta">Lodha Genius Program | Siddharth Kankaria | Summer 2023</span>
+            <h3>Foundations of Robotics and 3D Printing</h3>
+            <span class="teaching-meta">Ashoka University | Young Scholars Programme | Summer of 2023</span>
         </div>
         <div class="teaching-links">
-            <a href="/assets/pdf/ScienceComm.pdf">syllabus</a>
+        </div>
+    </div>
+</div>
+
+## Talks & Workshops
+
+<div class="teaching-list">
+    <div class="teaching-item">
+        <div class="teaching-item-content">
+            <h3>Partially Observable Markov Decision Process</h3>
+            <span class="teaching-meta">Reinforcement Learning, Ashoka University | Spring 2025</span>
+        </div>
+        <div class="teaching-links">
+            <a href="/assets/pdf/POMDP.pdf">slides</a>
+        </div>
+    </div>
+
+    <div class="teaching-item">
+        <div class="teaching-item-content">
+            <h3>Number Theoretic Transform</h3>
+            <span class="teaching-meta">Workshop on Lattice-based Post-quantum Cryptography 2024 | Spring 2024</span>
+        </div>
+        <div class="teaching-links">
+            <a href="/assets/pdf/ntt_presentation.pdf">slides</a>
         </div>
     </div>
 
@@ -143,3 +158,4 @@ nav_order: 2
         </div>
     </div>
 </div>
+

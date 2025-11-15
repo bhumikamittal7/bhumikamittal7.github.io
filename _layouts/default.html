@@ -53,7 +53,7 @@
         <div class="footer-content">
             <span>{{ site.first_name }} {{ site.last_name }}</span>
             {% if site.email %}
-            <span>{{ site.email | replace: '@', '[AT]' }}</span>
+            <span>{{ site.email | replace: '@', ' @ ' }}</span>
             {% endif %}
             <div class="social-links">
                 {% if site.twitter_username %}
@@ -65,6 +65,7 @@
                 {% if site.scholar_userid %}
                 <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
                 {% endif %}
+                <a href="/credits/" title="Credits"><i class="fas fa-info-circle" style="opacity: 0.7;"></i></a>
             </div>
         </div>
     </footer>
