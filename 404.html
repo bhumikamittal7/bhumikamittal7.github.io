@@ -19,6 +19,13 @@ permalink: /404.html
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
+        .error-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+
         .error-header {
             text-align: center;
             margin-bottom: 50px;
@@ -84,7 +91,7 @@ permalink: /404.html
             font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Arial Unicode MS', serif;
             font-size: 18px;
             direction: rtl;
-            text-align: right;
+            text-align: center;
             margin-bottom: 15px;
         }
 
@@ -93,12 +100,14 @@ permalink: /404.html
             font-style: italic;
             color: var(--text-secondary);
             margin-bottom: 4px;
+            text-align: center;
         }
 
         .poetry-author {
             font-size: 13px;
             color: var(--text-secondary);
             margin-top: 4px;
+            text-align: center;
         }
 
         .button-container {
@@ -112,20 +121,22 @@ permalink: /404.html
         .home-link {
             display: inline-block;
             padding: 10px 20px;
-            background-color: var(--link-hover);
-            color: white;
-            text-decoration: none;
+            background-color: #e5e5e5;
+            color: #333 !important;
+            text-decoration: none !important;
             font-size: 14px;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.2s ease;
-            border: none;
+            border: 1px solid #d0d0d0;
+            border-bottom: 1px solid #d0d0d0 !important;
             cursor: pointer;
+            font-weight: 500;
         }
 
         .report-link:hover,
         .home-link:hover {
-            opacity: 0.8;
-            color: white;
+            color: #333 !important;
+            border-bottom: 1px solid #d0d0d0 !important;
             transform: translateY(-1px);
         }
 
@@ -134,25 +145,44 @@ permalink: /404.html
                 padding-top: 40px;
             }
 
+            .error-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+
             .error-header {
                 margin-bottom: 30px;
+                order: 1;
             }
 
             .error-container {
                 flex-direction: column;
                 gap: 30px;
+                order: 2;
             }
 
-            .error-left,
+            .error-left {
+                max-width: 100%;
+                order: 3;
+                display: flex;
+                flex-direction: column;
+            }
+
             .error-right {
                 max-width: 100%;
+                order: 2;
             }
 
             .error-artwork {
                 max-width: 60%;
             }
 
+            .poetry {
+                order: 2;
+            }
+
             .button-container {
+                order: 3;
                 flex-direction: column;
                 gap: 10px;
             }
@@ -160,28 +190,30 @@ permalink: /404.html
     </style>
 </head>
 <body>
-    <div class="error-header">
-        <h1 class="error-title">error 404</h1>
-        <p class="error-subtitle">This page seems to have been lost, much like this lost artwork.</p>
-    </div>
-
-    <div class="error-container">
-        <div class="error-left">
-            <div class="poetry">
-                <div id="poetry-urdu" class="poetry-urdu"></div>
-                <div id="poetry-translit" class="poetry-english"></div>
-                <div id="poetry-author" class="poetry-author"></div>
-            </div>
-
-            <div class="button-container">
-                <a href="#" id="report-link" class="report-link">Report this</a>
-                <a href="/" class="home-link">Return to home</a>
-            </div>
+    <div class="error-wrapper">
+        <div class="error-header">
+            <h1 class="error-title">Error 404</h1>
+            <p class="error-subtitle">This page seems to have been lost, much like this lost artwork.</p>
         </div>
 
-        <div class="error-right">
-            <img id="lost-artwork" class="error-artwork" alt="Lost Artwork" />
-            <div id="artwork-caption" class="artwork-caption"></div>
+        <div class="error-container">
+            <div class="error-left">
+                <div class="poetry">
+                    <div id="poetry-urdu" class="poetry-urdu"></div>
+                    <div id="poetry-translit" class="poetry-english"></div>
+                    <div id="poetry-author" class="poetry-author"></div>
+                </div>
+
+                <div class="button-container">
+                    <a href="#" id="report-link" class="report-link">Report a Broken Link</a>
+                    <a href="/" class="home-link">Return to home</a>
+                </div>
+            </div>
+
+            <div class="error-right">
+                <img id="lost-artwork" class="error-artwork" alt="Lost Artwork" />
+                <div id="artwork-caption" class="artwork-caption"></div>
+            </div>
         </div>
     </div>
 
