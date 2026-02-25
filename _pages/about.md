@@ -12,7 +12,7 @@ profile:
 news: true
 selected_papers: true
 ---
-<center><p><strong>📢 I am actively looking for CS PhD positions starting from Fall 2026.</strong></p></center>
+<!-- <center><p><strong>📢 I am actively looking for CS PhD positions starting from Fall 2026.</strong></p></center> -->
 
 ## About Me
 
