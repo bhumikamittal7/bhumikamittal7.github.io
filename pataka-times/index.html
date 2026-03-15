@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pātākā Construction Portal — Gaṇitakaumudī</title>
+  <title>Patākā Construction Portal — Gaṇitakaumudī</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -174,13 +174,28 @@
       gap: 0.5rem;
     }
 
-    .legend-swatch.ksepa { background: #fef3c7; border: 1px solid #f59e0b; }
-    .legend-swatch.sadhya { background: #d1fae5; border: 1px solid #10b981; }
-
     .legend-swatch {
       width: 1rem;
       height: 1rem;
       border-radius: 4px;
+    }
+
+    .legend-swatch.operand { background: #e0e7ff; border: 1px solid #6366f1; }
+    .legend-swatch.ksepa { background: #fef3c7; border: 1px solid #f59e0b; }
+    .legend-swatch.sadhya { background: #e5e7eb; border: 1px solid #9ca3af; }
+
+    .commentary {
+      font-size: 0.95rem;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      background: #faf9f7;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--accent);
+      font-style: italic;
+      min-height: 2.5rem;
+      display: flex;
+      align-items: center;
     }
 
     .viz-container {
@@ -259,6 +274,13 @@
       animation: cellPop 0.35s ease;
     }
 
+    .cell.operand {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border: 2px solid #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    }
+
     .cell.ksepa {
       background: #fef3c7;
       color: #b45309;
@@ -267,38 +289,24 @@
     }
 
     .cell.sadhya {
-      background: #d1fae5;
-      color: #047857;
-      border: 2px solid #10b981;
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+      background: #e5e7eb;
+      color: #4b5563;
+      border: 1px solid #9ca3af;
     }
 
     .cell.empty-slot {
       width: 42px;
       height: 36px;
       background: transparent;
-      border: 1px dashed var(--border);
+      border: 1.5px dashed #b8b5b0;
       border-radius: var(--radius-sm);
-      opacity: 0.4;
+      opacity: 0.65;
     }
 
     @keyframes cellPop {
       0% { transform: scale(0.8); opacity: 0.6; }
       60% { transform: scale(1.05); }
       100% { transform: scale(1); opacity: 1; }
-    }
-
-    .status-panel {
-      margin-top: 1.5rem;
-      padding: 1rem 1.25rem;
-      background: #f8f7f5;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
-    }
-
-    .status-panel strong {
-      color: var(--accent);
     }
 
     .empty-state {
@@ -322,8 +330,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Pātākā Construction Portal</h1>
-      <p class="subtitle">Nārāyaṇa Paṇḍita, Gaṇitakaumudī Ch. 13 — Step-by-step column filling</p>
+      <h1>Patākā Construction</h1>
+      <p class="subtitle">Nārāyaṇa Paṇḍita, Gaṇitakaumudī Ch. 13</p>
     </header>
 
     <div class="controls">
@@ -335,35 +343,32 @@
         <label for="q">q (sthāna, places)</label>
         <input type="number" id="q" value="3" min="1" max="6">
       </div>
-      <button class="btn btn-primary" id="buildBtn">Build Pātākā</button>
+      <button class="btn btn-primary" id="buildBtn">Build Patākā</button>
 
       <div class="step-controls" id="stepControls" style="display: none;">
         <button class="btn btn-secondary" id="prevBtn">← Prev</button>
         <input type="range" class="step-slider" id="stepSlider" min="0" max="1" value="0">
         <button class="btn btn-secondary" id="nextBtn">Next →</button>
+        <button class="btn btn-secondary" id="autoPlayBtn">▶ Auto</button>
         <span class="step-info" id="stepInfo">Step 0 / 0</span>
       </div>
     </div>
 
     <div class="legend" id="legend" style="display: none;">
-      <span class="legend-item"><span class="legend-swatch" style="background: #fef3c7; border: 1px solid #f59e0b;"></span> Kṣepa (addend)</span>
-      <span class="legend-item"><span class="legend-swatch" style="background: #d1fae5; border: 1px solid #10b981;"></span> Sadhya (ceiling)</span>
-      <span class="legend-item"><span class="legend-swatch" style="background: var(--seed-soft);"></span> Seed (ābhyāsikī)</span>
-      <span class="legend-item"><span class="legend-swatch" style="background: var(--pallava-soft);"></span> Placed</span>
-      <span class="legend-item"><span class="legend-swatch" style="background: var(--new-soft);"></span> Just placed (this step)</span>
+      <span class="legend-item"><span class="legend-swatch operand"></span> Operand (pallava)</span>
+      <span class="legend-item"><span class="legend-swatch ksepa"></span> Kṣepa (addend)</span>
+      <span class="legend-item"><span class="legend-swatch sadhya"></span> Sadhya (ceiling)</span>
     </div>
 
     <div class="viz-container">
+      <div class="commentary" id="commentary" style="display: none;">
+        <span id="commentaryText"></span>
+      </div>
       <div id="vizContent">
         <div class="empty-state">
-          <p>Enter values for p and q, then click <strong>Build Pātākā</strong>.</p>
-          <p>p ≥ 2, q ≥ 1. N = p<sup>q</sup> is the upper bound (sadhya).</p>
+          <p>Enter values for p and q, then click <strong>Build Patākā</strong>.</p>
         </div>
       </div>
-    </div>
-
-    <div class="status-panel" id="statusPanel" style="display: none;">
-      <div id="statusContent"></div>
     </div>
   </div>
 
@@ -403,7 +408,7 @@
       return colPv + offset + 1;
     }
 
-    // Returns array of states: each state is { cols, valCol, stepIndex, ksepa, sadhya, justPlaced }
+    // Returns array of states: each state is one cell placement (granular steps)
     function patakaSteps(p, q) {
       const seed = abhyasiki(p, q);
       const sigma = suci(p, q);
@@ -411,22 +416,38 @@
 
       const states = [];
 
-      // Initial state
-      const initCols = seed.map(v => [v]);
-      const initValCol = {};
-      seed.forEach((v, j) => { initValCol[v] = j; });
-
+      // Step 0: Empty grid (set up the structure)
       states.push({
-        cols: initCols.map(col => [...col]),
-        valCol: { ...initValCol },
-        stepIndex: 0,
+        cols: seed.map(() => []),
+        valCol: {},
+        stepIndex: -1,
         ksepa: null,
         sadhya: null,
         justPlaced: [],
-        label: 'Initialisation: seed row (ābhyāsikī)'
+        formula: null,
+        phase: 'empty'
       });
 
-      // Kṣepa steps: i = 1 .. numCols-2
+      // Steps 1..numCols: Fill Ābhyāsikī one cell at a time
+      let cols = seed.map(() => []);
+      let valCol = {};
+      for (let j = 0; j < numCols; j++) {
+        const v = seed[j];
+        cols[j] = [v];
+        valCol[v] = j;
+        states.push({
+          cols: cols.map(c => [...c]),
+          valCol: { ...valCol },
+          stepIndex: -1,
+          ksepa: null,
+          sadhya: null,
+          justPlaced: [v],
+          formula: null,
+          phase: 'seed'
+        });
+      }
+
+      // Kṣepa steps: i = 1 .. numCols-2 — each placement is its own state
       for (let i = 1; i <= numCols - 2; i++) {
         const ksepa = seed[i];
         const sadhya = seed[i + 1];
@@ -439,25 +460,25 @@
           .filter(([v, _]) => parseInt(v) + ksepa < sadhya)
           .sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
 
-        const justPlaced = [];
+        // One state per cell placement (Excel-style: one entry at a time)
         for (const [pv, colPv] of pallava) {
           const pvNum = parseInt(pv);
           const result = pvNum + ksepa;
           const c = colOfResult(colPv, i, p);
           cols[c] = cols[c].concat([result]);
           valCol[result] = c;
-          justPlaced.push(result);
-        }
 
-        states.push({
-          cols: cols.map(c => [...c]),
-          valCol: { ...valCol },
-          stepIndex: i,
-          ksepa,
-          sadhya,
-          justPlaced,
-          label: `Kṣepa = ${ksepa}, sadhya = ${sadhya} — placed ${justPlaced.length} values`
-        });
+          states.push({
+            cols: cols.map(col => [...col]),
+            valCol: { ...valCol },
+            stepIndex: i,
+            ksepa,
+            sadhya,
+            justPlaced: [result],
+            formula: { pv: pvNum, ksepa, result, col: c },
+            label: `${pvNum} + ${ksepa} = ${result} → col ${c}`
+          });
+        }
       }
 
       return { states, seed, sigma };
@@ -482,7 +503,7 @@
 
       const N = Math.pow(p, q);
       if (N > 500) {
-        document.getElementById('vizContent').innerHTML = '<div class="empty-state"><p class="error-msg">p^q is too large. Try smaller p or q.</p></div>';
+        document.getElementById('vizContent').innerHTML = '<div class="empty-state"><p class="error-msg">p^q is too large (should be less than 500). Try smaller p or q.</p></div>';
         return;
       }
 
@@ -490,11 +511,26 @@
       currentStep = 0;
       document.getElementById('stepControls').style.display = 'flex';
       document.getElementById('legend').style.display = 'flex';
-      document.getElementById('statusPanel').style.display = 'block';
+      document.getElementById('commentary').style.display = 'flex';
 
       updateStepSlider();
       render();
-      updateStatus();
+
+      // Auto-run Ābhyāsikī filling (step 0 = empty grid, steps 1..numCols = fill seed)
+      const numCols = currentData.seed.length;
+      const endStep = numCols;
+      const stepInterval = 450;
+      let step = 0;
+      const iv = setInterval(() => {
+        if (step >= endStep) {
+          clearInterval(iv);
+          return;
+        }
+        step++;
+        currentStep = step;
+        updateStepSlider();
+        render();
+      }, stepInterval);
     }
 
     function updateStepSlider() {
@@ -533,13 +569,17 @@
             cell.className = 'cell';
             const isSeed = seed.includes(val);
             const isNew = state.justPlaced && state.justPlaced.includes(val);
+            const isOperand = state.formula && val === state.formula.pv;
             const isKsepa = state.ksepa != null && val === state.ksepa;
             const isSadhya = state.sadhya != null && val === state.sadhya;
+            if (isOperand) cell.classList.add('operand');
             if (isKsepa) cell.classList.add('ksepa');
-            else if (isSadhya) cell.classList.add('sadhya');
-            else if (isSeed) cell.classList.add('seed');
-            else if (isNew) cell.classList.add('new');
-            else cell.classList.add('placed');
+            if (isSadhya) cell.classList.add('sadhya');
+            if (!isOperand && !isKsepa && !isSadhya) {
+              if (isSeed) cell.classList.add('seed');
+              else if (isNew) cell.classList.add('new');
+              else cell.classList.add('placed');
+            }
             cell.textContent = val;
           } else {
             cell.className = 'cell empty-slot';
@@ -547,31 +587,31 @@
           cellsDiv.appendChild(cell);
         }
 
-        /* Cells first (base row on top), header below — like the OG text */
-        const header = document.createElement('div');
-        header.className = 'column-header';
-        header.textContent = `col ${j} (σ=${sigma[j]})`;
         colDiv.appendChild(cellsDiv);
-        colDiv.appendChild(header);
         grid.appendChild(colDiv);
       }
 
       const container = document.getElementById('vizContent');
       container.innerHTML = '';
       container.appendChild(grid);
+
+      updateCommentary(state);
     }
 
-    function updateStatus() {
-      const state = currentData.states[currentStep];
-      let html = `<strong>${state.label}</strong><br>`;
-      if (state.ksepa != null) {
-        html += `Kṣepa = ${state.ksepa}, sadhya = ${state.sadhya}`;
-        if (state.justPlaced.length > 0) {
-          html += ` — placed: [${state.justPlaced.join(', ')}]`;
-        }
+    function updateCommentary(state) {
+      const el = document.getElementById('commentaryText');
+      if (!el) return;
+      let text = '';
+      if (state.phase === 'empty') {
+        text = 'Setting up the grid based on nāracika sequence (sūcī).';
+      } else if (state.phase === 'seed') {
+        text = 'Adding the Ābhyāsikī sequence.';
+      } else if (state.formula) {
+        const { pv, ksepa, result } = state.formula;
+        const sadhya = state.sadhya;
+        text = `Adding kṣepa (${ksepa}) and pallava (${pv}) to get next value; below sadhya (${sadhya}): ${pv} + ${ksepa} = ${result}.`;
       }
-      html += `<br><small>Seed row: [${currentData.seed.join(', ')}]</small>`;
-      document.getElementById('statusContent').innerHTML = html;
+      el.textContent = text;
     }
 
     document.getElementById('buildBtn').addEventListener('click', buildPataka);
@@ -581,7 +621,6 @@
         currentStep--;
         updateStepSlider();
         render();
-        updateStatus();
       }
     });
 
@@ -590,7 +629,6 @@
         currentStep++;
         updateStepSlider();
         render();
-        updateStatus();
       }
     });
 
@@ -599,8 +637,33 @@
         currentStep = parseInt(e.target.value, 10);
         updateStepSlider();
         render();
-        updateStatus();
       }
+    });
+
+    document.getElementById('autoPlayBtn').addEventListener('click', function autoPlay() {
+      if (!currentData) return;
+      const btn = this;
+      if (btn.dataset.running === '1') {
+        btn.dataset.running = '0';
+        btn.textContent = '▶ Auto';
+        clearInterval(window._playInterval);
+        return;
+      }
+      btn.dataset.running = '1';
+      btn.textContent = '⏹ Stop';
+      const n = currentData.states.length;
+      window._playInterval = setInterval(() => {
+        if (btn.dataset.running !== '1') return;
+        if (currentStep >= n - 1) {
+          clearInterval(window._playInterval);
+          btn.dataset.running = '0';
+          btn.textContent = '▶ Auto';
+          return;
+        }
+        currentStep++;
+        updateStepSlider();
+        render();
+      }, 600);
     });
   </script>
 </body>
