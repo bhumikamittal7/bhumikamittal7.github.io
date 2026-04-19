@@ -8,9 +8,9 @@ nav: true
 nav_order: 1
 ---
 
-My research interests lie in **theoretical computer science**. My work thus far has focused on theoretical cryptography, particularly lattice-based cryptography. I am interested in studying the foundations of quantum computing, complexity theory, and cryptography, along with formal logic, and exploring their interconnections.
+My research interests lie in cryptography, programming languages, and formal verification. In particular, my current work focuses on program analysis for finite field computations. 
 
-In the past, I have worked on projects related to discrete mathematics and computer architecture and systems.
+Recently, I have also been exploring questions in the history of mathematics. In the past, I have worked on problems in discrete mathematics and computer architecture and systems.
 
 ### Publications
 
