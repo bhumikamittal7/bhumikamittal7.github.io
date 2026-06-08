@@ -92,5 +92,8 @@
     {% if page.url contains '/research' or page.url contains '/publications' %}
     <script src="{{ '/assets/js/research.js' | relative_url }}"></script>
     {% endif %}
+    {% if page.url contains '/teaching' %}
+    <script src="{{ '/assets/js/teaching.js' | relative_url }}"></script>
+    {% endif %}
 </body>
 </html>
