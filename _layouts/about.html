@@ -14,7 +14,7 @@ layout: default
             <span class="last-name">{{ site.last_name }}</span>
         </h1>
         {% if page.subtitle %}
-        <p>{{ page.subtitle }}</p>
+        <p>{{ page.subtitle | markdownify | remove: '<p>' | remove: '</p>' }}</p>
         {% endif %}
         {% if site.email %}
         <p>{{ site.email | replace: '@', ' @ ' }}</p>
@@ -45,20 +45,23 @@ layout: default
 {% endif %}
 
 {% if page.news %}
-<h2>Recent News <a href="/news/" class="link-button">View all</a></h2>
+<h2>News <a href="/news/" class="link-button">View all</a></h2>
 <div class="news-list">
     {% assign news = site.news | reverse %}
     {% for item in news limit:3 %}
-           <div class="news-item">
-               <div class="news-date">{{ item.date | date: "%B, %Y" }}</div>
-               <div class="news-content">
-                   {% if item.inline %}
-                       {{ item.content | remove: '<p>' | remove: '</p>' | markdownify }}
-                   {% else %}
-                       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                   {% endif %}
-               </div>
-           </div>
+    <div class="news-item">
+        <div class="news-date">
+            <span class="news-date-month">{{ item.date | date: "%b" }}</span>
+            <span class="news-date-year">{{ item.date | date: "%Y" }}</span>
+        </div>
+        <div class="news-content">
+            {% if item.inline %}
+                {{ item.content | remove: '<p>' | remove: '</p>' | markdownify }}
+            {% else %}
+                <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endif %}
+        </div>
+    </div>
     {% endfor %}
 </div>
 {% endif %}

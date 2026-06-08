@@ -4,4 +4,4 @@ date: 2024-06-28
 inline: true
 related_posts: false
 ---
-I will be participating in the [Undergrad Architecture Mentoring Workshop (uArch)](https://sites.google.com/view/6th-uarch) at ISCA 2024 in Buenos Aires.
+Headed to Buenos Aires for ISCA 2024 and the [uArch mentoring workshop](https://sites.google.com/view/6th-uarch).
