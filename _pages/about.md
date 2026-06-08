@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle:
+subtitle: Incoming PhD student at [GaTech](https://www.gatech.edu/)
 
 profile:
   align: right
@@ -12,8 +12,6 @@ profile:
 news: true
 selected_papers: true
 ---
-
-## About Me
 
 I am an incoming PhD student in Computer Science at [Georgia Tech](https://www.gatech.edu/), where I will be advised by [Qirun Zhang](https://helloqirun.github.io/). My research interests are in cryptography, programming languages, and formal verification, with a current focus on program analysis for finite-field programs. 
 <br><br>

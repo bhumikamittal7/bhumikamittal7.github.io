@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I will be at the [FSTTCS Mentoring Workshop](https://aalok-thakkar.github.io/fsttcs-mentoring-workshop-2025.html) in Goa, participating in a day-long workshop on theoretical computer science.
+In Goa for the [FSTTCS Mentoring Workshop](https://aalok-thakkar.github.io/fsttcs-mentoring-workshop-2025.html), participating in a day-long workshop on theoretical computer science.

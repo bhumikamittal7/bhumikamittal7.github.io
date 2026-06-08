@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper AxLaM, on energy-efficient accelerator design, was published in Philosophical Transactions of the Royal Society A.
+AxLaM — our paper on energy-efficient accelerator design — is out in *Philosophical Transactions of the Royal Society A*.

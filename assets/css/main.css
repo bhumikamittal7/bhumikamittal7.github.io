@@ -3,8 +3,9 @@
     --text-color: #24292e;
     --text-secondary: #586069;
     --text-tertiary: #666;
+    --accent-gold: #B3A369;
     --link-color: #444;
-    --link-hover: #0366d6;
+    --link-hover: #9A8548;
     --border-color: #e1e4e8;
     --border-light: #eaecef;
     --bg-light: #f6f8fa;
@@ -21,8 +22,9 @@
     --text-color: #c9d1d9;
     --text-secondary: #8b949e;
     --text-tertiary: #8b949e;
+    --accent-gold: #B3A369;
     --link-color: #B3A369;
-    --link-hover: #B3A369;
+    --link-hover: #C9BC82;
     --border-color: #30363d;
     --border-light: #21262d;
     --bg-light: #161b22;
@@ -234,26 +236,40 @@ table tr:hover {
 }
 
 .news-item {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 6px;
-    padding-bottom: 6px;
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    column-gap: 24px;
+    padding: 12px 0;
     border-bottom: 1px solid var(--border-light);
-    align-items: baseline;
+    align-items: center;
 }
 
 .news-date {
     font-size: 14px;
+    line-height: 1.5;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.news-date-month {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.news-date-year {
     color: var(--text-secondary);
-    min-width: 100px;
-    flex-shrink: 0;
+    font-weight: 400;
+}
+
+.news-date-year::before {
+    content: " ";
 }
 
 .news-content {
     color: var(--text-color);
     font-size: 15px;
     line-height: 1.5;
-    flex: 1;
+    min-width: 0;
 }
 
 .news-content p {
