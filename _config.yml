@@ -61,6 +61,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - puzzles-and-more
 keep_files:
   - CNAME
   - .nojekyll
