@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Patākā in the Gaṇitakaumudī</title>
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<div class="deck-viewport">
+  <main class="deck-stage" id="deckStage">
+
+    <!-- 1 · Title -->
+    <section class="slide cover active" data-label="Cover">
+      <div class="cover-inner">
+        <p class="kicker reveal" style="--d:.05s" data-edit>International Conference on the History of Indian Mathematics 2026</p>
+        <h1 class="reveal" style="--d:.15s;margin-top:26px" data-edit>The <em>Patākā</em><br>in the <em>Gaṇitakaumudī</em></h1>
+        <div class="rule drawline" style="--d:.4s"></div>
+        <p class="authors reveal" style="--d:.55s" data-edit>
+          Prasad Jawalgekar <span class="amp">·</span> Bhumika Mittal <span class="amp">·</span>
+          K.&nbsp;Ramasubramanian <span class="amp">·</span> Aalok Thakkar
+        </p>
+      </div>
+    </section>
+
+    <!-- 2 · Nārāyaṇa (blank) -->
+    <section class="slide" data-label="Nārāyaṇa">
+      <div class="stitle" data-edit>Nārāyaṇa Paṇḍita and the <em>Gaṇitakaumudī</em></div>
+    </section>
+
+    <!-- 3 · Aṅkapāśa (blank) -->
+    <section class="slide" data-label="Aṅkapāśa">
+      <div class="stitle" data-edit>Aṅkapāśa</div>
+    </section>
+
+    <!-- 4 · The whole patākā -->
+    <section class="slide" data-label="The Patākā">
+      <div class="stitle" data-edit>The <em>Patākā</em> <span class="sub">antima m = 3, sthāna n = 3</span></div>
+      <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
+        <div class="flag" data-frag="1">
+          <div class="flag-col"><div class="cell row1">1</div></div>
+          <div class="flag-col"><div class="cell row1">2</div><div class="cell">4</div><div class="cell">10</div></div>
+          <div class="flag-col"><div class="cell row1">3</div><div class="cell">5</div><div class="cell">7</div><div class="cell">11</div><div class="cell">13</div><div class="cell">19</div></div>
+          <div class="flag-col"><div class="cell row1">6</div><div class="cell">8</div><div class="cell">12</div><div class="cell">14</div><div class="cell">16</div><div class="cell">20</div><div class="cell">22</div></div>
+          <div class="flag-col"><div class="cell row1">9</div><div class="cell">15</div><div class="cell">17</div><div class="cell">21</div><div class="cell">23</div><div class="cell">25</div></div>
+          <div class="flag-col"><div class="cell row1">18</div><div class="cell">24</div><div class="cell">26</div></div>
+          <div class="flag-col"><div class="cell row1">27</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · The Nārācikā Sequence -->
+    <section class="slide" data-label="Nārācikā">
+      <div class="stitle" data-edit>The <em>Nārācikā</em> Sequence</div>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:44px">
+        <div class="shloka" data-frag="1">
+          <p class="deva">अन्तिममितवैश्लेषस्थानाङ्कमिताश्च ताः पृथक् स्थाप्याः ।<br>तासां घातः सूचीपङ्क्तिर्नाराचिका वा स्यात् ॥</p>
+          <p class="iast">antimamitavaiśleṣasthānāṅkamitāśca tāḥ pṛthak sthāpyāḥ | tāsāṃ ghātaḥ sūcīpaṅktir nārācikā vā syāt |</p>
+          <button class="playbtn" data-audio="media/audio/naracika.mp3">▶&nbsp; play the verse</button>
+        </div>
+        <p class="body" data-frag="2" style="font-size:30px;max-width:1320px" data-edit>Their product is the needle sequence, the <em>nārācikā</em>. For m and n equal to three it reads 1, 3, 6, 7, 6, 3, 1. Each term counts the sequences that share one digit sum.</p>
+      </div>
+      <div class="credit">Recitations courtesy of Vāgdhenu</div>
+    </section>
+
+    <!-- 6 · Deriving the Nārācikā -->
+    <section class="slide" data-label="Deriving Nārācikā">
+      <div class="stitle" data-edit>Deriving the <em>Nārācikā</em> <span class="sub">the door-junction method, kapāṭa-sandhi</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:40px">
+        <p class="body" data-frag="1" style="font-size:29px;max-width:1300px" data-edit>Nārāyaṇa writes the <em>vaiśleṣiṇī</em>, a row of ones, once for every place, and multiplies the copies together. Each copy is laid one step across the last and the columns are added. For three places, two passes over 1 1 1 give first 1 2 3 2 1, then the <em>nārācikā</em>, 1 3 6 7 6 3 1.</p>
+        <img class="fig" data-frag="2" style="width:1240px" src="figures/naracika-derivation.svg" alt="nārācikā by repeated convolution, giving 1 3 6 7 6 3 1">
+      </div>
+    </section>
+
+    <!-- 7 · Drawing the Grid -->
+    <section class="slide" data-label="Draw the Grid">
+      <div class="stitle" data-edit>Drawing the Grid <span class="sub">column heights follow the nārācikā, 1, 3, 6, 7, 6, 3, 1</span></div>
+      <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
+        <div class="flag" data-frag="1">
+          <div class="flag-col"><div class="cell row1"></div></div>
+          <div class="flag-col"><div class="cell row1"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · The Ābhyāsikī Sequence -->
+    <section class="slide" data-label="Ābhyāsikī">
+      <div class="stitle" data-edit>The <em>Ābhyāsikī</em> Sequence</div>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:44px">
+        <div class="shloka" data-frag="1">
+          <p class="deva">स्थानाहतोऽन्तिमाङ्कः सैकः स्थानोनितश्च तच्छेषम् ।<br>आभ्यासिक्यां पङ्क्तौ प्रजायते स्थानमानमिह ॥</p>
+          <p class="iast">sthānāhato'ntimāṅkaḥ saikaḥ sthānonitaśca taccheṣam | ābhyāsikyāṃ paṅktau prajāyate sthānamānam iha |</p>
+          <button class="playbtn" data-audio="media/audio/abhyasiki.mp3">▶&nbsp; play the verse</button>
+        </div>
+        <div data-frag="2">
+          <p class="marker" data-edit>Take the caya 1, 2, 3. Drop its first term, then multiply by three again and again.</p>
+          <div class="deriv" style="margin-top:22px">
+            <span class="blk">1</span>
+            <span class="blk">2&nbsp; 3</span><span class="op">×3</span>
+            <span class="blk">6&nbsp; 9</span><span class="op">×3</span>
+            <span class="blk">18&nbsp; 27</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · Laying the First Row -->
+    <section class="slide" data-label="First Row">
+      <div class="stitle" data-edit>Laying the First Row <span class="sub">the ābhyāsikī, 1, 2, 3, 6, 9, 18, 27</span></div>
+      <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
+        <div class="flag">
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">1</span></div></div>
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">2</span></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">3</span></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">6</span></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">9</span></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">18</span></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1"><span data-frag="1">27</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · The Guṇottara Sequence -->
+    <section class="slide" data-label="Guṇottara">
+      <div class="stitle" data-edit>The <em>Guṇottara</em> Sequence</div>
+      <div class="content" style="display:flex;align-items:center;gap:56px">
+        <div class="shloka" style="flex:1">
+          <div data-frag="1">
+            <p class="deva">आदौ रूपं विलिखेत् अन्तिमगुणितं पुरः पुनस्तद्वत् ।<br>स्थानाधिकं तु यावत् पङ्क्तिर्गुणकोत्तराख्येयम् ॥</p>
+            <p class="iast">ādau rūpaṃ vilikhet antimaguṇitaṃ puraḥ punastadvat | sthānādhikaṃ tu yāvat paṅktir guṇakottarākhyeyam |</p>
+            <button class="playbtn" data-audio="media/audio/gunottara.mp3">▶&nbsp; play the verse</button>
+          </div>
+          <p class="body" data-frag="2" style="font-size:27px;margin-top:26px" data-edit>The powers of three, 1, 3, 9, 27, mark where each stage closes.</p>
+        </div>
+        <div class="flag" style="flex:0 0 auto;justify-content:center">
+          <div class="flag-col"><div class="cell row1" data-gold="2">1</div></div>
+          <div class="flag-col"><div class="cell row1">2</div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="2">3</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1">6</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="2">9</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1">18</div><div class="cell"></div><div class="cell"></div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="2">27</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · The Patākā Verses (full shloka, verse by verse) -->
+    <section class="slide" data-label="The Verses">
+      <div class="stitle" data-edit>The <em>Patākā</em> Verses</div>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px">
+        <button class="playbtn" data-audio="media/audio/pataka.mp3" style="margin-bottom:14px">▶&nbsp; play the recitation</button>
+        <p class="deva vs" data-frag="1">नाराचपङ्क्त्यङ्कमिताः कोष्ठानामूर्ध्वपङ्क्तयः । तिर्यग्गामी च सर्वासां स्वस्वखण्डावसानमा ॥<br>पङ्क्तिस्तदाद्यकोष्ठो यः पल्लवोऽथाङ्कयोजनाः । तिर्यक्स्थितायामाद्यायां पङ्क्तिमाभ्यासिकीं लिखेत् ॥</p>
+        <p class="deva vs" data-frag="2">तदन्तिमाङ्कः क्षेपाख्यः पुरःस्थः साध्यनामकः । क्षेपं पुरातनैरङ्कैः क्रमात् संयोजयेत् पृथक् ॥<br>तानधस्तिर्यग्गायां च कोष्ठपङ्क्त्यां विनिक्षिपेत् । साध्याङ्कस्य पताका स्यात् साध्यं क्षेपं प्रकल्पयेत् ॥</p>
+        <p class="deva vs" data-frag="3">साध्यं पुरःस्थितं कृत्वा क्षेपं प्राग्वत् पुरातनैः । अङ्कैराद्यद्वितीयादिकोष्ठपङ्क्तिगतैर्युतम् ॥<br>तिर्यङ्निरङ्ककोष्ठेषु साङ्काधःस्थेषु विन्यसेत् । येनाङ्केन युतः क्षेपः साध्याङ्कादधिको यदा ॥<br>तदा मुक्त्वा तमङ्कं तु योजयेदितरांस्ततः ॥</p>
+      </div>
+    </section>
+
+    <!-- 12 · The Patākā Algorithm (build; milestones turn gold) -->
+    <section class="slide" data-label="The Algorithm">
+      <div class="stitle" data-edit>The <em>Patākā</em> Algorithm</div>
+      <div class="content" style="display:flex;align-items:center;gap:60px">
+        <div style="flex:0 0 720px;text-align:center;align-self:flex-start;margin-top:76px">
+          <p class="body" style="font-size:33px;line-height:1.5" data-edit>One term of the first row is the <em>kṣepa</em>, an increment; the next is the <em>sādhya</em>, a bound. Add the kṣepa to the earlier numbers and set each sum in the next diagonal cell.</p>
+          <p style="font-family:var(--sans);font-size:27px;color:var(--ink-soft);margin-top:26px;line-height:1.5">Each keypress advances a stage, as the sādhya rises to 6, 9, 18, 27. A guṇottara term turns golden as its stage closes.</p>
+        </div>
+        <div class="flag" style="flex:1;justify-content:center">
+          <div class="flag-col"><div class="cell row1" data-gold="1">1</div></div>
+          <div class="flag-col"><div class="cell row1">2</div><div class="cell"><span data-frag="1">4</span></div><div class="cell"><span data-frag="3">10</span></div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="1">3</div><div class="cell"><span data-frag="1">5</span></div><div class="cell"><span data-frag="2">7</span></div><div class="cell"><span data-frag="3">11</span></div><div class="cell"><span data-frag="3">13</span></div><div class="cell"><span data-frag="4">19</span></div></div>
+          <div class="flag-col"><div class="cell row1">6</div><div class="cell"><span data-frag="2">8</span></div><div class="cell"><span data-frag="3">12</span></div><div class="cell"><span data-frag="3">14</span></div><div class="cell"><span data-frag="3">16</span></div><div class="cell"><span data-frag="4">20</span></div><div class="cell"><span data-frag="4">22</span></div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="2">9</div><div class="cell"><span data-frag="3">15</span></div><div class="cell"><span data-frag="3">17</span></div><div class="cell"><span data-frag="4">21</span></div><div class="cell"><span data-frag="4">23</span></div><div class="cell"><span data-frag="4">25</span></div></div>
+          <div class="flag-col"><div class="cell row1">18</div><div class="cell"><span data-frag="4">24</span></div><div class="cell"><span data-frag="4">26</span></div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="4">27</div></div>
+        </div>
+      </div>
+      <div class="corner-br">
+        <img src="figures/pataka-algo-qr.svg" alt="QR code to the interactive patākā on this site">
+        <div class="cap">the interactive patākā, on this site</div>
+      </div>
+    </section>
+
+    <!-- 13 · What It Represents (blank) -->
+    <section class="slide" data-label="What It Represents">
+      <div class="stitle" data-edit>What It Represents <span class="sub">the questions this arrangement answers</span></div>
+    </section>
+
+    <!-- 14 · Complexity (blank) -->
+    <section class="slide" data-label="Complexity">
+      <div class="stitle" data-edit>Complexity of the Algorithm</div>
+    </section>
+
+    <!-- 15 · Our Contributions (blank) -->
+    <section class="slide" data-label="Our Contributions">
+      <div class="stitle" data-edit>Our Contributions</div>
+    </section>
+
+    <!-- 16 · Closing -->
+    <section class="slide" data-label="Thank you">
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+        <p class="deva reveal" style="--d:.05s;font-weight:700;font-size:180px;line-height:1;color:var(--ink)">धन्यवादः</p>
+        <p class="reveal" style="--d:.25s;font-family:var(--sans);font-size:34px;color:var(--ink-soft);margin-top:32px">open for questions</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script src="deck.js"></script>
+</body>
+</html>
