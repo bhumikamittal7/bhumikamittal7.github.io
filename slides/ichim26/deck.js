@@ -73,12 +73,22 @@
   }
   window.deck=new Deck();
 
-  /* play a verse recording when a [data-audio] control is clicked */
-  let audio=null;
+  /* play a verse recording; the same control toggles to pause and back */
+  let audio=null, audioBtn=null;
+  const pauseLabel=s=>s.replace('▶','⏸').replace(/play.*/i,'pause');
   document.addEventListener('click',e=>{
     const b=e.target.closest('[data-audio]'); if(!b)return;
-    if(audio)audio.pause();
-    audio=new Audio(b.getAttribute('data-audio')); audio.play().catch(()=>{});
+    if(!b.dataset.playlabel)b.dataset.playlabel=b.innerHTML;   // remember "play" label once
+    if(b===audioBtn&&audio){                                   // same control → pause / resume
+      if(audio.paused){audio.play().catch(()=>{});b.innerHTML=pauseLabel(b.dataset.playlabel);}
+      else{audio.pause();b.innerHTML=b.dataset.playlabel;}
+      return;
+    }
+    if(audio)audio.pause();                                    // switching recordings
+    if(audioBtn)audioBtn.innerHTML=audioBtn.dataset.playlabel;
+    audio=new Audio(b.getAttribute('data-audio')); audioBtn=b;
+    b.innerHTML=pauseLabel(b.dataset.playlabel); audio.play().catch(()=>{});
+    audio.addEventListener('ended',()=>{b.innerHTML=b.dataset.playlabel;if(audioBtn===b){audio=null;audioBtn=null;}});
   });
 
   /* inline editing — edits persist to this browser; Ctrl+S exports a clean copy */
