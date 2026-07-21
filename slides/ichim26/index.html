@@ -10,6 +10,8 @@
 <div class="deck-viewport">
   <main class="deck-stage" id="deckStage">
 
+    <!-- ═══════════ ACT 1 · THE RIDDLE ═══════════ -->
+
     <!-- 1 · Title -->
     <section class="slide cover active" data-label="Cover">
       <div class="cover-inner">
@@ -23,19 +25,59 @@
       </div>
     </section>
 
-    <!-- 2 · Nārāyaṇa (blank) -->
+    <!-- 2 · Nārāyaṇa -->
     <section class="slide" data-label="Nārāyaṇa">
       <div class="stitle" data-edit>Nārāyaṇa Paṇḍita and the <em>Gaṇitakaumudī</em></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:100px">
+        <div class="factrow">
+          <div data-frag="1"><div class="num">1356</div><div class="lab" data-edit>composed, CE</div></div>
+          <div data-frag="1"><div class="num">≈930</div><div class="lab" data-edit>verses, in fourteen chapters</div></div>
+          <div data-frag="1"><div class="num">≈140</div><div class="lab" data-edit>verses in Chapter 13 alone</div></div>
+        </div>
+        <p class="body" data-frag="2" style="font-size:29px;max-width:1300px;text-align:center" data-edit>The full text surfaced only in the twentieth century, when Padmākara Dvivedī found a complete manuscript in his father Sudhākara's collection and printed it in two volumes, 1936 and 1942. Chapter 13 is devoted entirely to combinatorics.</p>
+      </div>
     </section>
 
-    <!-- 3 · Aṅkapāśa (blank) -->
+    <!-- 3 · Aṅkapāśa (opening of Chapter 13) -->
     <section class="slide" data-label="Aṅkapāśa">
-      <div class="stitle" data-edit>Aṅkapāśa</div>
+      <div class="stitle" data-edit>Aṅkapāśa <span class="sub">the binding of numbers · Chapter 13</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:40px">
+        <div class="shloka" data-frag="1">
+          <p class="deva" style="font-size:37px">अथ गणकानन्दकरं सङ्क्षेपादङ्कपाशकं वक्ष्ये ।<br>निपतन्ति यत्र मत्सरवन्तो दुष्टाः कुगणका ये ॥</p>
+          <p class="iast">atha gaṇakānandakaraṃ saṅkṣepādaṅkapāśakaṃ vakṣye | nipatanti yatra matsaravanto duṣṭāḥ kugaṇakā ye ||</p>
+          <button class="playbtn" data-audio="audio/opening.wav">▶&nbsp; play the verse</button>
+        </div>
+        <p class="marker" data-frag="2" style="max-width:1380px" data-edit>I now introduce <em>aṅkapāśa</em>, which delights mathematicians, and where the jealous, wicked, and incompetent (<em>kugaṇaka</em>) suffer a fall. A pun, <em>śleṣa</em>: the subject of combinatorics, and a net of numbers that traps bad mathematicians.</p>
+        <div data-frag="3" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+          <p class="marker" style="max-width:1380px" data-edit>He then lists where it applies, across six different fields:</p>
+          <div class="fields">
+            <span data-edit>dramatics <i>bharata</i></span>
+            <span data-edit>prosody <i>chandaḥśāstra</i></span>
+            <span data-edit>medicine <i>vaidya</i></span>
+            <span data-edit>garland-making <i>mālyakriyā</i></span>
+            <span data-edit>mathematics <i>gaṇita</i></span>
+            <span data-edit>architecture <i>śilpa</i></span>
+          </div>
+        </div>
+      </div>
+      <div class="credit">Recitation courtesy of Vāgdhenu</div>
     </section>
 
-    <!-- 4 · The whole patākā -->
+    <!-- 4 · The challenge verse -->
+    <section class="slide" data-label="The Challenge">
+      <div class="stitle" data-edit>A Challenge</div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:52px">
+        <div class="shloka">
+          <p class="deva">अन्तिमाङ्कस्त्रयं यत्र स्थानानि त्रीणि मे सखे ।<br>पताका कीदृशी तत्र दर्शयाशु प्रवेत्सि चेत् ॥</p>
+          <p class="iast">antimāṅkastrayaṃ yatra sthānāni trīṇi me sakhe | patākā kīdṛśī tatra darśayāśu pravetsi cet ||</p>
+        </div>
+        <p class="body" data-frag="1" style="font-size:31px;max-width:1300px" data-edit>If you know, O friend, then quickly show: what kind of <em>patākā</em>, what flag, would there be whose last number is three and whose places are three?</p>
+      </div>
+    </section>
+
+    <!-- 5 · The whole patākā (Nārāyaṇa's answer) -->
     <section class="slide" data-label="The Patākā">
-      <div class="stitle" data-edit>The <em>Patākā</em> <span class="sub">antima m = 3, sthāna n = 3</span></div>
+      <div class="stitle" data-edit>The <em>Patākā</em> <span class="sub">Nārāyaṇa's answer · antima m = 3, sthāna n = 3</span></div>
       <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
         <div class="flag" data-frag="1">
           <div class="flag-col"><div class="cell row1">1</div></div>
@@ -49,30 +91,110 @@
       </div>
     </section>
 
-    <!-- 5 · The Nārācikā Sequence -->
-    <section class="slide" data-label="Nārācikā">
-      <div class="stitle" data-edit>The <em>Nārācikā</em> Sequence</div>
+    <!-- 6 · The Patākā Verses (full shloka, verse by verse) -->
+    <section class="slide" data-label="The Verses">
+      <div class="stitle" data-edit>The <em>Patākā</em> Verses <span class="sub">six and a half anuṣṭubh verses, sūtras 29 to 35</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px">
+        <button class="playbtn" data-audio="media/audio/pataka.mp3" style="margin-bottom:12px">▶&nbsp; play the recitation</button>
+        <p class="deva vs" data-frag="1">नाराचपङ्क्त्यङ्कमिताः कोष्ठानामूर्ध्वपङ्क्तयः । तिर्यग्गामी च सर्वासां स्वस्वखण्डावसानमा ॥<br>पङ्क्तिस्तदाद्यकोष्ठो यः पल्लवोऽथाङ्कयोजनाः । तिर्यक्स्थितायामाद्यायां पङ्क्तिमाभ्यासिकीं लिखेत् ॥</p>
+        <p class="deva vs" data-frag="2">तदन्तिमाङ्कः क्षेपाख्यः पुरःस्थः साध्यनामकः । क्षेपं पुरातनैरङ्कैः क्रमात् संयोजयेत् पृथक् ॥<br>तानधस्तिर्यग्गायां च कोष्ठपङ्क्त्यां विनिक्षिपेत् । साध्याङ्कस्य पताका स्यात् साध्यं क्षेपं प्रकल्पयेत् ॥</p>
+        <p class="deva vs" data-frag="3">साध्यं पुरःस्थितं कृत्वा क्षेपं प्राग्वत् पुरातनैः । अङ्कैराद्यद्वितीयादिकोष्ठपङ्क्तिगतैर्युतम् ॥<br>तिर्यङ्निरङ्ककोष्ठेषु साङ्काधःस्थेषु विन्यसेत् । येनाङ्केन युतः क्षेपः साध्याङ्कादधिको यदा ॥<br>तदा मुक्त्वा तमङ्कं तु योजयेदितरांस्ततः ॥</p>
+      </div>
+    </section>
+
+    <!-- 7 · Two open questions -->
+    <section class="slide" data-label="Open Questions">
+      <div class="stitle" data-edit>Two Open Questions</div>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:56px">
+        <p class="body" style="font-size:30px;max-width:1420px" data-edit>Kusuba and Singh translated the verses and described the finished object. Two questions stayed open, and we look at both:</p>
+        <div class="paths">
+          <div class="path-card" data-frag="1" style="text-align:center">
+            <div class="who" data-edit>What does it run?</div>
+            <p class="body" data-edit>The verses name parts of a procedure, <em>kṣepa</em>, <em>sādhya</em>, <em>purātanāṅka</em>, but no one had written down the algorithm they describe.</p>
+          </div>
+          <div class="path-card" data-frag="2" style="text-align:center">
+            <div class="who" data-edit>What does it mean?</div>
+            <p class="body" data-edit>The flag is full of numbers in a precise arrangement. What are the entries, and why does the shape come out the way it does?</p>
+          </div>
+        </div>
+        <p class="marker" data-frag="3" data-edit>We begin with the finished flag, and look closely.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ ACT 2 · THE DISCOVERY ═══════════ -->
+
+    <!-- 8 · A closer look -->
+    <section class="slide" data-label="A Closer Look">
+      <div class="stitle" data-edit>A Closer Look <span class="sub">patterns hiding in the finished flag</span></div>
+      <div class="content" style="display:flex;align-items:center;gap:70px">
+        <ul class="buildlog" style="flex:0 0 640px">
+          <li data-frag="1" data-edit>The first row: 1, 2, 3, 6, 9, 18, 27. Small multiples of powers of three, in increasing order.</li>
+          <li data-frag="2" data-edit>The column heights: 1, 3, 6, 7, 6, 3, 1. A palindrome, and the seven counts sum to 27.</li>
+          <li data-frag="3" data-edit>At the corners of the stages: 1, 3, 9, 27. The powers of three.</li>
+          <li data-frag="4" data-edit><strong>Everything here speaks base three.</strong> So subtract one, and write every number in base three.</li>
+        </ul>
+        <div class="flag" style="flex:1;justify-content:center">
+          <div class="flag-col"><div class="cell row1" data-gold="3">1<i class="mk" data-frag="1"></i></div><div class="hlabel" data-frag="2">1</div></div>
+          <div class="flag-col"><div class="cell row1">2<i class="mk" data-frag="1"></i></div><div class="cell">4</div><div class="cell">10</div><div class="hlabel" data-frag="2">3</div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="3">3<i class="mk" data-frag="1"></i></div><div class="cell">5</div><div class="cell">7</div><div class="cell">11</div><div class="cell">13</div><div class="cell">19</div><div class="hlabel" data-frag="2">6</div></div>
+          <div class="flag-col"><div class="cell row1">6<i class="mk" data-frag="1"></i></div><div class="cell">8</div><div class="cell">12</div><div class="cell">14</div><div class="cell">16</div><div class="cell">20</div><div class="cell">22</div><div class="hlabel" data-frag="2">7</div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="3">9<i class="mk" data-frag="1"></i></div><div class="cell">15</div><div class="cell">17</div><div class="cell">21</div><div class="cell">23</div><div class="cell">25</div><div class="hlabel" data-frag="2">6</div></div>
+          <div class="flag-col"><div class="cell row1">18<i class="mk" data-frag="1"></i></div><div class="cell">24</div><div class="cell">26</div><div class="hlabel" data-frag="2">3</div></div>
+          <div class="flag-col"><div class="cell row1" data-gold="3">27<i class="mk" data-frag="1"></i></div><div class="hlabel" data-frag="2">1</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · The base-three table (the centrepiece animation; built by script) -->
+    <section class="slide" data-label="Base Three" data-b3>
+      <div class="stitle" data-edit>Subtract One, Write in Base Three <span class="sub">every number in the flag, as three base-three digits</span></div>
+      <div id="b3wrap" data-stage="0">
+        <span data-frag="1" hidden></span><span data-frag="2" hidden></span>
+        <span data-frag="3" hidden></span><span data-frag="4" hidden></span>
+        <p class="b3cap" data-cap="0">the numbers 1 to 27</p>
+        <p class="b3cap" data-cap="1">each number, less one, in three base-three digits · 1 becomes 000, 27 becomes 222</p>
+        <p class="b3cap" data-cap="2">add the three digits · the digit sum runs from 0 to 6</p>
+        <p class="b3cap" data-cap="3">group by digit sum, keeping each group in increasing order</p>
+        <p class="b3cap" data-cap="4">the patākā assembles itself · column heights 1, 3, 6, 7, 6, 3, 1</p>
+      </div>
+    </section>
+
+    <!-- 10 · The reveal -->
+    <section class="slide" data-label="The Reveal">
       <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:44px">
+        <p class="bigsay" data-edit>Each column of the <em>patākā</em> collects the numbers that share one base-three digit sum.</p>
+        <p class="body" data-frag="1" style="font-size:29px;max-width:1380px" data-edit>So the flag is an <em>enumeration</em>. Fill n places, each with one of m symbols: there are m<sup>n</sup> such arrangements. Number them 1 to m<sup>n</sup>, and the <em>patākā</em> lists every one, sorted into columns by digit sum, and within a column in increasing order.</p>
+        <p class="body" data-frag="2" style="font-size:29px;max-width:1380px" data-edit>For antima and sthāna both three, that is all 27 ways to place three symbols in three positions, grouped into seven columns of digit sums 0 through 6. Not a count but a full listing: each arrangement in its place, none missing, none repeated.</p>
+        <p class="marker" data-frag="3" style="max-width:1380px" data-edit>Before the flag can even be drawn, one number is needed for each column: how many arrangements share that digit sum? That count is the next sequence.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ ACT 3 · IT ALL COMES TOGETHER ═══════════ -->
+
+    <!-- 11 · The Nārācikā Sequence -->
+    <section class="slide" data-label="Nārācikā">
+      <div class="stitle" data-edit>The <em>Nārācikā</em> Sequence <span class="sub">how many numbers share each digit sum</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:36px">
+        <p class="body" style="font-size:29px;max-width:1340px" data-edit>That count, the number of arrangements in each digit-sum column, is what Nārāyaṇa calls the <em>nārācikā</em>, the needle sequence.</p>
         <div class="shloka" data-frag="1">
           <p class="deva">अन्तिममितवैश्लेषस्थानाङ्कमिताश्च ताः पृथक् स्थाप्याः ।<br>तासां घातः सूचीपङ्क्तिर्नाराचिका वा स्यात् ॥</p>
           <p class="iast">antimamitavaiśleṣasthānāṅkamitāśca tāḥ pṛthak sthāpyāḥ | tāsāṃ ghātaḥ sūcīpaṅktir nārācikā vā syāt |</p>
           <button class="playbtn" data-audio="media/audio/naracika.mp3">▶&nbsp; play the verse</button>
         </div>
-        <p class="body" data-frag="2" style="font-size:30px;max-width:1320px" data-edit>Their product is the needle sequence, the <em>nārācikā</em>. For m and n equal to three it reads 1, 3, 6, 7, 6, 3, 1. Each term counts the sequences that share one digit sum.</p>
+        <p class="body" data-frag="2" style="font-size:30px;max-width:1340px" data-edit>Their product is the needle sequence, the <em>nārācikā</em>. For m and n equal to three it reads 1, 3, 6, 7, 6, 3, 1: exactly the column heights of the flag.</p>
       </div>
-      <div class="credit">Recitations courtesy of Vāgdhenu</div>
     </section>
 
-    <!-- 6 · Deriving the Nārācikā -->
+    <!-- 12 · Deriving the Nārācikā -->
     <section class="slide" data-label="Deriving Nārācikā">
-      <div class="stitle" data-edit>Deriving the <em>Nārācikā</em> <span class="sub">the door-junction method, kapāṭa-sandhi</span></div>
+      <div class="stitle" data-edit>Deriving the <em>Nārācikā</em></div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:40px">
-        <p class="body" data-frag="1" style="font-size:29px;max-width:1300px" data-edit>Nārāyaṇa writes the <em>vaiśleṣiṇī</em>, a row of ones, once for every place, and multiplies the copies together. Each copy is laid one step across the last and the columns are added. For three places, two passes over 1 1 1 give first 1 2 3 2 1, then the <em>nārācikā</em>, 1 3 6 7 6 3 1.</p>
+        <p class="body" data-frag="1" style="font-size:29px;max-width:1300px" data-edit>Nārāyaṇa writes the <em>vaiśleṣiṇī</em>, a row of ones, once for every place, and multiplies the copies together. Each copy is laid one step across the last and the columns are added. For three places, two passes over 1 1 1 give first 1 2 3 2 1, then 1 3 6 7 6 3 1. In modern dress this is polynomial multiplication: the <em>nārācikā</em> is the coefficients of (1 + x + x²)³.</p>
         <img class="fig" data-frag="2" style="width:1240px" src="figures/naracika-derivation.svg" alt="nārācikā by repeated convolution, giving 1 3 6 7 6 3 1">
       </div>
     </section>
 
-    <!-- 7 · Drawing the Grid -->
+    <!-- 13 · Drawing the Grid -->
     <section class="slide" data-label="Draw the Grid">
       <div class="stitle" data-edit>Drawing the Grid <span class="sub">column heights follow the nārācikā, 1, 3, 6, 7, 6, 3, 1</span></div>
       <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
@@ -88,10 +210,10 @@
       </div>
     </section>
 
-    <!-- 8 · The Ābhyāsikī Sequence -->
+    <!-- 14 · The Ābhyāsikī Sequence -->
     <section class="slide" data-label="Ābhyāsikī">
-      <div class="stitle" data-edit>The <em>Ābhyāsikī</em> Sequence</div>
-      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:44px">
+      <div class="stitle" data-edit>The <em>Ābhyāsikī</em> Sequence <span class="sub">the smallest number with each digit sum</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:40px">
         <div class="shloka" data-frag="1">
           <p class="deva">स्थानाहतोऽन्तिमाङ्कः सैकः स्थानोनितश्च तच्छेषम् ।<br>आभ्यासिक्यां पङ्क्तौ प्रजायते स्थानमानमिह ॥</p>
           <p class="iast">sthānāhato'ntimāṅkaḥ saikaḥ sthānonitaśca taccheṣam | ābhyāsikyāṃ paṅktau prajāyate sthānamānam iha |</p>
@@ -106,12 +228,13 @@
             <span class="blk">18&nbsp; 27</span>
           </div>
         </div>
+        <p class="marker" data-frag="3" style="max-width:1300px" data-edit>In base three these are 000, 001, 002, 012, 022, 122, 222, less one each: the <strong>smallest</strong> number with each digit sum. Pack the twos into the lowest places.</p>
       </div>
     </section>
 
-    <!-- 9 · Laying the First Row -->
+    <!-- 15 · Laying the First Row -->
     <section class="slide" data-label="First Row">
-      <div class="stitle" data-edit>Laying the First Row <span class="sub">the ābhyāsikī, 1, 2, 3, 6, 9, 18, 27</span></div>
+      <div class="stitle" data-edit>Laying the First Row <span class="sub">the ābhyāsikī, 1, 2, 3, 6, 9, 18, 27 · each column's smallest number</span></div>
       <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
         <div class="flag">
           <div class="flag-col"><div class="cell row1"><span data-frag="1">1</span></div></div>
@@ -125,17 +248,17 @@
       </div>
     </section>
 
-    <!-- 10 · The Guṇottara Sequence -->
+    <!-- 16 · The Guṇottara Sequence -->
     <section class="slide" data-label="Guṇottara">
-      <div class="stitle" data-edit>The <em>Guṇottara</em> Sequence</div>
-      <div class="content" style="display:flex;align-items:center;gap:56px">
+      <div class="stitle" data-edit>The <em>Guṇottara</em> Sequence <span class="sub">the powers of three mark the stages</span></div>
+      <div class="content wsub" style="display:flex;align-items:center;gap:56px">
         <div class="shloka" style="flex:1">
           <div data-frag="1">
             <p class="deva">आदौ रूपं विलिखेत् अन्तिमगुणितं पुरः पुनस्तद्वत् ।<br>स्थानाधिकं तु यावत् पङ्क्तिर्गुणकोत्तराख्येयम् ॥</p>
-            <p class="iast">ādau rūpaṃ vilikhet antimaguṇitaṃ puraḥ punastadvat | sthānādhikaṃ tu yāvat paṅktir guṇakottarākhyeyam |</p>
+            <p class="iast">ādau rūpaṃ vilikhet antimaguṇitaṃ puraḥ punastadvat | sthānādhikaṃ tu yāvat paṅktirguṇakottarākhyeyam |</p>
             <button class="playbtn" data-audio="media/audio/gunottara.mp3">▶&nbsp; play the verse</button>
           </div>
-          <p class="body" data-frag="2" style="font-size:27px;margin-top:26px" data-edit>The powers of three, 1, 3, 9, 27, mark where each stage closes.</p>
+          <p class="body" data-frag="2" style="font-size:27px;margin-top:26px" data-edit>The powers of three, 1, 3, 9, 27, mark where each stage closes. Every closed stage is a complete smaller <em>patākā</em>, nested inside the next: the construction is recursive.</p>
         </div>
         <div class="flag" style="flex:0 0 auto;justify-content:center">
           <div class="flag-col"><div class="cell row1" data-gold="2">1</div></div>
@@ -149,24 +272,38 @@
       </div>
     </section>
 
-    <!-- 11 · The Patākā Verses (full shloka, verse by verse) -->
-    <section class="slide" data-label="The Verses">
-      <div class="stitle" data-edit>The <em>Patākā</em> Verses</div>
-      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px">
-        <button class="playbtn" data-audio="media/audio/pataka.mp3" style="margin-bottom:14px">▶&nbsp; play the recitation</button>
-        <p class="deva vs" data-frag="1">नाराचपङ्क्त्यङ्कमिताः कोष्ठानामूर्ध्वपङ्क्तयः । तिर्यग्गामी च सर्वासां स्वस्वखण्डावसानमा ॥<br>पङ्क्तिस्तदाद्यकोष्ठो यः पल्लवोऽथाङ्कयोजनाः । तिर्यक्स्थितायामाद्यायां पङ्क्तिमाभ्यासिकीं लिखेत् ॥</p>
-        <p class="deva vs" data-frag="2">तदन्तिमाङ्कः क्षेपाख्यः पुरःस्थः साध्यनामकः । क्षेपं पुरातनैरङ्कैः क्रमात् संयोजयेत् पृथक् ॥<br>तानधस्तिर्यग्गायां च कोष्ठपङ्क्त्यां विनिक्षिपेत् । साध्याङ्कस्य पताका स्यात् साध्यं क्षेपं प्रकल्पयेत् ॥</p>
-        <p class="deva vs" data-frag="3">साध्यं पुरःस्थितं कृत्वा क्षेपं प्राग्वत् पुरातनैः । अङ्कैराद्यद्वितीयादिकोष्ठपङ्क्तिगतैर्युतम् ॥<br>तिर्यङ्निरङ्ककोष्ठेषु साङ्काधःस्थेषु विन्यसेत् । येनाङ्केन युतः क्षेपः साध्याङ्कादधिको यदा ॥<br>तदा मुक्त्वा तमङ्कं तु योजयेदितरांस्ततः ॥</p>
+    <!-- 17 · Reading the verses again -->
+    <section class="slide" data-label="Decoding the Terms">
+      <div class="stitle" data-edit>Reading the Verses Again</div>
+      <div class="content wsub" style="display:flex;align-items:center;gap:40px">
+        <div class="term-card" data-frag="1">
+          <p class="deva">पुरातनाङ्कः</p>
+          <p class="iast">purātanāṅka</p>
+          <p class="gloss" data-edit>the old number</p>
+          <p class="body" data-edit>A number already placed in the flag. Every new entry is built from one.</p>
+        </div>
+        <div class="term-card" data-frag="2">
+          <p class="deva">क्षेपः</p>
+          <p class="iast">kṣepa</p>
+          <p class="gloss" data-edit>the increment, j·3<sup>r</sup></p>
+          <p class="body" data-edit>The current first-row term. Adding it raises one base-three digit by j, so the sum lands exactly j columns to the right.</p>
+        </div>
+        <div class="term-card" data-frag="3">
+          <p class="deva">साध्यः</p>
+          <p class="iast">sādhya</p>
+          <p class="gloss" data-edit>the bound</p>
+          <p class="body" data-edit>The next first-row term. Keep only sums below it: precisely the condition that no carry occurs.</p>
+        </div>
       </div>
     </section>
 
-    <!-- 12 · The Patākā Algorithm (build; milestones turn gold) -->
+    <!-- 18 · The Patākā Algorithm (build; milestones turn gold) -->
     <section class="slide" data-label="The Algorithm">
       <div class="stitle" data-edit>The <em>Patākā</em> Algorithm</div>
       <div class="content" style="display:flex;align-items:center;gap:60px">
         <div style="flex:0 0 720px;text-align:center;align-self:flex-start;margin-top:76px">
-          <p class="body" style="font-size:33px;line-height:1.5" data-edit>One term of the first row is the <em>kṣepa</em>, an increment; the next is the <em>sādhya</em>, a bound. Add the kṣepa to the earlier numbers and set each sum in the next diagonal cell.</p>
-          <p style="font-family:var(--sans);font-size:27px;color:var(--ink-soft);margin-top:26px;line-height:1.5">Each keypress advances a stage, as the sādhya rises to 6, 9, 18, 27. A guṇottara term turns golden as its stage closes.</p>
+          <p class="body" style="font-size:32px;line-height:1.5" data-edit>Add the <em>kṣepa</em> to the earlier numbers and set each sum in the next diagonal cell, so long as it stays under the <em>sādhya</em>.</p>
+          <p class="body" style="font-size:32px;line-height:1.5;margin-top:26px" data-edit>When a stage closes, the <em>sādhya</em> becomes the new <em>kṣepa</em> and the next first-row term becomes the new bound. Four stages fill the flag.</p>
         </div>
         <div class="flag" style="flex:1;justify-content:center">
           <div class="flag-col"><div class="cell row1" data-gold="1">1</div></div>
@@ -184,22 +321,111 @@
       </div>
     </section>
 
-    <!-- 13 · What It Represents (blank) -->
-    <section class="slide" data-label="What It Represents">
-      <div class="stitle" data-edit>What It Represents <span class="sub">the questions this arrangement answers</span></div>
+    <!-- 19 · The algorithm, gathered from the verses -->
+    <section class="slide" data-label="The Reconstruction">
+      <div class="stitle" data-edit>The Algorithm, from the Verses <span class="sub">the procedure the six and a half verses describe</span></div>
+      <div class="content wsub" style="display:flex;justify-content:center;align-items:center">
+        <ol class="algo-steps">
+          <li data-frag="1">
+            <span class="n">1</span>
+            <span class="term"><span class="deva">पल्लव · आभ्यासिकी</span><br><span class="iast">pallava · ābhyāsikī</span></span>
+            <span data-edit>Write the <b>ābhyāsikī</b> along the first row. Each term is the smallest number of its column.</span>
+          </li>
+          <li data-frag="2">
+            <span class="n">2</span>
+            <span class="term"><span class="deva">क्षेपः · साध्यः</span><br><span class="iast">kṣepa · sādhya</span></span>
+            <span data-edit>Take one first-row term as the increment <b>kṣepa</b> K, and the next as the bound <b>sādhya</b> S.</span>
+          </li>
+          <li data-frag="3">
+            <span class="n">3</span>
+            <span class="term"><span class="deva">पुरातनाङ्कः</span><br><span class="iast">purātanāṅka</span></span>
+            <span data-edit>For each earlier number <b>p</b> already placed, form the sum p + K.</span>
+          </li>
+          <li data-frag="4">
+            <span class="n">4</span>
+            <span class="term"><span class="deva">तिर्यक् · निरङ्ककोष्ठ</span><br><span class="iast">tiryak · empty cell</span></span>
+            <span data-edit>If p + K &lt; S, drop it into the next empty diagonal cell. If p + K ≥ S, discard it and move on.</span>
+          </li>
+          <li data-frag="5">
+            <span class="n">5</span>
+            <span class="term"><span class="deva">गुणोत्तरः</span><br><span class="iast">guṇottara</span></span>
+            <span data-edit>When the stage is spent, S becomes the new K and the next term the new bound. Each time S reaches a power of m, a smaller <em>patākā</em> has closed. Stop at m<sup>n</sup>.</span>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <!-- 14 · Complexity (blank) -->
-    <section class="slide" data-label="Complexity">
-      <div class="stitle" data-edit>Complexity of the Algorithm</div>
+    <!-- ═══════════ ACT 4 · WHAT IT MEANS ═══════════ -->
+
+    <!-- 20 · Why it works -->
+    <section class="slide" data-label="Why It Works">
+      <div class="stitle" data-edit>Why It Works <span class="sub">the verses give the how, the digit sum gives the why</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px">
+        <div class="bridge">
+          <div class="panel" data-frag="1">
+            <div class="cap" data-edit>What the verses do</div>
+            <p class="lead" data-edit>Additions, bounded by the <em>sādhya</em>.</p>
+            <p class="sub" data-edit>A running procedure over the numbers already placed. No notion of a digit sum ever appears in the text.</p>
+          </div>
+          <div class="link" data-frag="2"><span class="eq">=</span><span data-edit>one fact links them</span></div>
+          <div class="panel" data-frag="1">
+            <div class="cap" data-edit>What the flag means</div>
+            <p class="lead" data-edit>A partition of 1 … m<sup>n</sup> by digit sum.</p>
+            <p class="sub" data-edit>Column k holds exactly the arrangements whose base-m digits sum to k, in increasing order.</p>
+          </div>
+        </div>
+        <ul class="buildlog" style="max-width:1500px" data-frag="3">
+          <li data-edit>Adding a <em>kṣepa</em> j·m<sup>r</sup> to a number below m<sup>r</sup> raises a single base-m digit from 0 to j, with no carry, so the digit sum grows by exactly j and the sum moves exactly j columns right.</li>
+          <li data-edit>The <em>sādhya</em> bound is precisely the condition "below m<sup>r</sup>": every guard in the verses is a carry check in disguise.</li>
+        </ul>
+        <div class="claimbox" data-frag="4">
+          <p class="lead" data-edit>Every number from 1 to m<sup>n</sup> is placed exactly once, in the column of its digit sum.</p>
+          <p class="note" data-edit>Correct placement, no duplicates, and m<sup>n</sup> cells filled. The arithmetic and the Sanskrit prove to be the same object.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- 15 · Our Contributions (blank) -->
+    <!-- 21 · The long arc -->
+    <section class="slide" data-label="The Long Arc">
+      <div class="stitle" data-edit>From Prosody to Any Alphabet</div>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:64px">
+        <ul class="arc">
+          <li data-frag="1"><span class="when">c. 300 BCE</span><span data-edit>Piṅgala · <em>Chandaḥśāstra</em> · laghu and guru syllables</span><span class="what">m = 2</span></li>
+          <li data-frag="1"><span class="when">c. 200 BCE to 200 CE</span><span data-edit>Bharata · <em>Nāṭyaśāstra</em> · metres and tālas</span><span class="what">m = 2</span></li>
+          <li data-frag="2"><span class="when">7th century</span><span data-edit>Virahāṅka · mātrā counts and the two-term recurrence</span><span class="what">m = 2</span></li>
+          <li data-frag="2"><span class="when">13th century</span><span data-edit>Śārṅgadeva · <em>Saṅgītaratnākara</em> · four tālāṅgas</span><span class="what">m = 4</span></li>
+          <li data-frag="3" class="hero"><span class="when">1356</span><span data-edit>Nārāyaṇa · <em>Gaṇitakaumudī</em> · antima and sthāna free</span><span class="what">any m, any n</span></li>
+        </ul>
+        <p class="marker" data-frag="4" style="max-width:1360px;text-align:center" data-edit>The alphabet itself becomes a parameter. Prosody is m = 2, music is m = 4; the <em>patākā</em> belongs to the general theory that contains them all.</p>
+      </div>
+    </section>
+
+    <!-- 22 · Our Contributions -->
     <section class="slide" data-label="Our Contributions">
       <div class="stitle" data-edit>Our Contributions</div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:52px">
+        <div class="contrib">
+          <div class="card" data-frag="1">
+            <div class="n">1</div>
+            <h4 data-edit>The reconstruction</h4>
+            <p data-edit>The first complete algorithm behind the <em>patākā</em>, faithful to the verses: <em>kṣepa</em>, <em>sādhya</em>, and the diagonal placement, read as a running procedure.</p>
+          </div>
+          <div class="card" data-frag="2">
+            <div class="n">2</div>
+            <h4 data-edit>The meaning</h4>
+            <p data-edit>What the entries are: a graded enumeration of 1 to m<sup>n</sup> by base-m digit sum, each column in increasing order.</p>
+          </div>
+          <div class="card" data-frag="3">
+            <div class="n">3</div>
+            <h4 data-edit>The guarantees</h4>
+            <p data-edit>Proofs of correctness and of optimality: Θ(n · m<sup>n</sup>) time, matching the lower bound any listing of m<sup>n</sup> numbers must pay.</p>
+          </div>
+        </div>
+        <!-- <p class="marker" data-frag="4" data-edit>Read together, the Sanskrit and the arithmetic explain each other.</p> -->
+      </div>
     </section>
 
-    <!-- 16 · Closing -->
+    <!-- 23 · Closing -->
     <section class="slide" data-label="Thank you">
       <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
         <p class="deva reveal" style="--d:.05s;font-weight:700;font-size:180px;line-height:1;color:var(--ink)">धन्यवादः</p>
@@ -210,5 +436,47 @@
   </main>
 </div>
 <script src="deck.js"></script>
+<script>
+/* Base-three discovery slide — builds 27 tiles, moves them strip → flag on fragment steps.
+   Stages: 0 numbers · 1 base-3 digits of v−1 · 2 digit sums · 3 regroup into flag · 4 heights. */
+(function(){
+  const slide=document.querySelector('[data-b3]'); if(!slide)return;
+  const wrap=document.getElementById('b3wrap');
+  const stripTop=282, stride=64, left0=97;          /* 27 tiles, 62px wide, 2px apart */
+  const cellS=65, flagLeft=732, flagTop=452;        /* flag cells 66px, hairlines collapsed */
+  const tiles=[], stripX=[], flagX=[], flagY=[], count=[0,0,0,0,0,0,0];
+  for(let v=1;v<=27;v++){
+    const x=v-1, d=[Math.floor(x/9),Math.floor(x/3)%3,x%3], s=d[0]+d[1]+d[2];
+    const t=document.createElement('div');
+    t.className='b3t';
+    t.style.setProperty('--tint','var(--s'+s+')');
+    t.style.setProperty('--td',(x*12)+'ms');
+    t.innerHTML='<span>'+v+'</span><span class="b3d">'+d.join('')+'</span><span class="b3s">'+s+'</span>';
+    stripX.push(left0+x*stride);
+    flagX.push(flagLeft+s*cellS); flagY.push(flagTop+count[s]*cellS); count[s]++;
+    wrap.appendChild(t); tiles.push(t);
+  }
+  for(let s=0;s<7;s++){
+    const l=document.createElement('div');
+    l.className='b3lab'; l.dataset.frag='4';
+    l.style.left=(flagLeft+s*cellS)+'px'; l.style.top=(flagTop+7*cellS+16)+'px';
+    l.textContent=count[s]; wrap.appendChild(l);
+  }
+  const caps=[...wrap.querySelectorAll('.b3cap')];
+  function layout(st){
+    wrap.dataset.stage=st;
+    tiles.forEach((t,i)=>{
+      const f=st>=3;
+      t.classList.toggle('inflag',f);
+      t.style.left=(f?flagX[i]:stripX[i])+'px';
+      t.style.top=(f?flagY[i]:stripTop)+'px';
+    });
+    caps.forEach(c=>c.classList.toggle('on',+c.dataset.cap===st));
+  }
+  slide.addEventListener('deckstep',e=>layout(e.detail.step));
+  addEventListener('beforeprint',()=>layout(4));
+  const d=window.deck; layout(d&&d.slides[d.i]===slide?d.step:0);
+})();
+</script>
 </body>
 </html>

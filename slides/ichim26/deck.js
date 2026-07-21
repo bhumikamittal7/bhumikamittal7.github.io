@@ -21,6 +21,7 @@
       this.scale();
       addEventListener('resize',()=>this.scale());
       this.keys(); this.touch(); this.wheel();
+      window.deck=this;
       const {n,s}=parseHash(); this.show(n,s);
       addEventListener('hashchange',()=>{const{n,s}=parseHash();if(n!==this.i||(s||0)!==this.step)this.show(n,s);});
     }
@@ -33,6 +34,7 @@
       const s=this.slides[this.i];
       s.querySelectorAll('[data-frag]').forEach(el=>el.classList.toggle('frag-in',+el.dataset.frag<=max));
       s.querySelectorAll('[data-gold]').forEach(el=>el.classList.toggle('gold',+el.dataset.gold<=max));
+      s.dispatchEvent(new CustomEvent('deckstep',{detail:{step:this.step}}));
     }
     show(n,step){
       this.i=Math.max(0,Math.min(n,this.slides.length-1));
@@ -69,7 +71,7 @@
       addEventListener('wheel',e=>{if(lock||Math.abs(e.deltaY)<30)return;lock=true;(e.deltaY>0?this.next():this.prev());setTimeout(()=>lock=false,700);},{passive:true});
     }
   }
-  new Deck();
+  window.deck=new Deck();
 
   /* play a verse recording when a [data-audio] control is clicked */
   let audio=null;
