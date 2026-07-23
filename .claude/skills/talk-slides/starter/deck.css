@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+/* <talk name>.
+   The stage, motion, page chrome and shared components live in ../shared/deck.base.css,
+   which index.html loads first. This file carries the theme and this talk's own figures. */
+
+/* Theme — "Soft Editorial". Change the values, keep the names. */
+:root{
+  --paper:#F2EEDF; --paper-2:#ECE6D2; --ink:#2A241B; --ink-soft:#5C5345;
+  --pink:#E1A4C2; --lemon:#D6DD63; --blush:#E8C9B6; --sage:#B7C7A8; --lilac:#C9BEDC;
+  --gold:#9A8548;
+  --card:rgba(255,255,255,0.55); --rule-soft:rgba(42,36,27,0.18); --rule-med:rgba(42,36,27,0.32);
+  --stage-bg:#211C15;
+  --serif:'Cormorant Garamond',Garamond,'Times New Roman',serif;
+  --sans:'Work Sans',-apple-system,Helvetica,sans-serif;
+  --deva:'Shobhika','Cormorant Garamond',serif;
+  --ease:cubic-bezier(0.16,1,0.3,1); --dur:0.75s;
+}
+
+/* Figures and one-off styles for this talk go below. */
