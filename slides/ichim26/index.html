@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Patākā in the Gaṇitakaumudī</title>
+<link rel="stylesheet" href="../shared/deck.base.css">
 <link rel="stylesheet" href="deck.css">
 </head>
 <body>
@@ -14,7 +15,6 @@
 
     <!-- Title -->
     <section class="slide cover active" data-label="Cover">
-      <aside class="notes">Namaste. I am Bhumika, an incoming PhD student in Computer Science at the Georgia Institute of Technology. I am neither a Sanskrit scholar nor a historian of Indian mathematics. My research lies in finite-field programs, which are closely related to discrete mathematics and combinatorics. Today, I would like to share my perspective on a fascinating combinatorial structure described in the Gaṇitakaumudī, and the journey that led us to understand it. This is joint work with Prof. K. Ramasubramanian, Prasad Jawalgekar, and Prof. Aalok Thakkar.</aside>
       <div class="cover-inner">
         <p class="kicker reveal" style="--d:.05s" data-edit>International Conference on the History of Indian Mathematics 2026</p>
         <h1 class="reveal" style="--d:.15s;margin-top:26px" data-edit>The <em>Patākā</em><br>in the <em>Gaṇitakaumudī</em></h1>
@@ -28,7 +28,6 @@
 
     <!-- Nārāyaṇa -->
     <section class="slide" data-label="Nārāyaṇa">
-      <aside class="notes">Through my interactions with Prof. Aalok, I first encountered this intriguing grid from Nārāyaṇa Paṇḍita's Gaṇitakaumudī. Many scholars have studied this text over the years and interpreted several of its mathematical constructions, but this particular formation remained surprisingly mysterious.</aside>
       <div class="stitle" data-edit>Nārāyaṇa Paṇḍita and the <em>Gaṇitakaumudī</em></div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:100px">
         <div class="factrow">
@@ -42,7 +41,6 @@
 
     <!-- Aṅkapāśa (opening of Chapter 13) -->
     <section class="slide" data-label="Aṅkapāśa">
-      <aside class="notes">It appears in Chapter 13, Aṅkapāśa, the chapter devoted entirely to combinatorics. The chapter opens with a rather bold declaration: that this subject delights mathematicians while trapping incompetent ones. What I find even more interesting is what comes immediately afterwards. Nārāyaṇa says that these methods have applications in drama, prosody, medicine, garland-making, mathematics, and architecture, yet he never explains why. He leaves those connections for the reader to discover.</aside>
       <div class="stitle" data-edit>Aṅkapāśa</div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:40px">
         <div class="shloka">
@@ -68,7 +66,6 @@
 
     <!-- The whole patākā (Nārāyaṇa's answer) -->
     <section class="slide" data-label="The Patākā">
-      <aside class="notes">For antima 3 and sthāna 3, narayana gave this example after describing the pataka process. This is a difficult example to understand the process and the aloorithm as both m and n are 3 and it doesn't naturally brings out which number plays what role exactly. So we ask a more generalised question.</aside>
       <div class="stitle" data-edit>The <em>Patākā</em> <span class="sub">antima m = 3 · sthāna n = 3</span></div>
       <div class="content wsub" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px">
         <div class="flag">
@@ -86,7 +83,6 @@
 
     <!-- The generalisation: (4,3) patākā -->
     <section class="slide" data-label="The Patākā 4,3">
-      <aside class="notes">Rather than focusing only on this specific example, we asked a more general question. What happens for arbitrary values of antima and sthāna? For example, if m = 4 and n = 3, this is the corresponding Patākā.</aside>
       <div class="stitle" data-edit>The <em>Patākā</em> <span class="sub">antima m = 4 · sthāna n = 3</span></div>
       <div class="content wsub" style="display:flex;align-items:center;justify-content:center">
         <div class="flag sm">
@@ -106,7 +102,6 @@
 
     <!-- Two questions -->
     <section class="slide" data-label="Two Questions">
-      <aside class="notes">And that naturally led us to two questions. First, what exactly does this structure represent? And second, could we reconstruct the algorithm that Nārāyaṇa had in mind? The first question gives us a modern combinatorial interpretation. The second takes us back to the Sanskrit verses. In effect, the talk has two acts: understanding the mathematics, and understanding the Sanskrit algorithm.</aside>
       <div class="stitle" data-edit>Two Questions</div>
       <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:56px">
         <div class="paths">
@@ -126,7 +121,6 @@
 
     <!-- The Guṇottara Sequence -->
     <section class="slide" data-label="Guṇottara">
-      <aside class="notes">The text begins by introducing three auxiliary sequences. The first is the Guṇottara sequence, which is simply the powers of m.</aside>
       <div class="stitle" data-edit>The <em>Guṇottara</em> Sequence</div>
       <div class="content wsub" style="display:flex;align-items:center;gap:56px">
         <div class="shloka" style="flex:1">
@@ -152,7 +146,6 @@
 
     <!-- The Ābhyāsikī Sequence -->
     <section class="slide" data-label="Ābhyāsikī">
-      <aside class="notes">Next comes the Ābhyāsikī sequence, which gives the first entry of every column.</aside>
       <div class="stitle" data-edit>The <em>Ābhyāsikī</em> Sequence</div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:26px">
         <div class="shloka">
@@ -185,7 +178,6 @@
 
     <!-- The Nārācikā Sequence -->
     <section class="slide" data-label="Nārācikā">
-      <aside class="notes">Finally, the Nārācikā sequence determines the height of each column. Interestingly, these heights are exactly the coefficients of (1 + x + ... + x^(m-1))^n.</aside>
       <div class="stitle" data-edit>The <em>Nārācikā</em> Sequence</div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:34px">
         <div class="shloka">
@@ -202,7 +194,6 @@
 
     <!-- Now we can draw the grid and fill the first row (no title) -->
     <section class="slide" data-label="Grid and First Row">
-      <aside class="notes">So once these three ingredients are known, only one question remains: how do we fill the rest of the grid? This is the part which is not discussed in the commentaries of Paramanand Singh.</aside>
       <div class="content" style="top:0;bottom:0;display:flex;align-items:center;justify-content:center">
         <div class="flag">
           <div class="flag-col"><div class="cell row1"><span data-frag="1">1</span></div></div>
@@ -218,7 +209,6 @@
 
     <!-- The base-three table (the centrepiece animation; built by script) -->
     <section class="slide" data-label="Base Three" data-b3>
-      <aside class="notes">At first glance the entries appear almost random. But after trying several possibilities, one remarkably simple pattern emerged. Take each number, subtract one, write it in base m, and compute the sum of its digits. Then group together all numbers having the same digit sum, and suddenly the entire Patākā assembles itself.</aside>
       <div class="stitle" data-edit>Subtract One, Write in Base Three</div>
       <div id="b3wrap" data-stage="0">
         <span data-frag="1" hidden></span><span data-frag="2" hidden></span>
@@ -233,7 +223,6 @@
 
     <!-- The reveal -->
     <section class="slide" data-label="The Reveal">
-      <aside class="notes">This also reveals what the Patākā really is. Suppose we have n positions, each of which can contain one of m symbols. There are exactly m^n such sequences. The Patākā is simply a complete enumeration of all of these sequences, grouped according to their digit sum, with the entries within each group appearing in increasing order. Once we realized this interpretation, many features of the construction became immediately clear.</aside>
       <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:44px">
         <p class="bigsay" data-edit>The <em>patākā</em> is an enumeration of [m]<sup>n</sup>.</p>
         <p class="body" style="font-size:31px;max-width:1380px" data-edit>All m<sup>n</sup> ways to fill n places with m symbols, each set in the column of its digit sum.</p>
@@ -245,7 +234,6 @@
 
     <!-- The Patākā Verses (full shloka, verse by verse) -->
     <section class="slide" data-label="The Verses">
-      <aside class="notes">So far, we have uncovered the mathematical meaning of the Patākā. But an equally fascinating question remains: how did Nārāyaṇa actually construct it? Remember, he was not writing down a mathematical proof in the modern sense. He was describing an algorithm entirely in verse. Our task was to reconstruct that procedure and understand why it works.</aside>
       <div class="stitle" data-edit>The <em>Patākā</em> Verses</div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px">
         <button class="playbtn" data-audio="audio/audio.wav" style="margin-bottom:8px">▶&nbsp; play the verse</button>
@@ -257,7 +245,6 @@
 
     <!-- Reading the verses again -->
     <section class="slide" data-label="Decoding the Terms">
-      <aside class="notes">The verses name a few quantities that drive the procedure: purātanāṅka, an entry already placed; kṣepa, the increment; and sādhya, a bound. Nārāyaṇa's algorithm fills the array one stage at a time. For each new entry, it looks at neighbouring entries that have already been computed and combines information from the auxiliary sequences. At first glance these update rules appear rather mysterious, and it is not immediately obvious why they should produce the numbers we want.</aside>
       <div class="stitle" data-edit>Reading the Verses Again</div>
       <div class="content wsub" style="display:flex;align-items:center;gap:40px">
         <div class="term-card" data-frag="1">
@@ -283,7 +270,6 @@
 
     <!-- The Patākā Algorithm (build; milestones turn gold) -->
     <section class="slide" data-label="The Algorithm" data-algostate>
-      <aside class="notes">The algorithm begins with exactly the three auxiliary sequences we introduced earlier: the Guṇottara sequence gives the powers of m, the Ābhyāsikī sequence gives the first entry of each column, and the Nārācikā sequence tells us how many entries each column should contain. So at this point we already know where every column starts and how tall each column should be, and the only remaining challenge is filling in the missing entries. Nārāyaṇa fills them stage by stage: for each new entry, add the kṣepa to an earlier entry and place the sum in the next diagonal cell, as long as it stays below the sādhya. Notice that we only ever track three numbers: the kṣepa, the sādhya, and the purātanāṅka. Once we interpret the entries as indices of sequences, everything becomes much more natural. Each step effectively moves from one sequence to the next while preserving the correct digit-sum class, so every index appears exactly once, every column keeps its prescribed height, and the entire Patākā gradually emerges.</aside>
       <div class="stitle" data-edit>The <em>Patākā</em> Algorithm</div>
       <div class="content" style="display:flex;align-items:center;gap:60px">
         <div style="flex:0 0 720px;text-align:center;align-self:flex-start;margin-top:64px">
@@ -321,7 +307,6 @@
 
     <!-- Sub-patākā nesting (recursive structure) -->
     <section class="slide" data-label="Nested Patākās" data-nest>
-      <aside class="notes">Each closed stage is a complete smaller Patākā, nested inside the next. Raising n by one wraps the whole flag inside a larger one, so (3,1) sits inside (3,2), which sits inside (3,3). The construction is genuinely recursive, and each step multiplies the number of cells by m.</aside>
       <div class="stitle" data-edit>One <em>Patākā</em> Inside the Next</div>
       <div class="content wsub" style="display:flex;align-items:center;gap:60px">
         <div style="flex:0 0 540px;text-align:left">
@@ -338,7 +323,6 @@
 
     <!-- The algorithm in modern pseudocode -->
     <section class="slide" data-label="Pseudocode">
-      <aside class="notes">By the time the procedure terminates, every number from 1 to m^n has been placed. The remarkable part is that this is not an exhaustive search or a sorting algorithm. Instead, Nārāyaṇa constructs the entire arrangement directly through a sequence of local update rules. Our reconstruction shows that these rules produce exactly the graded enumeration we described earlier, and here it is written as modern pseudocode, running in Θ(n·m^n) time.</aside>
       <div class="stitle" data-edit>The Algorithm, Formally</div>
       <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px">
         <pre class="pseudo" data-edit><span class="kw">Patākā</span>(m, n)   <span class="cm">▷ antima m, sthāna n</span>
@@ -361,7 +345,6 @@ offset(K) = j   <span class="cm">where K = j·m^r</span></pre>
 
     <!-- Live interactive tool, embedded -->
     <section class="slide" data-label="Live Demo">
-      <aside class="notes">Here is a live version of the construction. You can try it for any m and n and watch the Patākā build itself, cell by cell.</aside>
       <div class="content" style="top:104px;bottom:48px;display:flex;flex-direction:column;align-items:center;gap:16px">
         <p class="body" style="font-size:27px" data-edit>Try it live: <a class="deck-link" href="https://bhumikamittal.in/pataka-algo/" target="_blank" rel="noopener">bhumikamittal.in/pataka-algo</a></p>
         <iframe class="demo-frame" src="../../pataka-algo/index.html" title="Interactive patākā construction" loading="lazy"></iframe>
@@ -370,7 +353,6 @@ offset(K) = j   <span class="cm">where K = j·m^r</span></pre>
 
     <!-- Closing -->
     <section class="slide" data-label="Thank you">
-      <aside class="notes">This gives us two complementary ways of understanding the Patākā. From a modern perspective, it is a graded enumeration of all sequences over an alphabet of size m, grouped by digit sum. From Nārāyaṇa's perspective, it is an elegant algorithm that constructs precisely the same object using only a handful of auxiliary sequences and simple iterative rules. Taken together, they reveal both the combinatorial insight and the algorithmic sophistication underlying this remarkable construction. Thank you.</aside>
       <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
         <p class="reveal" style="--d:.05s;font-family:var(--serif);font-weight:500;font-size:168px;line-height:1;color:var(--ink)">Thank you</p>
         <p class="reveal" style="--d:.25s;font-family:var(--sans);font-size:34px;color:var(--ink-soft);margin-top:32px">open for questions</p>
@@ -379,7 +361,7 @@ offset(K) = j   <span class="cm">where K = j·m^r</span></pre>
 
   </main>
 </div>
-<script src="deck.js"></script>
+<script src="../shared/deck.js"></script>
 <script>
 /* Base-three discovery slide: builds 27 tiles, moves them strip → flag on fragment steps.
    Stages: 0 numbers · 1 base-3 digits of v−1 · 2 digit sums · 3 regroup into flag · 4 heights. */
@@ -473,82 +455,6 @@ offset(K) = j   <span class="cm">where K = j·m^r</span></pre>
   }
   slide.addEventListener('deckstep',e=>upd(e.detail.step));
   const d=window.deck; upd(d&&d.slides[d.i]===slide?d.step:0);
-})();
-
-/* Speaker notes + PowerPoint-style presenter view.
-   Roles by URL:  default = projector / driver · ?present = presenter UI · ?follow = live preview.
-   Press S in the deck to open the presenter; windows sync over BroadcastChannel + localStorage,
-   and notes are editable in the presenter (saved to this browser). */
-(function(){
-  const PATH=location.pathname, BUS='deck-bus:'+PATH, NKEY='deck-notes:'+PATH, QS=location.search;
-  const present=/[?&]present\b/.test(QS), follow=/[?&]follow\b/.test(QS), isNext=/[?&]next\b/.test(QS);
-  const driver=!present&&!follow;
-  let bc=null; try{bc=new BroadcastChannel('ichim26-deck');}catch(e){}
-  const seen=new Set();
-  const post=m=>{ m=Object.assign({_id:Date.now()+'.'+Math.random()},m); if(bc)bc.postMessage(m); try{localStorage.setItem(BUS,JSON.stringify(m));}catch(e){} };
-  const listen=fn=>{ const h=m=>{ if(m&&m._id){ if(seen.has(m._id))return; seen.add(m._id); if(seen.size>60)seen.delete(seen.values().next().value); } fn(m); };
-    if(bc)bc.addEventListener('message',e=>h(e.data)); addEventListener('storage',e=>{ if(e.key===BUS&&e.newValue){try{h(JSON.parse(e.newValue));}catch(_){}} }); };
-  const slides=[...document.querySelectorAll('.slide')];
-  const clamp=i=>Math.max(0,Math.min(i,slides.length-1));
-  const seed=i=>{const a=slides[i]&&slides[i].querySelector('.notes');return a?a.textContent.trim():'';};
-  const loadN=()=>{try{return JSON.parse(localStorage.getItem(NKEY)||'{}');}catch(e){return{};}};
-  const noteFor=i=>{const o=loadN();return o[i]!=null?o[i]:seed(i);};
-  const labelFor=i=>{const s=slides[i];if(!s)return '';const t=s.querySelector('.stitle');return (t?t.textContent:(s.dataset.label||'Slide '+(i+1))).trim();};
-
-  if(driver){
-    addEventListener('deck:change',e=>post({t:'state',i:e.detail.i,step:e.detail.step,total:e.detail.total}));
-    listen(m=>{ const d=window.deck; if(!d)return;
-      if(m.t==='hello')post({t:'state',i:d.i,step:d.step,total:d.slides.length});
-      else if(m.t==='nav')m.d>0?d.next():d.prev();
-    });
-    addEventListener('keydown',e=>{ if(e.target.isContentEditable)return;
-      if(e.key==='s'||e.key==='S'){e.preventDefault();window.open(PATH+'?present'+location.hash,'presenter','width=1300,height=820');}
-    });
-    return;
-  }
-
-  if(follow){
-    const d=window.deck; if(!d)return;
-    const show=d.show.bind(d);
-    d.next=()=>post({t:'nav',d:1}); d.prev=()=>post({t:'nav',d:-1});
-    listen(m=>{ if(m.t==='state') isNext?show(clamp(m.i+1),0):show(m.i,m.step); });
-    post({t:'hello'});
-    return;
-  }
-
-  /* presenter UI */
-  document.body.classList.add('presenting');
-  const host=document.createElement('div'); host.id='presenter';
-  host.innerHTML=
-     '<header><span class="clock" id="pClock">00:00</span><span class="pos" id="pPos"></span><button id="pReset">reset timer</button></header>'
-    +'<div class="pmain">'
-    +'<div class="pcurrent"><div class="plabel">Now · <span id="pTitle"></span></div><iframe id="pCur" title="current slide"></iframe></div>'
-    +'<div class="pside">'
-    +'<div class="pnextwrap"><div class="plabel">Next · <span id="pNextTitle"></span></div><iframe id="pNextF" title="next slide"></iframe></div>'
-    +'<div class="pnotes"><div class="plabel">Notes</div><textarea id="pNotes" placeholder="speaker notes…"></textarea></div>'
-    +'</div></div>'
-    +'<footer><button id="pPrev">← Prev</button><button id="pNext">Next →</button><span class="phint">edits save to this browser</span></footer>';
-  document.body.appendChild(host);
-  const q=id=>host.querySelector(id);
-  q('#pCur').src=PATH+'?follow'+location.hash;
-  q('#pNextF').src=PATH+'?follow&next';
-  const elClock=q('#pClock'),elPos=q('#pPos'),elTitle=q('#pTitle'),elNT=q('#pNextTitle'),elNotes=q('#pNotes');
-  let cur=0,total=slides.length;
-  const render=i=>{cur=i;elPos.textContent=(i+1)+' / '+total;elTitle.textContent=labelFor(i);
-    elNT.textContent=i+1<total?labelFor(i+1):'(end of deck)';
-    if(document.activeElement!==elNotes)elNotes.value=noteFor(i);};
-  elNotes.addEventListener('input',()=>{const o=loadN();o[cur]=elNotes.value;try{localStorage.setItem(NKEY,JSON.stringify(o));}catch(e){}});
-  const nav=d=>post({t:'nav',d});
-  q('#pPrev').onclick=()=>nav(-1); q('#pNext').onclick=()=>nav(1);
-  addEventListener('keydown',e=>{ if(e.target===elNotes)return;
-    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();nav(1);}
-    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();nav(-1);}
-  });
-  let t0=Date.now();
-  const tick=()=>{const s=Math.floor((Date.now()-t0)/1000);elClock.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
-  setInterval(tick,1000);tick(); q('#pReset').onclick=()=>{t0=Date.now();tick();};
-  listen(m=>{ if(m.t==='state'){total=m.total||total;render(m.i);} });
-  post({t:'hello'}); render(0);
 })();
 </script>
 </body>

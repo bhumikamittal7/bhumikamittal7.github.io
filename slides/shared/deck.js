@@ -1,7 +1,13 @@
-/* Slide engine — fixed 16:9 stage, in-slide fragments, nav, editing, audio, print.
-   Keys: ←/→ (Space) step/slide · E edit · Ctrl/Cmd+S export · F fullscreen · P print.
-   Fragments: elements with data-frag="k" reveal on the k-th press (same-step values reveal together).
-   URL: #n opens slide n · #n.k opens slide n at fragment k · ?print → PDF dialog. */
+/* Shared slide engine for every deck under /slides/.
+   Fixed 16:9 stage, in-slide fragments, nav, inline editing, verse audio, print, presenter view.
+
+   Load it from a deck folder with  <script src="../shared/deck.js"></script>
+
+   Keys: ←/→ (Space) step/slide · E edit · Ctrl/Cmd+S export · F fullscreen · P print · S presenter.
+   Fragments: elements with data-frag="k" reveal on the k-th press (same-step values reveal together);
+              elements with data-gold="k" turn gold on step k.
+   URL: #n opens slide n · #n.k opens slide n at fragment k · ?print → PDF dialog.
+   Slides can listen for the 'deckstep' event to drive their own animations. */
 (function(){
 
   document.body.insertAdjacentHTML('beforeend',
@@ -149,4 +155,80 @@
     h.textContent=msg;h.classList.add('show');
     clearTimeout(hintT);hintT=setTimeout(()=>h.classList.remove('show'),3200);
   }
+})();
+
+/* Speaker notes + PowerPoint-style presenter view.
+   Roles by URL:  default = projector / driver · ?present = presenter UI · ?follow = live preview.
+   Press S in the deck to open the presenter; windows sync over BroadcastChannel + localStorage,
+   and notes are editable in the presenter (saved to this browser). */
+(function(){
+  const PATH=location.pathname, BUS='deck-bus:'+PATH, NKEY='deck-notes:'+PATH, QS=location.search;
+  const present=/[?&]present\b/.test(QS), follow=/[?&]follow\b/.test(QS), isNext=/[?&]next\b/.test(QS);
+  const driver=!present&&!follow;
+  let bc=null; try{bc=new BroadcastChannel('deck'+PATH);}catch(e){}
+  const seen=new Set();
+  const post=m=>{ m=Object.assign({_id:Date.now()+'.'+Math.random()},m); if(bc)bc.postMessage(m); try{localStorage.setItem(BUS,JSON.stringify(m));}catch(e){} };
+  const listen=fn=>{ const h=m=>{ if(m&&m._id){ if(seen.has(m._id))return; seen.add(m._id); if(seen.size>60)seen.delete(seen.values().next().value); } fn(m); };
+    if(bc)bc.addEventListener('message',e=>h(e.data)); addEventListener('storage',e=>{ if(e.key===BUS&&e.newValue){try{h(JSON.parse(e.newValue));}catch(_){}} }); };
+  const slides=[...document.querySelectorAll('.slide')];
+  const clamp=i=>Math.max(0,Math.min(i,slides.length-1));
+  const seed=i=>{const a=slides[i]&&slides[i].querySelector('.notes');return a?a.textContent.trim():'';};
+  const loadN=()=>{try{return JSON.parse(localStorage.getItem(NKEY)||'{}');}catch(e){return{};}};
+  const noteFor=i=>{const o=loadN();return o[i]!=null?o[i]:seed(i);};
+  const labelFor=i=>{const s=slides[i];if(!s)return '';const t=s.querySelector('.stitle');return (t?t.textContent:(s.dataset.label||'Slide '+(i+1))).trim();};
+
+  if(driver){
+    addEventListener('deck:change',e=>post({t:'state',i:e.detail.i,step:e.detail.step,total:e.detail.total}));
+    listen(m=>{ const d=window.deck; if(!d)return;
+      if(m.t==='hello')post({t:'state',i:d.i,step:d.step,total:d.slides.length});
+      else if(m.t==='nav')m.d>0?d.next():d.prev();
+    });
+    addEventListener('keydown',e=>{ if(e.target.isContentEditable)return;
+      if(e.key==='s'||e.key==='S'){e.preventDefault();window.open(PATH+'?present'+location.hash,'presenter','width=1300,height=820');}
+    });
+    return;
+  }
+
+  if(follow){
+    const d=window.deck; if(!d)return;
+    const show=d.show.bind(d);
+    d.next=()=>post({t:'nav',d:1}); d.prev=()=>post({t:'nav',d:-1});
+    listen(m=>{ if(m.t==='state') isNext?show(clamp(m.i+1),0):show(m.i,m.step); });
+    post({t:'hello'});
+    return;
+  }
+
+  /* presenter UI */
+  document.body.classList.add('presenting');
+  const host=document.createElement('div'); host.id='presenter';
+  host.innerHTML=
+     '<header><span class="clock" id="pClock">00:00</span><span class="pos" id="pPos"></span><button id="pReset">reset timer</button></header>'
+    +'<div class="pmain">'
+    +'<div class="pcurrent"><div class="plabel">Now · <span id="pTitle"></span></div><iframe id="pCur" title="current slide"></iframe></div>'
+    +'<div class="pside">'
+    +'<div class="pnextwrap"><div class="plabel">Next · <span id="pNextTitle"></span></div><iframe id="pNextF" title="next slide"></iframe></div>'
+    +'<div class="pnotes"><div class="plabel">Notes</div><textarea id="pNotes" placeholder="speaker notes…"></textarea></div>'
+    +'</div></div>'
+    +'<footer><button id="pPrev">← Prev</button><button id="pNext">Next →</button><span class="phint">edits save to this browser</span></footer>';
+  document.body.appendChild(host);
+  const q=id=>host.querySelector(id);
+  q('#pCur').src=PATH+'?follow'+location.hash;
+  q('#pNextF').src=PATH+'?follow&next';
+  const elClock=q('#pClock'),elPos=q('#pPos'),elTitle=q('#pTitle'),elNT=q('#pNextTitle'),elNotes=q('#pNotes');
+  let cur=0,total=slides.length;
+  const render=i=>{cur=i;elPos.textContent=(i+1)+' / '+total;elTitle.textContent=labelFor(i);
+    elNT.textContent=i+1<total?labelFor(i+1):'(end of deck)';
+    if(document.activeElement!==elNotes)elNotes.value=noteFor(i);};
+  elNotes.addEventListener('input',()=>{const o=loadN();o[cur]=elNotes.value;try{localStorage.setItem(NKEY,JSON.stringify(o));}catch(e){}});
+  const nav=d=>post({t:'nav',d});
+  q('#pPrev').onclick=()=>nav(-1); q('#pNext').onclick=()=>nav(1);
+  addEventListener('keydown',e=>{ if(e.target===elNotes)return;
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();nav(1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();nav(-1);}
+  });
+  let t0=Date.now();
+  const tick=()=>{const s=Math.floor((Date.now()-t0)/1000);elClock.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
+  setInterval(tick,1000);tick(); q('#pReset').onclick=()=>{t0=Date.now();tick();};
+  listen(m=>{ if(m.t==='state'){total=m.total||total;render(m.i);} });
+  post({t:'hello'}); render(0);
 })();

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talk title</title>
+<link rel="stylesheet" href="../shared/deck.base.css">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<div class="deck-viewport">
+  <main class="deck-stage" id="deckStage">
+
+    <!-- Title -->
+    <section class="slide cover active" data-label="Cover">
+      <aside class="notes">Opening line. Who you are, what the talk is, who it is with.</aside>
+      <div class="cover-inner">
+        <p class="kicker reveal" style="--d:.05s" data-edit>Conference name, spelled out in full, 2026</p>
+        <h1 class="reveal" style="--d:.15s;margin-top:26px" data-edit>The Title<br>of the Talk</h1>
+        <div class="rule drawline" style="--d:.4s"></div>
+        <p class="authors reveal" style="--d:.55s" data-edit>
+          First Author <span class="amp">·</span> Bhumika Mittal
+        </p>
+      </div>
+    </section>
+
+    <!-- A content slide: title top-left, content centred, revealed on clicks -->
+    <section class="slide" data-label="Short label">
+      <aside class="notes">What you say while this slide is up.</aside>
+      <div class="stitle" data-edit>Slide Title <span class="sub">optional second line</span></div>
+      <div class="content wsub" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:46px">
+        <p class="bigsay" data-edit>The one sentence this slide exists for.</p>
+        <p class="marker" data-frag="1" style="max-width:1300px" data-edit>The reading of it, on the first click.</p>
+      </div>
+    </section>
+
+    <!-- Closer -->
+    <section class="slide" data-label="Thanks">
+      <aside class="notes">Thank you. Happy to take questions.</aside>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px">
+        <p class="deva reveal" style="--d:.1s;font-size:120px;font-weight:700">धन्यवादः</p>
+        <p class="marker reveal" style="--d:.35s" data-edit>open for questions</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script src="../shared/deck.js"></script>
+</body>
+</html>
