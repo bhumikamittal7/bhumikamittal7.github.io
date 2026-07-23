@@ -302,7 +302,7 @@ body.presenting .deck-viewport{display:none;}
 #presenter .pmain{flex:1;display:grid;grid-template-columns:1.6fr 1fr;gap:22px;min-height:0;}
 #presenter .plabel{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#B9B096;margin-bottom:8px;}
 #presenter .pcurrent{display:flex;flex-direction:column;min-height:0;}
-#presenter .pcurrent iframe{width:100%;aspect-ratio:16/9;border:1px solid rgba(242,238,223,.25);border-radius:10px;background:#F2EEDF;pointer-events:none;}
+#presenter .pcurrent iframe{width:100%;aspect-ratio:16/9;border:1px solid rgba(242,238,223,.25);border-radius:10px;background:#F2EEDF;}
 #presenter .pside{display:flex;flex-direction:column;gap:16px;min-height:0;}
 #presenter .pnextwrap iframe{width:100%;aspect-ratio:16/9;border:1px solid rgba(242,238,223,.2);border-radius:8px;background:#F2EEDF;pointer-events:none;}
 #presenter .pnotes{flex:1;display:flex;flex-direction:column;min-height:0;}
