@@ -49,6 +49,7 @@
     sync(){
       const h='#'+(this.i+1)+(this.step>0?'.'+this.step:'');
       if(location.hash!==h)history.replaceState(null,'',h);
+      dispatchEvent(new CustomEvent('deck:change',{detail:{i:this.i,step:this.step,total:this.slides.length}}));
     }
     next(){ if(this.step<this.steps.length){this.step++;this.applyFrags();this.sync();} else this.show(this.i+1,0); }
     prev(){ if(this.step>0){this.step--;this.applyFrags();this.sync();} else this.show(this.i-1,-1); }

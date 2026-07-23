@@ -250,3 +250,63 @@ body.editing [data-edit]:hover{background:rgba(255,255,255,.35);}
 .edit-hint{position:fixed;bottom:16px;left:16px;z-index:10001;font-family:var(--sans);font-size:14px;color:var(--paper);background:rgba(42,36,27,.85);padding:8px 14px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;}
 .edit-hint.show{opacity:1;}
 .counter{font-family:var(--serif);font-style:italic;font-size:20px;color:rgba(242,238,223,.6);}
+
+/* Devanagari set inside a slide title */
+.stitle .dv{font-family:var(--deva);font-weight:600;font-style:normal;}
+
+/* compact flag — the larger (4,3) patākā, twelve cells tall */
+.flag.sm .cell{width:54px;height:54px;font-size:24px;}
+
+/* pseudocode block — the algorithm in modern notation */
+.pseudo{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'Courier New',monospace;font-size:28px;
+  line-height:1.55;color:var(--ink);text-align:left;background:var(--card);
+  border:1px solid var(--rule-soft);border-radius:20px;padding:34px 48px;
+  white-space:pre;overflow-x:auto;max-width:1500px;font-variant-ligatures:none;}
+.pseudo .kw{color:#9A8548;font-weight:700;}
+.pseudo .cm{color:var(--ink-soft);}
+
+/* embedded live tool */
+.demo-frame{width:100%;max-width:1720px;height:850px;border:1px solid var(--rule-med);
+  border-radius:18px;background:var(--paper);box-shadow:0 8px 30px rgba(42,36,27,.12);}
+
+/* speaker notes never render on the slide itself */
+.notes{display:none;}
+
+/* live algorithm state panel (Patākā Algorithm slide) */
+.algostate .staterow{display:flex;justify-content:center;gap:14px;}
+.algostate .statecell{display:flex;flex-direction:column;gap:6px;min-width:150px;padding:14px 8px;border-radius:14px;background:rgba(255,255,255,.5);}
+.algostate .slab{font-family:var(--sans);font-size:19px;color:var(--ink-soft);}
+.algostate .slab em{font-style:italic;}
+.algostate .sval{font-family:var(--serif);font-weight:600;font-size:38px;color:var(--ink);font-variant-numeric:tabular-nums;transition:color .35s ease;}
+.algostate .sval.flash{color:#9A8548;}
+.algostate .sop{font-family:var(--sans);font-size:21px;color:var(--ink-soft);margin-top:16px;min-height:26px;font-variant-numeric:tabular-nums;}
+
+/* nested-patākā slide */
+:root{--nr0:#E1A4C2;--nr1:#B7C7A8;--nr2:#C9BEDC;--nr3:#A9C6CE;}
+[data-nest] .cell{transition:background .5s ease,opacity .5s ease;}
+[data-nest] .cell.nest-on{background:var(--ring);}
+[data-nest] .cell.nest-dim{opacity:.2;}
+.nestlist{list-style:none;margin:26px 0 0;display:flex;flex-direction:column;gap:14px;}
+.nestlist li{display:flex;align-items:center;gap:16px;font-family:var(--sans);font-size:30px;color:var(--ink);}
+.nestlist .dot{width:18px;height:18px;border-radius:5px;display:inline-block;flex:0 0 auto;}
+.nestlist .nk{font-family:var(--serif);font-style:italic;font-size:34px;min-width:120px;}
+.nestlist .nc{color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+
+/* presenter view (press S to open; runs at index.html?present) */
+body.presenting .deck-viewport{display:none;}
+#presenter{position:fixed;inset:0;z-index:5000;background:#211C15;color:#F2EEDF;font-family:var(--sans);display:flex;flex-direction:column;padding:22px 26px;gap:14px;}
+#presenter header{display:flex;align-items:center;gap:22px;font-size:22px;}
+#presenter .clock{font-family:var(--serif);font-weight:600;font-size:40px;}
+#presenter .pos{color:#B9B096;}
+#presenter header button{margin-left:auto;background:none;border:1px solid rgba(242,238,223,.3);color:#F2EEDF;border-radius:8px;padding:6px 14px;font-size:14px;cursor:pointer;}
+#presenter .pmain{flex:1;display:grid;grid-template-columns:1.6fr 1fr;gap:22px;min-height:0;}
+#presenter .plabel{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#B9B096;margin-bottom:8px;}
+#presenter .pcurrent{display:flex;flex-direction:column;min-height:0;}
+#presenter .pcurrent iframe{width:100%;aspect-ratio:16/9;border:1px solid rgba(242,238,223,.25);border-radius:10px;background:#F2EEDF;pointer-events:none;}
+#presenter .pside{display:flex;flex-direction:column;gap:16px;min-height:0;}
+#presenter .pnextwrap iframe{width:100%;aspect-ratio:16/9;border:1px solid rgba(242,238,223,.2);border-radius:8px;background:#F2EEDF;pointer-events:none;}
+#presenter .pnotes{flex:1;display:flex;flex-direction:column;min-height:0;}
+#presenter #pNotes{flex:1;resize:none;background:rgba(242,238,223,.06);border:1px solid rgba(242,238,223,.22);border-radius:12px;color:#F2EEDF;font-family:var(--sans);font-size:22px;line-height:1.5;padding:16px 18px;}
+#presenter footer{display:flex;align-items:center;gap:14px;}
+#presenter footer button{background:#F2EEDF;color:#211C15;border:none;border-radius:10px;padding:11px 24px;font-size:19px;font-weight:600;cursor:pointer;}
+#presenter .phint{color:#8f876f;font-size:13px;margin-left:auto;}
