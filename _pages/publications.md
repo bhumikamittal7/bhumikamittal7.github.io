@@ -9,7 +9,7 @@ nav_order: 1
 
 My research interests lie in cryptography, programming languages, and formal verification. In particular, my current work focuses on program analysis for finite field computations. 
 
-Recently, I have also been exploring questions in the history of mathematics. In the past, I have worked on problems in discrete mathematics and computer architecture and systems.
+Recently, I have also been exploring questions in the history of Indian mathematics. In the past, I have worked on problems in discrete mathematics and computer architecture and systems.
 
 ### Publications
 

@@ -36,6 +36,7 @@ collections:
   news:
     defaults:
       layout: post
+      sitemap: false
     output: true
     permalink: /news/:path/
 
