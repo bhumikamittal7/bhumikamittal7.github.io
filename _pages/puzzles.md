@@ -48,6 +48,13 @@ so click any of them to play.
 <h2 class="puzzles-heading">&amp; More</h2>
 <div class="puzzles-grid">
 
+  <a class="puzzle-card" href="https://pl-fm.github.io/" target="_blank" rel="noopener">
+    <span class="puzzle-icon">📅</span>
+    <span class="puzzle-name">PLFM Calendar</span>
+    <span class="puzzle-desc">Conferences, workshops, schools, and deadlines for the programming languages and formal methods community.</span>
+    <span class="puzzle-host">pl-fm.github.io ↗</span>
+  </a>
+
   <a class="puzzle-card" href="/pataka-algo/" target="_blank" rel="noopener">
     <span class="puzzle-icon">🚩</span>
     <span class="puzzle-name">Patākā Construction</span>
