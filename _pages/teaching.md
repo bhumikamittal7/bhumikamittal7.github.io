@@ -2,7 +2,7 @@
 layout: page
 permalink: /teaching/
 title: Teaching
-description: Teaching experience and related activities
+description: TA experiences and related activities
 nav: true
 nav_order: 2
 ---
@@ -17,6 +17,20 @@ nav_order: 2
 <div class="teaching-list">
     <div class="teaching-item" data-type="course">
         <div class="teaching-date">
+            <span class="teaching-date-term">Fall</span>
+            <span class="teaching-date-year">2026</span>
+        </div>
+        <div class="teaching-body">
+            <div class="teaching-title-row">
+                <h3>Programming Languages </h3>
+                <span class="teaching-tag">course</span>
+            </div>
+            <p class="teaching-meta">Georgia Institute of Technology · Qirun Zhang</p>
+            <div class="teaching-links"><a href="https://helloqirun.github.io/course/cs6390/index.html">webpage</a></div>
+        </div>
+    </div>
+    <div class="teaching-item" data-type="course">
+        <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
             <span class="teaching-date-year">2025</span>
         </div>
@@ -25,11 +39,10 @@ nav_order: 2
                 <h3>Information Security</h3>
                 <span class="teaching-tag">course</span>
             </div>
-            <p class="teaching-meta">Ashoka University · Prof Subhashis Banerjee</p>
-            <div class="teaching-links"><a href="/infosec-spring25/">syllabus</a></div>
+            <p class="teaching-meta">Ashoka University · Subhashis Banerjee</p>
+            <div class="teaching-links"><a href="/infosec-spring25/">webpage</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="talk">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
@@ -44,7 +57,6 @@ nav_order: 2
             <div class="teaching-links"><a href="/assets/pdf/POMDP.pdf">slides</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="course">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
@@ -55,11 +67,10 @@ nav_order: 2
                 <h3>Technology Law & Policy</h3>
                 <span class="teaching-tag">course</span>
             </div>
-            <p class="teaching-meta">Ashoka University · Prof Nikhil Sud</p>
+            <p class="teaching-meta">Ashoka University · Nikhil Sud</p>
             <div class="teaching-links"><a href="/assets/pdf/techlaw.pdf">syllabus</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="talk">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
@@ -74,7 +85,6 @@ nav_order: 2
             <div class="teaching-links"><a href="/assets/pdf/ntt_presentation.pdf">slides</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="course">
         <div class="teaching-date">
             <span class="teaching-date-term">Monsoon</span>
@@ -85,11 +95,10 @@ nav_order: 2
                 <h3>Data Structures</h3>
                 <span class="teaching-tag">course</span>
             </div>
-            <p class="teaching-meta">Ashoka University · Prof Debayan Gupta</p>
+            <p class="teaching-meta">Ashoka University · Debayan Gupta</p>
             <div class="teaching-links"><a href="/assets/pdf/DataStructures.pdf">syllabus</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="course">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
@@ -100,11 +109,10 @@ nav_order: 2
                 <h3>Discrete Mathematics</h3>
                 <span class="teaching-tag">course</span>
             </div>
-            <p class="teaching-meta">Ashoka University · Prof Partha Pratim Das</p>
+            <p class="teaching-meta">Ashoka University · Partha Pratim Das</p>
             <div class="teaching-links"><a href="/assets/pdf/DiscreteMathematics.pdf">syllabus</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="course">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
@@ -115,11 +123,10 @@ nav_order: 2
                 <h3>Strategy through Board Games</h3>
                 <span class="teaching-tag">course</span>
             </div>
-            <p class="teaching-meta">Ashoka University · Prof Priyank Narayan</p>
+            <p class="teaching-meta">Ashoka University · Priyank Narayan</p>
             <div class="teaching-links"><a href="/assets/pdf/STBG.pdf">syllabus</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="workshop">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
@@ -137,7 +144,6 @@ nav_order: 2
             </div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="workshop">
         <div class="teaching-date">
             <span class="teaching-date-term">Summer</span>
@@ -152,7 +158,6 @@ nav_order: 2
             <div class="teaching-links"><a href="/assets/pdf/ScienceComm.pdf">syllabus</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="workshop">
         <div class="teaching-date">
             <span class="teaching-date-term">Summer</span>
@@ -167,7 +172,6 @@ nav_order: 2
             <div class="teaching-links"><a href="/assets/pdf/Microcontroller.pdf">slides</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="workshop">
         <div class="teaching-date">
             <span class="teaching-date-term">Summer</span>
@@ -182,7 +186,6 @@ nav_order: 2
             <div class="teaching-links"><a href="/assets/pdf/GameDesign.pdf">slides</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="workshop">
         <div class="teaching-date">
             <span class="teaching-date-term">Summer</span>
@@ -196,7 +199,6 @@ nav_order: 2
             <p class="teaching-meta">Ashoka University · Young Scholars Programme</p>
         </div>
     </div>
-
     <div class="teaching-item" data-type="course">
         <div class="teaching-date">
             <span class="teaching-date-term">Monsoon</span>
@@ -211,7 +213,6 @@ nav_order: 2
             <div class="teaching-links"><a href="/assets/pdf/ICP.pdf">syllabus</a></div>
         </div>
     </div>
-
     <div class="teaching-item" data-type="talk">
         <div class="teaching-date">
             <span class="teaching-date-term">Spring</span>
