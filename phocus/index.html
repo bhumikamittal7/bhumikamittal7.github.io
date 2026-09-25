@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Computer Scientist's View of the Physical World</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>body{margin:0;background:#FFFFFF}</style>
+<style>
+.phocus-article{--ink:#1A1D21;--ink-2:#4F5760;--ink-3:#858D95;--line:#DDE0DC;--surface:#FFFFFF;--phocus:#2F6DB5;--phocus-soft:rgba(47,109,181,.18);--naive:#D2603C;--naive-soft:rgba(210,96,60,.16);--lf:#2A9D8F;--lp:#8A5CB8;
+ --display:"Newsreader",Georgia,serif;--body:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+ max-width:680px;margin:0 auto;padding:0 16px 72px;background:#FFFFFF;color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.65}
+.phocus-article *{box-sizing:border-box}
+.phocus-article header{padding-top:48px}
+.phocus-article .kicker{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--phocus);font-weight:600}
+.phocus-article h1{font-family:var(--display);font-weight:500;font-size:clamp(36px,6vw,54px);line-height:1.08;letter-spacing:-.01em;margin:14px 0 18px;text-wrap:balance;color:var(--ink)}
+.phocus-article .dek{font-family:var(--display);font-size:clamp(20px,2.6vw,24px);line-height:1.35;color:var(--ink-2);margin:0 0 22px}
+.phocus-article .byline{font-family:var(--sans);font-size:13.5px;color:var(--ink-3);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;display:flex;flex-wrap:wrap;gap:4px 18px;margin-bottom:36px}
+.phocus-article .byline b{color:var(--ink);font-weight:500}
+.phocus-article figure{margin:36px 0}
+.phocus-article figure.art{margin:0 0 36px;text-align:center}
+.phocus-article figure.art .rot{display:block;width:100%;aspect-ratio:462/328;position:relative;overflow:hidden}
+.phocus-article figure.art .rot img{position:absolute;left:50%;top:50%;width:71%;height:auto;transform:translate(-50%,-50%) rotate(270deg);border-radius:2px}
+.phocus-article figcaption{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:10px;text-align:left}
+.phocus-article figure.art figcaption{text-align:center}
+.phocus-article figcaption b{color:var(--ink);font-weight:600}
+.phocus-article h2{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.6vw,32px);line-height:1.15;margin:48px 0 14px;color:var(--ink)}
+.phocus-article p{margin:0 0 1.25em}
+.phocus-article p.lede::first-letter{font-family:var(--display);font-size:3.4em;float:left;line-height:.82;padding:6px 8px 0 0;color:var(--ink)}
+.phocus-article .m{font-style:italic}
+.phocus-article canvas.fig{display:block;width:100%;height:280px;background:#FFFFFF;border:1px solid var(--line);border-radius:4px}
+.phocus-article .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin-top:8px}
+.phocus-article .legend span{display:inline-flex;align-items:center;gap:6px}
+.phocus-article .sw{width:14px;height:9px;border-radius:2px;display:inline-block}
+.phocus-article .ref{font-family:var(--sans);font-size:14px;color:var(--ink-2);border-top:1px solid var(--line);margin-top:48px;padding-top:18px;line-height:1.55}
+.phocus-article .ref a{color:var(--phocus)}
+
+.phocus-article .pull{font-family:var(--display);font-size:clamp(22px,3vw,27px);line-height:1.35;color:var(--ink);margin:34px 0;padding:0 0 0 20px;border-left:3px solid var(--phocus);text-wrap:balance}
+.phocus-article .pull .who{display:block;font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+.phocus-article .descent{list-style:none;margin:0;padding:0;font-family:var(--sans)}
+.phocus-article .descent li{display:grid;grid-template-columns:96px 1fr;gap:0 18px;position:relative;padding-bottom:22px}
+.phocus-article .descent li::before{content:"";position:absolute;left:47px;top:72px;bottom:2px;border-left:1.5px dashed var(--line)}
+.phocus-article .descent li:last-child::before{display:none}
+.phocus-article .descent li::after{content:"";position:absolute;left:43px;bottom:2px;width:0;height:0;border-left:4.5px solid transparent;border-right:4.5px solid transparent;border-top:7px solid var(--ink-3)}
+.phocus-article .descent li:last-child::after{display:none}
+.phocus-article .descent .glyph{width:96px;height:72px;border:1px solid var(--line);border-radius:4px;background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.phocus-article .descent .glyph svg{display:block}
+.phocus-article .descent .glyph .eq{font-family:var(--body);font-style:italic;font-size:15px;white-space:nowrap;color:var(--ink);letter-spacing:.01em}
+.phocus-article .descent .glyph .eq sub{font-style:normal;font-size:10px}
+.phocus-article .descent .glyph code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:8.5px;line-height:1.3;color:var(--ink);white-space:pre;text-align:left}
+.phocus-article .descent .txt{padding-top:2px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.phocus-article .descent .txt b{display:block;color:var(--ink);font-weight:600;font-size:15.5px;margin-bottom:2px}
+.phocus-article .descent .txt .bad{color:var(--naive);font-weight:500}
+.phocus-article ul.props{list-style:none;margin:0 0 1.25em;padding:0;border-top:1px solid var(--line)}
+.phocus-article ul.props li{padding:12px 0;border-bottom:1px solid var(--line)}
+.phocus-article ul.props b{font-family:var(--sans);font-size:.85em;font-weight:600;letter-spacing:.02em;margin-right:4px}
+.phocus-article .pair{display:flex;flex-wrap:wrap;gap:12px 28px;border:1px solid var(--line);border-radius:4px;padding:14px 12px 6px}
+.phocus-article .pair svg{flex:1 1 260px;display:block;font-family:var(--sans)}
+@media (max-width:600px){.phocus-article{font-size:17.5px}.phocus-article canvas.fig{height:220px}}
+</style>
+</head>
+<body>
+<article class="phocus-article">
+<header>
+  <div class="kicker">Programming Languages</div>
+  <h1>A Computer Scientist's View of the Physical World</h1>
+  <p class="dek">Simulations run on programs that only approximate the physics, and those programs can fail. A new tool proves, before such a program runs, how it will behave across a whole range of starting conditions.</p>
+  <div class="byline"><span>By <b>Bhumika Mittal</b></span><span>September 2026</span></div>
+</header>
+
+<figure class="art">
+  <div class="rot"><img src="kandinsky.png" alt="Abstract Interpretation (1925) by Wassily Kandinsky: geometric shapes in orange, teal, pink and gold against black" width="328" height="462"></div>
+  <figcaption><b>Abstract Interpretation</b> (1925), Wassily Kandinsky.</figcaption>
+</figure>
+
+<p class="lede">When one driver brakes on a crowded highway, a wave of red lights travels backward through the traffic. A flood moving down a river follows the same family of equations. Engineers simulate waves like these on computers to decide where to put an on-ramp or which neighborhoods to evacuate.</p>
+
+<p>Scientists have tested those equations against experiments for generations. But the computer doesn't run the equation. It runs a program that approximates it, chopping the road or river into points and time into steps. That program can get the wave wrong. It can flatten the wave, add ripples that aren't in the physics, or let small errors grow until it crashes.</p>
+
+<p>These problems usually surface only after the fact, once a large simulation has crashed or produced something strange. By then, hours or even days of computing time may already be spent. That raises a natural question: Could we rule out such failures before the program ever runs?</p>
+
+<p>Jacob Laurel, a computer scientist at the Georgia Institute of Technology, thinks we can. With Ignacio Laguna of Lawrence Livermore National Laboratory and Jan Hückelheim of Argonne National Laboratory, he built a tool called Phocus that checks a simulation's program before it runs. Instead of testing one run after another, Phocus proves guarantees about every run the program could make from a whole range of starting conditions. The software won a Distinguished Artifact Award at OOPSLA 2025, a major programming-languages conference.</p>
+
+<p>Asked how he would explain the work to middle schoolers, Laurel reached for a rope. Flick one end and anyone can watch the wave travel. But how would you write a program that says where the wave will be a second later? “It's really just two for loops,” Laurel said. “One for space, one for time.” Phocus proves things about what those two loops will do.</p>
+
+<figure>
+  <ol class="descent" aria-label="Five stages from a partial differential equation to a computer program">
+    <li><div class="glyph"><span class="eq">u<sub>t</sub> + f(u)<sub>x</sub> = 0</span></div><div class="txt"><b>Equation</b>A wave <span class="m">u</span> moving through continuous space and time. The flux <span class="m">f</span> encodes the physics.</div></li>
+    <li><div class="glyph"><svg width="72" height="44" viewBox="0 0 72 44" aria-hidden="true"><g fill="#858D95"><circle cx="8" cy="8" r="2"/><circle cx="22" cy="8" r="2"/><circle cx="36" cy="8" r="2"/><circle cx="50" cy="8" r="2"/><circle cx="64" cy="8" r="2"/><circle cx="8" cy="22" r="2"/><circle cx="22" cy="22" r="2"/><circle cx="36" cy="22" r="2"/><circle cx="50" cy="22" r="2"/><circle cx="64" cy="22" r="2"/><circle cx="8" cy="36" r="2"/><circle cx="22" cy="36" r="2"/><circle cx="36" cy="36" r="2"/><circle cx="50" cy="36" r="2"/><circle cx="64" cy="36" r="2"/></g><text x="70" y="42" font-size="7" fill="#858D95" text-anchor="end" font-family="IBM Plex Sans,sans-serif">x</text><text x="3" y="6" font-size="7" fill="#858D95" font-family="IBM Plex Sans,sans-serif">t</text></svg></div><div class="txt"><b>Grid</b>Space becomes points. Time becomes steps. Everything between them is gone.</div></li>
+    <li><div class="glyph"><svg width="72" height="44" viewBox="0 0 72 44" aria-hidden="true"><g fill="#DDE0DC"><circle cx="8" cy="34" r="2.5"/><circle cx="64" cy="34" r="2.5"/><circle cx="8" cy="12" r="2.5"/><circle cx="22" cy="12" r="2.5"/><circle cx="50" cy="12" r="2.5"/><circle cx="64" cy="12" r="2.5"/></g><circle cx="36" cy="34" r="2.5" fill="#DDE0DC"/><g fill="#4F5760"><circle cx="22" cy="34" r="2.5"/><circle cx="50" cy="34" r="2.5"/></g><circle cx="36" cy="12" r="3.2" fill="#2F6DB5"/><g stroke="#2F6DB5" stroke-width="1.2" fill="none"><path d="M23 31 L34 15"/><path d="M49 31 L38 15"/></g></svg></div><div class="txt"><b>Stencil</b>Each new value is computed from a few old neighbors. The derivative has become a subtraction.</div></li>
+    <li><div class="glyph"><code>for n in T:
+ for i in X:
+  u[n+1][i] =
+   stencil(
+    u[n][i-1],
+    u[n][i+1])</code></div><div class="txt"><b>Loop</b>The stencil, repeated at every point and every step. This is the entire solver.</div></li>
+    <li><div class="glyph"><svg width="72" height="44" viewBox="0 0 72 44" aria-hidden="true"><path d="M4 30 C14 30 18 14 26 14 C34 14 36 30 44 30 C50 30 52 22 56 22 C60 22 62 8 70 4" fill="none" stroke="#D2603C" stroke-width="1.6"/><path d="M4 30 C14 30 18 26 26 26 C34 26 36 30 44 30 C50 30 52 28 56 28 C60 28 62 30 70 30" fill="none" stroke="#858D95" stroke-width="1.2" stroke-dasharray="3 2"/></svg></div><div class="txt"><b>Program</b>Arrays, arithmetic and a loop. Like any program, it can fail in ways of its own: <span class="bad">values that grow without bound, waves that flatten, ripples that were never there.</span></div></li>
+  </ol>
+  <figcaption>Turning an equation into a program takes several steps, and most of them throw away something the equation had.</figcaption>
+</figure>
+
+<h2>Chopping Up a Wave</h2>
+
+<p>The equations Phocus studies describe things that flow, such as water down a river or cars along a highway. How fast the water or traffic moves depends on how much of it there is. That feedback is nonlinear, and it lets a smooth wave steepen into a shock, a near-vertical cliff like the wall of brake lights at the back of a traffic jam. Realistic versions rarely have solutions anyone can write down, so chopping them up is the only practical way to get an answer.</p>
+
+<p>Each recipe for chopping them up, known as a finite difference scheme, makes its own compromises. One common scheme smears the wave out and shaves height off its peak. Another is more accurate but leaves ripples behind a steep front. In the simulation below, the first ends up about 40 percent shorter than it should be. The second grows more than a third taller than it started, which the equation forbids. Neither side effect comes from the physics.</p>
+
+<p>Every scheme also has a speed limit, known as the CFL condition. Roughly, the wave must not travel farther in one time step than the gap between neighboring points. Break the limit, and errors can grow step after step until the numbers mean nothing. In these equations the wave's speed depends on its own height. So checking the speed limit comes down to checking that the values stay within bounds.</p>
+
+<figure>
+  <canvas id="fig1" class="fig" aria-label="Animation of a wave solved by two finite difference schemes against a fine reference solution"></canvas>
+  <div class="legend"><span><span class="sw" style="background:var(--ink-3)"></span>careful solution</span><span><span class="sw" style="background:var(--lf)"></span>first scheme</span><span><span class="sw" style="background:var(--lp)"></span>second scheme</span></div>
+  <figcaption>The same wave, computed three ways. The gray dashed line is a careful solution that uses many more points; its steep front is a real shock forming. On a coarser grid, one common scheme (teal) flattens the wave, while another (purple) leaves ripples behind the front that are not in the physics and pushes the wave taller than it started. Simulated in your browser for this article.</figcaption>
+</figure>
+
+<p>More digits won't fix these failures. “This is really a broad new class of numerical bugs,” Laurel said, “that extends beyond traditional floating-point errors.”</p>
+
+<p>Testing won't catch them all, either. Scientists know their starting conditions only within some margin of error, so one simulation stands in for an infinite family of them. Ten thousand test runs sample a sliver of that family, and the input that breaks the program may never come up.</p>
+
+<p>Phocus doesn't say how close a simulation comes to the true answer. It proves limits on what the program can compute for the whole family: how high its values can climb, how low they can fall and how much they can ripple.</p>
+
+<h2>A Simulation Is a Program</h2>
+
+<p>Laurel works in program verification, which tries to prove what software will do before it runs. His path to waves began with an email. As a graduate student, he wrote to a group at Argonne that builds tools for analyzing scientific simulations, curious how his work fit with theirs. The conversation grew into a collaboration, and it pointed him to a simple fact his field could use: A simulation is a program.</p>
+
+<p>Theory and experiment earn trust for the equation. The program needs its own, and computer scientists have spent half a century building tools for exactly that. One of the most powerful is abstract interpretation. It runs a program on ranges instead of specific numbers. An ordinary simulation stores one value at each grid point. An abstract run stores a range guaranteed to contain every value that point could take, for every starting condition in the family.</p>
+
+<p>If the ranges never cross a forbidden line, such as the speed limit, then no real run crosses it either. One abstract run covers infinitely many real ones.</p>
+
+<p>Others had already applied such tools to solvers for heat, which are forgiving: A hot spot spreads out and softens over time. Laurel picked waves instead. Nothing in their equations smooths out a sharp front, so a solver's small mistakes travel along with the wave. The solvers were simple enough to analyze and hard enough to be worth the effort.</p>
+
+<p>The hardest part, Laurel said, came before any mathematics: deciding what a proof about a simulation should say. The team translated the warnings numerical analysts use into statements about a program's variables, including these three:</p>
+
+<ul class="props">
+  <li><b>Robust ranges.</b> Every point stays within a certified range, for every starting condition in the margin.</li>
+  <li><b>Bounded total variation.</b> Add up every rise and drop along the wave. Spurious ripples push that score up, and Phocus proves a ceiling on it.</li>
+  <li><b>The CFL condition.</b> The speed limit holds at every point at every step.</li>
+</ul>
+
+<p>The last one is a familiar object in Laurel's own field. “So really,” he said, “it's a loop invariant.”</p>
+
+<h2>Flat Enough</h2>
+
+<p>An abstract interpreter comes with a rulebook. For each operation, such as addition or multiplication, a rule says how to push a range through it. The standard approach runs a solver's update formula through the rulebook one operation at a time. Each rule is slightly conservative, and in a nonlinear formula the extra width compounds step after step. On one test equation, the standard ranges crossed the speed limit at step 19, though the simulation itself never did.</p>
+
+<p>Laurel's fix was to treat the whole update formula as a single object. In the simplest scheme, each new value depends on two neighbors. Picture the formula as a surface, with the two old values marking a spot on the floor and the new value as the height above it. The surface is curved, but over the small patch that matters at any one step, it is nearly flat.</p>
+
+<p>Phocus fits a plane through samples of the surface. It then computes the farthest the surface ever strays from that plane — call it <span class="m">D</span> — and thickens the plane by <span class="m">D</span> on each side. The true surface is guaranteed to lie inside. The fit only has to be a good guess; the guarantee comes entirely from <span class="m">D</span>. Finding <span class="m">D</span> exactly is hard in general, but the structure of these schemes lets the team compute it. “This is where continuous optimization saves the day,” Laurel said.</p>
+
+<p>The standard analysis loses a little precision at every operation. Phocus loses it once per formula and measures the loss exactly. It also carries less bookkeeping from step to step, which makes it faster.</p>
+
+<h2>Nineteen Tests</h2>
+
+<p>With no existing benchmark to test against, the team built one. It has six equations, four of them modeling real flows such as flood waves and traffic, run in 19 configurations.</p>
+
+<figure>
+  <canvas id="fig2" class="fig" aria-label="Animation of certified ranges at each mesh point evolving over time steps, comparing Phocus with the standard analysis"></canvas>
+  <div class="legend"><span><span class="sw" style="background:var(--phocus)"></span>Phocus</span><span><span class="sw" style="background:var(--naive)"></span>standard analysis</span><span><span class="sw" style="background:var(--ink-2)"></span>random runs</span></div>
+  <figcaption>The same wave as the first figure, solved with the rippling scheme on a coarser grid that matches one of the team's tests. Each point starts with a small uncertainty. The shaded bands show the values each analysis has proved possible, and gray ticks show where 1,200 random runs actually landed. Around step 21, the standard analysis (orange) swells past the speed limit (dashed line) and loses its proof. Phocus (blue) stays below it for all 25 steps. Computed in your browser with a simplified version of the method.</figcaption>
+</figure>
+
+<p>The standard analysis failed outright on five of the 19, producing infinite ranges or overflowing. Phocus produced bounds on all of them. Where both finished, Phocus was faster every time and usually tighter. On one run of Burgers' equation, a classic model of nonlinear flow, it bounded the total variation at about 11; the standard analysis managed only about 300. One 80-step run took Phocus 37 seconds and the standard analysis more than 10 minutes.</p>
+
+<p>The proofs were also snug. In 16 of the 19 configurations, Phocus's ranges were on average only 10 to 40 percent wider than the spread of 10,000 random runs. In the longest test, Phocus certified the speed limit for all 280 steps in about half an hour. The standard analysis lost its proof at step 75.</p>
+
+<h2>Back Up the Hourglass</h2>
+
+<p>Phocus is still narrow in scope. It handles three hand-picked schemes. It assumes exact arithmetic, so its guarantees don't yet cover floating-point round-off. And the tests are small: one dimension of space, 20 grid points and a few hundred time steps. The simulations behind weather and storm-surge forecasts run on far bigger grids in three dimensions. But they, too, begin as equations and end as loops over arrays.</p>
+
+<p>“Research is like an hourglass,” Laurel said. “You funnel down so you can focus. Once you really understand the problem, you funnel back up.” Phocus sits at the narrow point. Next he wants to try finite volume schemes, the approach behind many fluid-dynamics codes engineers use in practice, and to take the plane-fitting technique to other problems in scientific computing.</p>
+
+<p>Scientists have spent generations asking whether their equations describe the physical world. A computer scientist asks a narrower question about the programs that solve them: Across every starting condition in a range, what can this program do? Phocus now answers with a proof.</p>
+
+<div class="ref">
+  Jacob Laurel, Ignacio Laguna and Jan Hückelheim. “Synthesizing Sound and Precise Abstract Transformers for Nonlinear Hyperbolic PDE Solvers.” <em>Proceedings of the ACM on Programming Languages</em> 9, OOPSLA2, Article 310 (October 2025). <a href="https://doi.org/10.1145/3763088">doi:10.1145/3763088</a> · Code: <a href="https://github.com/jsl1994/Phocus">github.com/jsl1994/Phocus</a>
+</div>
+</article>
+
+<script>
+// ---- shared helpers ----
+const css=n=>getComputedStyle(document.querySelector('.phocus-article')).getPropertyValue(n).trim();
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function setup(c){const ctx=c.getContext('2d');new ResizeObserver(()=>{const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);c.width=r.width*d;c.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);c._w=r.width;c._h=r.height}).observe(c);return ctx}
+const bump=x=>(x>0&&x<15.01)?-0.015*x*(x-15):0;
+const Y=(v,H,pad,lo,hi)=>pad.t+(H-pad.t-pad.b)*(1-(v-lo)/(hi-lo));
+const vis=new Set();const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target)));
+
+// ---- Figure 1: concrete Burgers, coarse LF and Leapfrog vs fine reference ----
+(function(){const c=document.getElementById('fig1'),ctx=setup(c);io.observe(c);
+ // Godunov flux for Burgers: an exact Riemann solve at each cell edge, used only for the fine reference
+ const god=(l,r)=>l<=r?(l>0?.5*l*l:r<0?.5*r*r:0):((l+r)>0?.5*l*l:.5*r*r);
+ function sim(N,dx,dt,scheme){const s={N,dx,dt,scheme,t:0,u:new Float64Array(N),prev:null};for(let i=0;i<N;i++)s.u[i]=bump(i*dx);
+  s.step=()=>{const u=s.u,K=dt/(2*dx),R=dt/dx,nx=new Float64Array(N);for(let i=0;i<N;i++){if(i===0||i===N-1){nx[i]=u[i];continue}const a=u[i+1],b=u[i-1];if(scheme==='god'){const c=u[i];nx[i]=c-R*(god(c,a)-god(b,c));continue}nx[i]=(scheme==='lp'&&s.prev)?s.prev[i]-R*(.5*a*a-.5*b*b):.5*(a+b)-K*(.5*a*a-.5*b*b)}s.prev=u;s.u=nx;s.t+=dt};return s}
+ let ref,lf,lp,hold=0,last=0;const dtc=.55;
+ function reset(){ref=sim(401,.1,.05,'god');lf=sim(41,1,dtc,'lf');lp=sim(41,1,dtc,'lp')}
+ reset();
+ function line(u,dx,col,w,dash){ctx.save();ctx.strokeStyle=col;ctx.lineWidth=w;if(dash)ctx.setLineDash(dash);ctx.beginPath();const W=c._w,H=c._h,pad={l:12,r:12,t:16,b:16};for(let i=0;i<u.length;i++){const x=pad.l+(W-pad.l-pad.r)*i*dx/40,y=Y(Math.max(-1,Math.min(1.5,u[i])),H,pad,-.35,1.3);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();ctx.restore()}
+ function draw(t){requestAnimationFrame(draw);if(!vis.has(c)||!c._w)return;
+  if(!reduced&&t-last>110){last=t;if(hold>0)hold--;else{lf.step();lp.step();for(let k=0;k<11;k++)ref.step();if(lf.t>26){hold=14;reset()}}}
+  const W=c._w,H=c._h;ctx.fillStyle=css('--surface');ctx.fillRect(0,0,W,H);ctx.strokeStyle=css('--line');ctx.beginPath();const y0=Y(0,H,{l:12,r:12,t:16,b:16},-.35,1.3);ctx.moveTo(12,y0);ctx.lineTo(W-12,y0);ctx.stroke();
+  line(ref.u,.1,css('--ink-3'),1.3,[4,4]);line(lf.u,1,css('--lf'),2);line(lp.u,1,css('--lp'),2);
+  ctx.fillStyle=css('--ink-3');ctx.font='12px '+css('--sans');ctx.textAlign='right';ctx.fillText('t = '+lf.t.toFixed(1),W-14,H-8)}
+ if(reduced){for(let k=0;k<30;k++){lf.step();lp.step();for(let j=0;j<11;j++)ref.step()}}
+ requestAnimationFrame(draw)})();
+
+// ---- Figure 2: Phocus vs standard zonotope analysis (compact re-implementation) ----
+(function(){
+ const f=u=>.5*u*u,crit=(a,b)=>b===0?[]:[-a/b];let SYM=0;const fresh=()=>++SYM;
+ const af=(c,k)=>({c,k:k||{}});
+ const add=(x,y)=>{const k={...x.k};for(const j in y.k)k[j]=(k[j]||0)+y.k[j];return af(x.c+y.c,k)};
+ const scale=(x,s)=>{const k={};for(const j in x.k)k[j]=x.k[j]*s;return af(x.c*s,k)};
+ const rad=x=>{let r=0;for(const j in x.k)r+=Math.abs(x.k[j]);return r};
+ const range=x=>{const r=rad(x);return[x.c-r,x.c+r]};
+ const mul=(x,y)=>{const k={};for(const j in x.k)k[j]=(k[j]||0)+y.c*x.k[j];for(const j in y.k)k[j]=(k[j]||0)+x.c*y.k[j];const r=rad(x)*rad(y);if(r>0)k[fresh()]=r;return af(x.c*y.c,k)};
+ const opt=(a,b,l,r)=>{const h=u=>a*u+b*f(u);let mx=Math.max(h(l),h(r)),mn=Math.min(h(l),h(r));for(const u of crit(a,b))if(u>l&&u<r){const v=h(u);mx=Math.max(mx,v);mn=Math.min(mn,v)}return[mn,mx]};
+ function synth(alpha,beta,P,M){const n=12,pc=(P[0]+P[1])/2,mc=(M[0]+M[1])/2;let Sxx=0,Syy=0,Sxz=0,Syz=0,Sz=0,N=0;for(let i=0;i<n;i++)for(let j=0;j<n;j++){const a=P[0]+(P[1]-P[0])*i/(n-1),b=M[0]+(M[1]-M[0])*j/(n-1),z=alpha*(a+b)+beta*(f(a)-f(b)),da=a-pc,db=b-mc;Sxx+=da*da;Syy+=db*db;Sxz+=da*z;Syz+=db*z;Sz+=z;N++}
+  const A=Sxx>0?Sxz/Sxx:0,B=Syy>0?Syz/Syy:0,C=Sz/N-A*pc-B*mc;const g1=opt(A-alpha,-beta,P[0],P[1]),g2=opt(B-alpha,beta,M[0],M[1]);const D=Math.max(Math.abs(g1[1]+g2[1]+C),Math.abs(g1[0]+g2[0]+C));const s1=opt(alpha,beta,P[0],P[1]),s2=opt(alpha,-beta,M[0],M[1]);return{A,B,C,D,dir:[s1[0]+s2[0],s1[1]+s2[1]]}}
+ const L=20,dx=2,dt=1,steps=25,eps=.05,K=dt/(2*dx),R=dt/dx,cflMax=dx/dt;
+ function run(mode){SYM=0;const mk=(form,lo,hi)=>{const[a,b]=range(form);return{form,lo:Math.max(lo,a),hi:Math.min(hi,b)}};let prev=null,cur=[];for(let i=0;i<L;i++){const c0=bump(i*dx);cur.push(mk((i===0||i===L-1)?af(c0):af(c0,{[fresh()]:eps}),-1/0,1/0))}
+  const hist=[cur.map(p=>[p.lo,p.hi])];let viol=null;
+  for(let n=0;n<steps;n++){const nx=new Array(L);for(let i=0;i<L;i++){if(i===0||i===L-1){nx[i]=cur[i];continue}const up=cur[i+1],um=cur[i-1],pm=prev?prev[i]:null,lf=!pm,alpha=lf?.5:0,beta=lf?-K:-R;
+    if(mode==='naive'){let form=add(scale(add(up.form,um.form),alpha),scale(add(scale(mul(up.form,up.form),.5),scale(mul(um.form,um.form),-.5)),beta));if(!lf)form=add(form,pm.form);nx[i]=mk(form,-1/0,1/0)}
+    else{const s=synth(alpha,beta,[up.lo,up.hi],[um.lo,um.hi]);let form=add(add(scale(up.form,s.A),scale(um.form,s.B)),af(s.C));if(s.D>0)form=add(form,af(0,{[fresh()]:s.D}));let lo=s.dir[0],hi=s.dir[1];if(!lf){form=add(form,pm.form);lo+=pm.lo;hi+=pm.hi}nx[i]=mk(form,lo,hi)}}
+   prev=cur;cur=nx;let m=0;for(const p of cur)m=Math.max(m,Math.abs(p.lo),Math.abs(p.hi));if(m>cflMax&&viol===null)viol=n+1;hist.push(cur.map(p=>[p.lo,p.hi]))}
+  return{hist,viol}}
+ function samples(N){let lo=null,hi=null;for(let s=0;s<N;s++){let prev=null,cur=[];for(let i=0;i<L;i++)cur.push(bump(i*dx)+((i===0||i===L-1)?0:(2*Math.random()-1)*eps));const h=[cur.slice()];for(let n=0;n<steps;n++){const nx=cur.slice();for(let i=1;i<L-1;i++){const a=cur[i+1],b=cur[i-1];nx[i]=prev?prev[i]-R*(f(a)-f(b)):.5*(a+b)-K*(f(a)-f(b))}prev=cur;cur=nx;h.push(cur.slice())}
+   if(!lo){lo=h.map(r=>r.slice());hi=h.map(r=>r.slice())}else for(let n=0;n<=steps;n++)for(let i=0;i<L;i++){lo[n][i]=Math.min(lo[n][i],h[n][i]);hi[n][i]=Math.max(hi[n][i],h[n][i])}}return{lo,hi}}
+ const P=run('phocus'),Nv=run('naive'),S=samples(1200);
+ const c=document.getElementById('fig2'),ctx=setup(c);io.observe(c);let n=0,last=0,hold=0;
+ function band(Hh,fill,stroke,hatch,W,H,pad,lo,hi){const xs=i=>pad.l+(W-pad.l-pad.r)*i/(L-1),p=new Path2D();for(let i=0;i<L;i++){const y=Y(Math.max(lo-1,Math.min(hi+1,Hh[n][i][1])),H,pad,lo,hi);i?p.lineTo(xs(i),y):p.moveTo(xs(i),y)}for(let i=L-1;i>=0;i--)p.lineTo(xs(i),Y(Math.max(lo-1,Math.min(hi+1,Hh[n][i][0])),H,pad,lo,hi));p.closePath();ctx.save();ctx.clip(p);ctx.fillStyle=fill;ctx.fillRect(0,0,W,H);if(hatch){ctx.strokeStyle=stroke;ctx.globalAlpha=.45;ctx.lineWidth=1;ctx.beginPath();for(let x=-H;x<W;x+=8){ctx.moveTo(x,0);ctx.lineTo(x+H,H)}ctx.stroke()}ctx.restore();ctx.strokeStyle=stroke;ctx.lineWidth=1.6;ctx.stroke(p)}
+ function draw(t){requestAnimationFrame(draw);if(!vis.has(c)||!c._w)return;
+  if(!reduced&&t-last>380){last=t;if(hold>0)hold--;else{n++;if(n>steps){hold=8;n=0}}}
+  const W=c._w,H=c._h,pad={l:40,r:12,t:16,b:20},lo=-1.1,hi=2.6;ctx.fillStyle=css('--surface');ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle=css('--line');ctx.beginPath();[0,1,2].forEach(v=>{const y=Y(v,H,pad,lo,hi);ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y)});ctx.stroke();ctx.fillStyle=css('--ink-3');ctx.font='11px '+css('--sans');ctx.textAlign='right';[0,1,2].forEach(v=>ctx.fillText(v,pad.l-6,Y(v,H,pad,lo,hi)+4));
+  ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle=css('--ink-2');ctx.beginPath();const yc=Y(cflMax,H,pad,lo,hi);ctx.moveTo(pad.l,yc);ctx.lineTo(W-pad.r,yc);ctx.stroke();ctx.restore();ctx.textAlign='left';ctx.fillStyle=css('--ink-2');ctx.fillText('speed limit',pad.l+6,yc-5);
+  ctx.save();ctx.beginPath();ctx.rect(pad.l,pad.t,W-pad.l-pad.r,H-pad.t-pad.b);ctx.clip();
+  band(Nv.hist,css('--naive-soft'),css('--naive'),true,W,H,pad,lo,hi);band(P.hist,css('--phocus-soft'),css('--phocus'),false,W,H,pad,lo,hi);
+  ctx.strokeStyle=css('--ink-2');ctx.lineWidth=2;for(let i=0;i<L;i++){const x=pad.l+(W-pad.l-pad.r)*i/(L-1);ctx.beginPath();ctx.moveTo(x,Y(S.lo[n][i],H,pad,lo,hi));ctx.lineTo(x,Y(S.hi[n][i],H,pad,lo,hi));ctx.stroke()}ctx.restore();
+  const bad=Nv.viol!==null&&n>=Nv.viol;ctx.textAlign='right';ctx.fillStyle=bad?css('--naive'):css('--ink-3');ctx.fillText('step '+n+' of '+steps+(bad?' · standard analysis: proof lost':''),W-14,H-8)}
+ if(reduced)n=steps;requestAnimationFrame(draw)})();
+</script>
+</body>
+</html>
