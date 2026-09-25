@@ -1,18 +1,1 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.teaching-filter .tab-button');
-    const items = document.querySelectorAll('.teaching-item[data-type]');
-
-    if (!filterButtons.length || !items.length) return;
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            button.classList.add('active');
-
-            const filter = button.dataset.filter;
-            items.forEach(item => {
-                item.classList.toggle('is-hidden', filter !== 'all' && item.dataset.type !== filter);
-            });
-        });
-    });
-});
+document.addEventListener("DOMContentLoaded",function(){const t=document.querySelectorAll(".teaching-filter .tab-button"),e=document.querySelectorAll(".teaching-item[data-type]");t.length&&e.length&&t.forEach(a=>{a.addEventListener("click",()=>{t.forEach(t=>t.classList.remove("active")),a.classList.add("active");const c=a.dataset.filter;e.forEach(t=>{t.classList.toggle("is-hidden","all"!==c&&t.dataset.type!==c)})})})});
