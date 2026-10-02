@@ -65,7 +65,7 @@
   <div class="kicker">Programming Languages</div>
   <h1>A Computer Scientist's View of the Physical World</h1>
   <p class="dek">Simulations run on programs that only approximate the physics, and those programs can fail. A new tool proves, before such a program runs, how it will behave across a whole range of starting conditions.</p>
-  <div class="byline"><span>By <b>Bhumika Mittal</b></span><span>September 2026</span></div>
+  <div class="byline"><span>By <b>Bhumika Mittal</b></span><span>October 2026</span></div>
 </header>
 
 <figure class="art">
@@ -77,7 +77,7 @@
 
 <p>Scientists have tested those equations against experiments for generations. But the computer doesn't run the equation. It runs a program that approximates it, chopping the road or river into points and time into steps. That program can get the wave wrong. It can flatten the wave, add ripples that aren't in the physics, or let small errors grow until it crashes.</p>
 
-<p>These problems usually surface only after the fact, once a large simulation has crashed or produced something strange. By then, hours or even days of computing time may already be spent. That raises a natural question: Could we rule out such failures before the program ever runs?</p>
+<p>These problems usually surface only after the fact, once a large simulation has crashed or produced something strange. By then, hours or even days of computing time may already be spent. In a flood forecast, that delay matters, because a warning helps only if it arrives before the water does. That raises a natural question: Could we rule out such failures before the program ever runs?</p>
 
 <p>Jacob Laurel, a computer scientist at the Georgia Institute of Technology, thinks we can. With Ignacio Laguna of Lawrence Livermore National Laboratory and Jan Hückelheim of Argonne National Laboratory, he built a tool called Phocus that checks a simulation's program before it runs. Instead of testing one run after another, Phocus proves guarantees about every run the program could make from a whole range of starting conditions. The software won a Distinguished Artifact Award at OOPSLA 2025, a major programming-languages conference.</p>
 
@@ -115,7 +115,7 @@
 
 <p>More digits won't fix these failures. “This is really a broad new class of numerical bugs,” Laurel said, “that extends beyond traditional floating-point errors.”</p>
 
-<p>Testing won't catch them all, either. Scientists know their starting conditions only within some margin of error, so one simulation stands in for an infinite family of them. Ten thousand test runs sample a sliver of that family, and the input that breaks the program may never come up.</p>
+<p>Testing won't catch them all, either. Scientists rarely know their starting conditions exactly. A flood forecaster, for instance, knows a river's depth and flow only within some margin of error. So one simulation stands in for an infinite family of them. Ten thousand test runs sample a sliver of that family, and the input that breaks the program may never come up.</p>
 
 <p>Phocus doesn't say how close a simulation comes to the true answer. It proves limits on what the program can compute for the whole family: how high its values can climb, how low they can fall and how much they can ripple.</p>
 
@@ -140,6 +140,8 @@
 <p>The last one is a familiar object in Laurel's own field. “So really,” he said, “it's a loop invariant.”</p>
 
 <h2>Flat Enough</h2>
+
+<p>The plan, then, is simple to state: Run the solver on ranges and show that they never cross a forbidden line. The hard part is keeping the ranges tight enough to prove it.</p>
 
 <p>An abstract interpreter comes with a rulebook. For each operation, such as addition or multiplication, a rule says how to push a range through it. The standard approach runs a solver's update formula through the rulebook one operation at a time. Each rule is slightly conservative, and in a nonlinear formula the extra width compounds step after step. On one test equation, the standard ranges crossed the speed limit at step 19, though the simulation itself never did.</p>
 
@@ -169,7 +171,7 @@
 
 <p>“Research is like an hourglass,” Laurel said. “You funnel down so you can focus. Once you really understand the problem, you funnel back up.” Phocus sits at the narrow point. Next he wants to try finite volume schemes, the approach behind many fluid-dynamics codes engineers use in practice, and to take the plane-fitting technique to other problems in scientific computing.</p>
 
-<p>Scientists have spent generations asking whether their equations describe the physical world. A computer scientist asks a narrower question about the programs that solve them: Across every starting condition in a range, what can this program do? Phocus now answers with a proof.</p>
+<p>Scientists have spent generations asking whether their equations describe the physical world. A computer scientist asks a narrower question about the programs that solve them: Across every starting condition in a range, what can this program do? Anyone who acts on a forecast relies on both answers. For this class of simulations, Phocus now gives the second one as a proof.</p>
 
 <div class="ref">
   Jacob Laurel, Ignacio Laguna and Jan Hückelheim. “Synthesizing Sound and Precise Abstract Transformers for Nonlinear Hyperbolic PDE Solvers.” <em>Proceedings of the ACM on Programming Languages</em> 9, OOPSLA2, Article 310 (October 2025). <a href="https://doi.org/10.1145/3763088">doi:10.1145/3763088</a> · Code: <a href="https://github.com/jsl1994/Phocus">github.com/jsl1994/Phocus</a>
