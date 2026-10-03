@@ -147,7 +147,7 @@
 
 <p>Laurel's fix was to treat the whole update formula as a single object. In the simplest scheme, each new value depends on two neighbors. Picture the formula as a surface, with the two old values marking a spot on the floor and the new value as the height above it. The surface is curved, but over the small patch that matters at any one step, it is nearly flat.</p>
 
-<p>Phocus fits a plane through samples of the surface. It then computes the farthest the surface ever strays from that plane — call it <span class="m">D</span> — and thickens the plane by <span class="m">D</span> on each side. The true surface is guaranteed to lie inside. The fit only has to be a good guess; the guarantee comes entirely from <span class="m">D</span>. Finding <span class="m">D</span> exactly is hard in general, but the structure of these schemes lets the team compute it. “This is where continuous optimization saves the day,” Laurel said.</p>
+<p>Phocus fits a plane through samples of the surface. It then computes the farthest the surface ever strays from that plane (call it <span class="m">D</span>) and thickens the plane by <span class="m">D</span> on each side. The true surface is guaranteed to lie inside. The fit only has to be a good guess; the guarantee comes entirely from <span class="m">D</span>. Finding <span class="m">D</span> exactly is hard in general, but the structure of these schemes lets the team compute it. “This is where continuous optimization saves the day,” Laurel said.</p>
 
 <p>The standard analysis loses a little precision at every operation. Phocus loses it once per formula and measures the loss exactly. It also carries less bookkeeping from step to step, which makes it faster.</p>
 
