@@ -1,7 +1,3 @@
----
-permalink: /robots.txt
----
 User-agent: *
-Disallow: /news/
 
-Sitemap: {{ site.baseurl | prepend: site.url }}/sitemap.xml
+Sitemap: https://bhumikamittal.in/sitemap.xml

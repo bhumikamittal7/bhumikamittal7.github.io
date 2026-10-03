@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
-/* ICHIM 2026 — "The Patākā in the Gaṇitakaumudī".
-   The stage, motion, page chrome and shared components live in ../shared/deck.base.css,
+/* ICHIM 2026: "The Patākā in the Gaṇitakaumudī".
+   The stage, motion, page chrome and shared components live in shared/deck.base.css,
    which index.html loads first. This file carries the theme and the patākā figures. */
 
-/* Theme — "Soft Editorial" */
+/* Theme: "Soft Editorial" */
 :root{
   --paper:#F2EEDF; --paper-2:#ECE6D2; --ink:#2A241B; --ink-soft:#5C5345;
   --pink:#E1A4C2; --lemon:#D6DD63; --blush:#E8C9B6; --sage:#B7C7A8; --lilac:#C9BEDC;
@@ -17,10 +17,10 @@
   --ease:cubic-bezier(0.16,1,0.3,1); --dur:0.75s;
 }
 
-/* seven digit-sum tints — one per patākā column, sum 0 … 6 */
+/* seven digit-sum tints: one per patākā column, sum 0 … 6 */
 :root{--s0:#DCCFB2;--s1:#E8C9B6;--s2:#E1A4C2;--s3:#D6DD63;--s4:#C9BEDC;--s5:#B7C7A8;--s6:#A9C6CE;}
 
-/* Patākā flag — a plain square grid, borders collapsed to single hairlines */
+/* Patākā flag: a plain square grid, borders collapsed to single hairlines */
 .flag{display:flex;align-items:flex-start;justify-content:center;}
 .flag-col{display:flex;flex-direction:column;margin-left:-1px;}
 .flag-col:first-child{margin-left:0;}
@@ -32,14 +32,14 @@
 .cell.row1{background:rgba(183,199,168,.26);}
 .cell.gold{background:rgba(214,221,99,.6);border-color:#9A8548;box-shadow:inset 0 0 0 1px #9A8548;z-index:2;}
 
-/* compact flag — the larger (4,3) patākā, twelve cells tall */
+/* compact flag: the larger (4,3) patākā, twelve cells tall */
 .flag.sm .cell{width:54px;height:54px;font-size:24px;}
 
 /* observation marks on flag cells + column-height labels */
 .mk{position:absolute;inset:5px;border:2.5px solid #9A8548;border-radius:10px;pointer-events:none;}
 .hlabel{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--ink-soft);text-align:center;margin-top:14px;}
 
-/* Convolution (kapāṭa-sandhi) — nārācikā = coefficients of (1+x+x²)ⁿ */
+/* Convolution (kapāṭa-sandhi): nārācikā = coefficients of (1+x+x²)ⁿ */
 .conv{display:flex;flex-direction:column;gap:8px;font-family:var(--serif);color:var(--ink);font-variant-numeric:tabular-nums;}
 .conv-row{display:grid;grid-template-columns:repeat(7,56px);gap:14px;font-size:36px;}
 .conv-row span{text-align:center;}
