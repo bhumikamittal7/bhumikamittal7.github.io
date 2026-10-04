@@ -197,7 +197,8 @@ section > h2 {
   padding: 5px 0;
 }
 
-.dated.short li { grid-template-columns: 3rem 1fr; }
+.dated.short li { grid-template-columns: 4rem 1fr; }
+.dated.short .when { white-space: nowrap; }
 
 .when {
   color: var(--ink-faint);
@@ -282,7 +283,7 @@ ul.prose li { margin: 3px 0; }
   .contact br { display: none; }
   .page-title { font-size: 2rem; }
   .dated li { grid-template-columns: 5rem 1fr; gap: 12px; }
-  .dated.short li { grid-template-columns: 2.6rem 1fr; }
+  .dated.short li { grid-template-columns: 3.6rem 1fr; }
   th, td { padding-right: 14px; }
 }
 
