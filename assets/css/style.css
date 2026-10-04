@@ -73,8 +73,18 @@ p { margin: 0 0 1em; }
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
+  line-height: 1.15;
 }
-.site-name .name-hi { display: none; }
+.site-name .name-hi {
+  display: block;
+  margin-top: 2px;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+.site-name .name-hi::before { content: "("; }
+.site-name .name-hi::after { content: ")"; }
 
 .site-nav {
   display: flex;
@@ -169,15 +179,6 @@ section > h2 {
   font-size: 0.85rem;
   line-height: 1.8;
 }
-.contact .deva {
-  display: block;
-  width: 170px;
-  text-align: center;
-  margin-bottom: 4px;
-  font-family: 'Tiro Devanagari Hindi', serif;
-  font-size: 1.15rem;
-  color: var(--ink);
-}
 .contact .email { white-space: nowrap; font-size: 0.76rem; }
 .contact a { display: block; width: fit-content; }
 
@@ -267,17 +268,6 @@ ul.prose li { margin: 3px 0; }
   .site-header.nav-open .site-nav { display: flex; }
   main { padding: 28px 16px 56px; }
   .intro { grid-template-columns: 1fr; gap: 20px; }
-  .site-name { line-height: 1.15; }
-  .site-name .name-hi {
-    display: block;
-    margin-top: 2px;
-    font-family: 'Tiro Devanagari Hindi', serif;
-    font-size: 1.05rem;
-    font-weight: 400;
-    color: var(--ink-soft);
-  }
-  .site-name .name-hi::before { content: "("; }
-  .site-name .name-hi::after { content: ")"; }
   .side { display: flex; flex-direction: column; align-items: center; gap: 14px; }
   .photo { width: 150px; }
   .contact {
@@ -289,7 +279,6 @@ ul.prose li { margin: 3px 0; }
     text-align: center;
   }
   .contact .email { flex-basis: 100%; font-size: 0.8rem; }
-  .contact .deva { display: none; }
   .contact br { display: none; }
   .page-title { font-size: 2rem; }
   .dated li { grid-template-columns: 5rem 1fr; gap: 12px; }
