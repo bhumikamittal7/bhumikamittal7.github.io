@@ -297,3 +297,48 @@ ul.prose li { margin: 3px 0; }
   font-size: 0.88rem;
   font-style: italic;
 }
+
+/* research areas */
+
+.lead {
+  font-size: 1.08rem;
+  margin-bottom: 22px;
+}
+
+.areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.area {
+  padding: 16px 18px 4px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+
+.area-wide { grid-column: 1 / -1; }
+
+.area-tag {
+  margin: 0 0 2px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.area h2 {
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+}
+
+.area p:last-child {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .areas { grid-template-columns: 1fr; gap: 12px; }
+}
