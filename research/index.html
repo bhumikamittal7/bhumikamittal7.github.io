@@ -26,9 +26,25 @@
 <main>
   <h1 class="page-title">Research</h1>
 
-  <p>My research interests lie in cryptography, programming languages, and formal verification. In particular, my current work focuses on program analysis for finite field computations.</p>
-  <p>Recently, I have also been exploring questions in the history of Indian mathematics. In the past, I have worked on problems in discrete mathematics and computer architecture and systems.</p>
-  <p>Most recent publications are on <a href="https://scholar.google.com/citations?user=erLD5B0AAAAJ">Google Scholar</a>.</p>
+  <p class="lead">I work at the intersection of programming languages and cryptography.</p>
+
+  <div class="areas">
+    <div class="area">
+      <p class="area-tag">Now</p>
+      <h2>Programming Languages</h2>
+      <p>Equivalence checking and code optimization for finite-field computations in cryptographic implementations, with an emphasis on correctness and performance.</p>
+    </div>
+    <div class="area">
+      <p class="area-tag">Before</p>
+      <h2>Cryptography &amp; Systems</h2>
+      <p>Cryptographic primitives and protocols, <a href="#debruijn">discrete mathematics</a>, and <a href="#axlam">computer architecture</a>. My <a href="#thesis">undergraduate thesis</a> explored a function-level abstraction of ring signatures.</p>
+    </div>
+    <div class="area area-wide">
+      <p class="area-tag">Also</p>
+      <h2>History of Mathematics &amp; CS Education</h2>
+      <p>Interested in how <a href="#pataka">mathematical ideas</a> developed and spread across cultures and centuries, and in curriculum design, educational tools, and how AI is changing what and how we teach computer science.</p>
+    </div>
+  </div>
 
   <section>
     <h2>Conference papers</h2>
@@ -36,12 +52,14 @@
       <li>
         <span class="item-title">The Trust a Protocol Needs</span>
         <span class="meta"><em>with</em> <a href="https://aalok-thakkar.github.io/">Aalok Thakkar</a></span><br>
-        <span class="meta"><em>International Conference on Information Systems Security (<a href="https://iciss.in/">ICISS</a>)</em>, 2026</span>
+        <span class="meta"><em>International Conference on Information Systems Security (<a href="https://iciss.in/">ICISS</a>)</em>, 2026</span><br>
+        <span class="links"><a href="https://arxiv.org/abs/2610.09730">arXiv</a></span>
       </li>
       <li>
         <span class="item-title">Defining Purpose Limited Secrets</span>
         <span class="meta"><em>with</em> <a href="https://aalok-thakkar.github.io/">Aalok Thakkar</a></span><br>
-        <span class="meta"><em>International Conference on Information Systems Security (<a href="https://iciss.in/">ICISS</a>)</em>, 2026</span>
+        <span class="meta"><em>International Conference on Information Systems Security (<a href="https://iciss.in/">ICISS</a>)</em>, 2026</span><br>
+        <span class="links"><a href="https://arxiv.org/abs/2610.10010">arXiv</a></span>
       </li>
     </ul>
   </section>
@@ -49,13 +67,18 @@
   <section>
     <h2>Journal papers</h2>
     <ul class="pubs">
-      <li>
+      <li id="pataka">
+        <span class="item-title">The Patākā in the Gaṇitakaumudī</span>
+        <span class="meta"><em>with</em> Prasad Jawalgekar, <a href="https://www.kramasubramanian.com/">K. Ramasubramanian</a>, and <a href="https://aalok-thakkar.github.io/">Aalok Thakkar</a></span><br>
+        <span class="meta"><em>To appear in Gaṇita Bhāratī</em></span>
+      </li>
+      <li id="axlam">
         <span class="item-title">AxLaM: Energy-Efficient Accelerator Design for Language Models for Edge Computing</span>
         <span class="meta"><em>with</em> <a href="https://sites.google.com/view/tomglint/home">Tom Glint</a>, Santripta Sharma, Abdul Ronak, Abhinav Goud, Neerja Kasture, Zaqi Momin, Aravind Krishna, and <a href="https://iitgn.ac.in/faculty/ee/fac-joycee">Joycee Mekie</a></span><br>
         <span class="meta"><em>Philosophical Transactions of the Royal Society A</em>, 2025</span><br>
         <span class="links"><a href="/assets/pdf/Philov3_BERT_Accelerator.pdf">PDF</a><a href="https://doi.org/10.1098/rsta.2023.0395">DOI</a></span>
       </li>
-      <li>
+      <li id="debruijn">
         <span class="item-title">On the Existence of Balanced Generalized de Bruijn Sequences</span>
         <span class="meta"><em>with</em> <a href="https://people.math.gatech.edu/~mbaker/">Matthew Baker</a>, Haran Mouli, and Eric Tang</span><br>
         <span class="meta"><em>Discrete Mathematics</em>, 2023</span><br>
@@ -67,7 +90,7 @@
   <section>
     <h2>Thesis</h2>
     <ul class="pubs">
-      <li>
+      <li id="thesis">
         <span class="item-title">Ring Trapdoor Functions: A Lattice-Based Framework for Secure Ring Signatures</span>
         <span class="meta">Undergraduate thesis, Ashoka University, 2025</span><br>
         <span class="links"><a href="/assets/pdf/undergrad_thesis_bhumika.pdf">PDF</a><a href="/assets/pdf/ugthesis_presentation.pdf">Slides</a></span>
