@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformation Examples</title>
+<style>
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: #fff; color: #111; font: 15px/1.5 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.mono, code { font-family: Menlo, Consolas, monospace; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; display: grid; gap: 28px; justify-items: center; text-align: center; }
+h1 { font-size: 1.4rem; font-weight: 600; margin: 0; }
+
+/* segmented controls */
+.seg { display: inline-flex; border: 1px solid #ddd; border-radius: 999px; padding: 3px; gap: 2px; }
+.seg button { font: inherit; font-size: .9rem; border: 0; background: none; color: #555; padding: 5px 14px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: #111; color: #fff; }
+.seg.small button { font-size: .8rem; padding: 3px 10px; }
+button:focus-visible, input:focus-visible, .node:focus-visible { outline: 2px solid #4a7bd0; outline-offset: 2px; }
+
+.panel { display: grid; gap: 22px; justify-items: center; width: 100%; }
+.row { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: center; align-items: center; }
+.slider { display: flex; align-items: center; gap: 10px; }
+.slider label { font-family: Menlo, Consolas, monospace; color: #555; }
+.slider output { font-family: Menlo, Consolas, monospace; min-width: 3.2em; text-align: left; font-weight: 600; }
+input[type="range"] { width: 220px; max-width: 55vw; accent-color: #111; }
+
+/* step dial */
+.dial { display: grid; gap: 10px; justify-items: center; }
+.dial-nav { display: flex; align-items: center; gap: 14px; }
+.arrow { font: inherit; font-size: 1.1rem; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #ddd; background: #fff; cursor: pointer; }
+.arrow:disabled { opacity: .3; cursor: default; }
+.dots { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; max-width: 420px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; border: 0; background: #ddd; padding: 0; cursor: pointer; }
+.dot.done { background: #999; }
+.dot.cur { background: #111; transform: scale(1.25); }
+.rule { font-size: 1.15rem; font-weight: 600; }
+.rule .k { color: #aaa; font-weight: 400; margin-right: 6px; }
+.hint { color: #777; font-size: .9rem; max-width: 52ch; min-height: 1.5em; }
+
+/* program card */
+.prog { width: 100%; max-width: 640px; border: 1px solid #e5e5e5; border-radius: 10px; padding: 10px 0; text-align: left; overflow-x: auto; }
+.line { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 16px; align-items: center; padding: 4px 18px; font-family: Menlo, Consolas, monospace; font-size: .88rem; white-space: nowrap; }
+.line.changed { background: #fff6cc; }
+.line.input, .line.ret { color: #999; }
+.line.dead { color: #c8c8c8; }
+.line .v { font-weight: 600; }
+.line .val { color: #777; text-align: right; min-width: 4ch; }
+.line.bad .val { color: #c62828; }
+.gone { font-family: Menlo, Consolas, monospace; font-size: .8rem; color: #bbb; text-decoration: line-through; padding: 2px 18px; }
+
+/* bit meter: one cell per bit of the word; red cells are bits beyond the word */
+.meter { display: flex; gap: 1px; }
+.meter i { width: 5px; height: 12px; background: #eee; display: block; }
+.meter i.on { background: #6aa36f; }
+.meter i.over { background: #d33; }
+
+.result { font-size: 1.6rem; font-weight: 600; font-family: Menlo, Consolas, monospace; }
+.ok { color: #1a7f37; }
+.bad { color: #c62828; }
+
+/* bit boxes for ChangeRadix */
+.bits { display: inline-flex; gap: 10px; }
+.nib { display: inline-flex; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; }
+.nib span { width: 20px; height: 24px; display: grid; place-items: center; font-family: Menlo, Consolas, monospace; font-size: .8rem; border-left: 1px solid #eee; }
+.nib span:first-child { border-left: 0; }
+.nib span.one { background: #111; color: #fff; }
+.bitlabel { font-family: Menlo, Consolas, monospace; font-size: .8rem; color: #888; }
+.bitgrid { display: grid; grid-template-columns: auto auto; gap: 8px 14px; align-items: center; justify-items: start; }
+.bitgrid .bitlabel { justify-self: end; }
+
+/* diagram */
+.diagram { width: 100%; overflow-x: auto; }
+.diagram svg { display: block; margin: 0 auto; min-width: 600px; width: 100%; height: auto; }
+.diagram text { font-family: Menlo, Consolas, monospace; font-size: 14px; fill: #111; }
+.diagram .lbl { font-family: -apple-system, Arial, sans-serif; font-size: 11px; fill: #999; }
+.diagram .name { font-family: -apple-system, Arial, sans-serif; font-size: 12px; fill: #999; }
+.diagram .node rect { fill: #fff; stroke-width: 1.5; }
+.diagram .node.safe rect { stroke: #1a7f37; }
+.diagram .node.unsafe rect { stroke: #c62828; fill: #fdecea; }
+.diagram .node.sel rect { stroke-width: 3; }
+.diagram .node { cursor: pointer; }
+.diagram .edge { fill: none; stroke-width: 2; }
+.diagram .edge.safe { stroke: #9ccc9f; }
+.diagram .edge.unsafe { stroke: #e9a39b; stroke-dasharray: 5 4; }
+
+.claim { width: 100%; max-width: 640px; display: grid; gap: 12px; justify-items: center; }
+.goal { font-family: Menlo, Consolas, monospace; font-size: 1.2rem; font-weight: 600; }
+.goal small { display: block; font-family: -apple-system, Arial, sans-serif; font-size: .8rem; font-weight: 400; color: #888; }
+.pair { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+.box { border: 1px solid #e5e5e5; border-radius: 10px; padding: 10px 14px; display: grid; gap: 4px; min-width: 0; }
+.box b { font-size: .95rem; }
+.box .mono { font-size: .82rem; color: #333; }
+.box .muted { font-size: .82rem; color: #888; }
+.to { font-size: 1.3rem; color: #aaa; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; font-family: Menlo, Consolas, monospace; font-size: .82rem; color: #555; }
+.q { font-size: .95rem; font-weight: 600; max-width: 46ch; }
+.check { font-size: .85rem; color: #777; }
+.legend { display: flex; gap: 16px; justify-content: center; font-size: .78rem; color: #888; align-items: center; }
+.legend i { display: inline-block; width: 10px; height: 10px; vertical-align: -1px; margin-right: 4px; }
+.gauge { width: 100%; max-width: 480px; display: grid; gap: 6px; }
+.gauge-bar { position: relative; height: 18px; border-radius: 9px; background: #eef5ee; overflow: hidden; }
+.gauge-bar .red { position: absolute; top: 0; bottom: 0; background: #fbe1de; }
+.gauge-bar .pin { position: absolute; top: -2px; bottom: -2px; width: 3px; background: #111; border-radius: 2px; }
+.gauge-scale { display: flex; justify-content: space-between; font-family: Menlo, Consolas, monospace; font-size: .75rem; color: #999; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Transformation Examples</h1>
+
+  <div class="seg" role="group" aria-label="Example">
+    <button data-tab="mont" aria-pressed="true">Montgomery</button>
+    <!-- ChangeRadix tab disabled for now
+    <button data-tab="radix" aria-pressed="false">ChangeRadix</button>
+    -->
+    <button data-tab="safe" aria-pressed="false">Safety</button>
+  </div>
+
+  <!-- Montgomery -->
+  <section class="panel" id="mont">
+    <div class="claim">
+      <div class="goal">u ≡ x · 2⁻⁸ (mod 13)<small>Montgomery reduction, x ∈ [0, 3327]</small></div>
+      <div class="pair">
+        <div class="box"><b>P₁ · one 8-bit correction</b><span class="mono">pick t with x + 13t ≡ 0 (mod 2⁸)</span><span class="mono">u = (x + 13t) / 2⁸</span></div>
+        <div class="to">→</div>
+        <div class="box"><b>P₂ · two 4-bit corrections</b><span class="mono">v = (x + 13m₀) / 2⁴</span><span class="mono">u = (v + 13m₁) / 2⁴</span></div>
+      </div>
+      <div class="key"><span>t = m₀ + 2⁴·m₁</span><span>13·59 ≡ −1 (mod 2⁸)</span><span>13·11 ≡ −1 (mod 2⁴)</span></div>
+      <div class="q">Each step rewrites the program and keeps u the same for every input.</div>
+    </div>
+    <div class="row">
+      <div class="slider"><label for="mx">x</label><input type="range" id="mx" min="0" max="3327" value="1000"><output id="mx-o">1000</output></div>
+      <div class="seg small" role="group" aria-label="Sequence"><button data-seq="A" aria-pressed="true">A</button><button data-seq="B" aria-pressed="false">B</button></div>
+    </div>
+    <div class="dial" id="mont-dial"></div>
+    <div class="prog" id="mont-prog"></div>
+    <div class="legend"><span><i style="background:#6aa36f"></i>bits each value needs over all inputs</span><span><i style="background:#eee"></i>rest of the 16-bit word</span></div>
+    <div class="result" id="mont-res"></div>
+    <div class="check" id="mont-check"></div>
+  </section>
+
+  <!-- ChangeRadix panel disabled for now
+  <section class="panel" id="radix" hidden>
+    <div class="claim">
+      <div class="goal">F(x) = 3x (mod 13)<small>same function, new data layout, x ∈ [0, 85]</small></div>
+      <div class="pair">
+        <div class="box"><b>one 8-bit limb</b><span class="mono">x  →  s = 3x</span></div>
+        <div class="to">→</div>
+        <div class="box"><b>two 4-bit digits</b><span class="mono">x = x₀ + 2⁴·x₁  →  y₀ + 2⁴·y₁ = 3x</span></div>
+      </div>
+      <div class="key"><span>3x₀ = y₀ + 2⁴·c</span><span>⇒  y₁ = 3x₁ + c</span></div>
+      <div class="q">ChangeRadix changes the layout with conversion code; later rewrites remove the conversions.</div>
+    </div>
+    <div class="slider"><label for="rx">x</label><input type="range" id="rx" min="0" max="85" value="47"><output id="rx-o">47</output></div>
+    <div class="bitgrid" id="radix-bits"></div>
+    <div class="dial" id="radix-dial"></div>
+    <div class="prog" id="radix-prog"></div>
+    <div class="legend"><span><i style="background:#6aa36f"></i>bits each value needs over all inputs</span><span><i style="background:#eee"></i>rest of the 16-bit word</span></div>
+    <div class="result" id="radix-res"></div>
+    <div class="check" id="radix-check"></div>
+  </section>
+
+  -->
+
+  <!-- Safety -->
+  <section class="panel" id="safe" hidden>
+    <div class="claim">
+      <div class="goal">s = x + y + z<small>x, y ∈ [0, 80], z ∈ [−80, −40], 8-bit signed words (−128 … 127)</small></div>
+      <div class="key"><span>x + z, y + z ∈ [−80, 40]  fit</span><span>x + y + z ∈ [−80, 120]  fits</span><span style="color:#c62828">x + y ∈ [0, 160]  does not fit</span></div>
+      <div class="q">Over the integers every grouping gives the same s. If P and P′ fit their words, must every program in between fit too?</div>
+    </div>
+    <div class="row">
+      <div class="slider"><label for="ux">x</label><input type="range" id="ux" min="0" max="80" value="80"><output id="ux-o">80</output></div>
+      <div class="slider"><label for="uy">y</label><input type="range" id="uy" min="0" max="80" value="80"><output id="uy-o">80</output></div>
+      <div class="slider"><label for="uz">z</label><input type="range" id="uz" min="-80" max="-40" value="-40"><output id="uz-o">-40</output></div>
+    </div>
+    <div class="row">
+      <div class="seg small" role="group" aria-label="Overflow"><button data-sem="err" aria-pressed="true">overflow = error</button><button data-sem="wrap" aria-pressed="false">wrap</button></div>
+      <div class="seg small" role="group" aria-label="Word of b"><button data-b="i8" aria-pressed="true">b : i8</button><button data-b="i16" aria-pressed="false">b : i16</button></div>
+    </div>
+    <div class="diagram" id="u-diagram"></div>
+    <div class="gauge" id="u-gauge"></div>
+    <div class="prog" id="u-prog"></div>
+    <div class="legend"><span><i style="background:#6aa36f"></i>bits needed over all inputs</span><span><i style="background:#d33"></i>bits beyond the word</span></div>
+    <div class="result" id="u-res"></div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const RANGES = { u16: [0, 65535], i8: [-128, 127], i16: [-32768, 32767] };
+  const BITS = { u16: 16, i8: 8, i16: 16 };
+  const L = (n, ty, bound, e, f) => ({ n, ty, bound, e, f });
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+  const fits = (ty, b, v) => { const r = RANGES[ty]; return v >= r[0] && v <= r[1] && (!b || (v >= b[0] && v <= b[1])); };
+  const wrapTo = (ty, v) => { const r = RANGES[ty], m = r[1] - r[0] + 1; return ((v - r[0]) % m + m) % m + r[0]; };
+
+  function run(prog, inputs, wrap = false) {
+    const env = { ...inputs }, rows = [];
+    let stop = -1;
+    prog.lines.forEach((ln, i) => {
+      const raw = ln.f(env);
+      let val = raw, ok = fits(ln.ty, ln.bound, raw);
+      if (!ok && wrap) { val = wrapTo(ln.ty, raw); ok = fits(ln.ty, ln.bound, val); }
+      env[ln.n] = val;
+      if (!ok && stop < 0) stop = i;
+      rows.push({ ln, raw, val, ok });
+    });
+    return { env, rows, stop, ret: prog.ret.map(r => env[r]) };
+  }
+  // Bits needed for the values a line takes over the whole domain.
+  const cache = new Map();
+  function domainBits(key, prog, domain, wrap = false) {
+    if (cache.has(key)) return cache.get(key);
+    const mm = prog.lines.map(() => [Infinity, -Infinity]);
+    let safe = true;
+    for (const inp of domain) {
+      const r = run(prog, inp, wrap);
+      r.rows.forEach((row, i) => { const v = wrap ? row.val : row.raw; mm[i][0] = Math.min(mm[i][0], v); mm[i][1] = Math.max(mm[i][1], v); });
+      if (r.stop >= 0) safe = false;
+    }
+    const need = prog.lines.map((ln, i) => {
+      const [lo, hi] = mm[i];
+      if (ln.ty[0] === 'u') return Math.max(1, Math.ceil(Math.log2(hi + 1)));
+      let n = 1; while (lo < -(2 ** (n - 1)) || hi > 2 ** (n - 1) - 1) n++; return n;
+    });
+    const out = { need, safe };
+    cache.set(key, out);
+    return out;
+  }
+  const meter = (ty, need) => {
+    const w = BITS[ty];
+    let s = '';
+    for (let k = 0; k < Math.max(w, need); k++) s += `<i class="${k >= w ? 'over' : k < need ? 'on' : ''}"></i>`;
+    return `<span class="meter" title="${need} of ${w} bits on D">${s}</span>`;
+  };
+
+  function programHTML(prog, inputs, { prev, bits, wrap } = {}) {
+    const r = run(prog, inputs, wrap);
+    const before = new Map((prev ? prev.lines : []).map(l => [l.n, l.e]));
+    let h = prog.inputs.map(n => `<div class="line input"><span>${n}</span><span class="val">${inputs[n]}</span><span></span></div>`).join('');
+    r.rows.forEach((row, i) => {
+      const ln = row.ln;
+      const cls = [prev && before.get(ln.n) !== ln.e ? 'changed' : '', !row.ok ? 'bad' : '', !wrap && r.stop >= 0 && i > r.stop ? 'dead' : ''].join(' ');
+      h += `<div class="line ${cls}"><span><span class="v">${ln.n}</span> := ${esc(ln.e)}</span><span class="val">${row.ok || wrap ? row.val : row.raw + ' ✗'}</span>${bits ? meter(ln.ty, bits.need[i]) : '<span></span>'}</div>`;
+    });
+    if (prev) {
+      const now = new Set(prog.lines.map(l => l.n));
+      prev.lines.filter(l => !now.has(l.n)).forEach(l => { h += `<div class="gone">${l.n} := ${esc(l.e)}</div>`; });
+    }
+    h += `<div class="line ret"><span>return ${prog.ret.join(', ')}</span><span class="val">${!wrap && r.stop >= 0 ? '—' : r.ret.join(', ')}</span><span></span></div>`;
+    return { html: h, r };
+  }
+
+  function dial(el, states, i, onGo) {
+    const s = states[i];
+    el.innerHTML = `<div class="dial-nav">
+        <button class="arrow" data-go="-1" aria-label="Previous step" ${i === 0 ? 'disabled' : ''}>←</button>
+        <div class="dots">${states.map((_, k) => `<button class="dot ${k < i ? 'done' : ''} ${k === i ? 'cur' : ''}" data-k="${k}" aria-label="Step ${k}"></button>`).join('')}</div>
+        <button class="arrow" data-go="1" aria-label="Next step" ${i === states.length - 1 ? 'disabled' : ''}>→</button>
+      </div>
+      <div class="rule"><span class="k">${i}</span>${s.rule}</div>
+      <div class="hint">${s.hint || ''}</div>`;
+    el.onclick = e => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.go) onGo(i + +b.dataset.go); else if (b.dataset.k) onGo(+b.dataset.k);
+    };
+  }
+
+  // ---------------- Montgomery ----------------
+  const U = 'u16';
+  const M = {
+    a: L('a', U, null, 'x & 255', e => e.x & 255),
+    b: L('b', U, null, '59·a', e => 59 * e.a),
+    t: L('t', U, [0, 255], 'b & 255', e => e.b & 255),
+    c: L('c', U, null, '13·t', e => 13 * e.t),
+    s: L('s', U, null, 'x + c', e => e.x + e.c),
+    u8: L('u', U, [0, 25], 's >> 8', e => e.s >> 8),
+    m0t: L('m0', U, [0, 15], 't & 15', e => e.t & 15),
+    m1t: L('m1', U, [0, 15], 't >> 4', e => e.t >> 4),
+    m0E: L('m0', U, [0, 15], '(11·(x & 15)) & 15', e => (11 * (e.x & 15)) & 15),
+    m1E: L('m1', U, [0, 15], '(11·(v & 15)) & 15', e => (11 * (e.v & 15)) & 15),
+    v: L('v', U, [0, 220], '(x + 13·m0) >> 4', e => (e.x + 13 * e.m0) >> 4),
+    u4: L('u', U, [0, 25], '(v + 13·m1) >> 4', e => (e.v + 13 * e.m1) >> 4),
+  };
+  const uX = t => L('u', U, [0, 25], t, e => (e.x + 13 * (e.m0 + 16 * e.m1)) >> 8);
+  const st = (rule, hint, lines) => ({ rule, hint, lines });
+  const A = [
+    st('P₁', 'start: one 8-bit correction t', [M.a, M.b, M.t, M.c, M.s, M.u8]),
+    st('Split(4)', 't = (t & 15) + 2⁴·(t >> 4) = m0 + 16·m1', [M.a, M.b, M.t, M.m0t, M.m1t, uX('(x + 13·(m0 + 16·m1)) >> 8')]),
+    st('Distribute', '13·(m0 + 16·m1) = 13·m0 + 13·(16·m1)', [M.a, M.b, M.t, M.m0t, M.m1t, uX('(x + (13·m0 + 13·(16·m1))) >> 8')]),
+    st('Associate(+)', 'x + (A + B) = (x + A) + B', [M.a, M.b, M.t, M.m0t, M.m1t, uX('((x + 13·m0) + 13·(16·m1)) >> 8')]),
+    st('Associate(·)', 'move the 16 out: 13·(16·m1) → 16·(13·m1)', [M.a, M.b, M.t, M.m0t, M.m1t, uX('((x + 13·m0) + (13·16)·m1) >> 8')]),
+    st('Commute(·)', 'move the 16 out: 13·(16·m1) → 16·(13·m1)', [M.a, M.b, M.t, M.m0t, M.m1t, uX('((x + 13·m0) + (16·13)·m1) >> 8')]),
+    st('Associate(·)', 'move the 16 out: 13·(16·m1) → 16·(13·m1)', [M.a, M.b, M.t, M.m0t, M.m1t, uX('((x + 13·m0) + 16·(13·m1)) >> 8')]),
+    st('Shift(4,4)', '(E + 2⁴·F) >> 8 = ((E >> 4) + F) >> 4,  v = E >> 4', [M.a, M.b, M.t, M.m0t, M.m1t, M.v, M.u4]),
+    st('Swap', 'm1 and v do not read each other, so order is free', [M.a, M.b, M.t, M.m0t, M.v, M.m1t, M.u4]),
+    st('Reduce(4, E₀)', 't ≡ 59x ≡ 11x (mod 2⁴), so m0 = (11·(x & 15)) & 15', [M.a, M.b, M.t, M.m0E, M.v, M.m1t, M.u4]),
+    st('Reduce(4, E₁)', 'x + 13t ≡ 0 (mod 2⁸)  ⇒  v + 13·m1 ≡ 0 (mod 2⁴)  ⇒  m1 = (11·(v & 15)) & 15', [M.a, M.b, M.t, M.m0E, M.v, M.m1E, M.u4]),
+    st('Delete t', 'no line reads t', [M.a, M.b, M.m0E, M.v, M.m1E, M.u4]),
+    st('Delete b', 'no line reads b', [M.a, M.m0E, M.v, M.m1E, M.u4]),
+    st('Delete a', 'end: P₂, two 4-bit corrections', [M.m0E, M.v, M.m1E, M.u4]),
+  ];
+  const B = [
+    A[0], A[1],
+    st('Reduce(4, E₀)', 'same as A step 9, done early: it only reads x', [M.a, M.b, M.t, M.m0E, M.m1t, uX('(x + 13·(m0 + 16·m1)) >> 8')]),
+    st('Distribute', '13·(m0 + 16·m1) = 13·m0 + 13·(16·m1)', [M.a, M.b, M.t, M.m0E, M.m1t, uX('(x + (13·m0 + 13·(16·m1))) >> 8')]),
+    st('Associate(+)', 'x + (A + B) = (x + A) + B', [M.a, M.b, M.t, M.m0E, M.m1t, uX('((x + 13·m0) + 13·(16·m1)) >> 8')]),
+    st('Commute(·)', 'move the 16 out, other order: 13·(16·m1) → 16·(13·m1)', [M.a, M.b, M.t, M.m0E, M.m1t, uX('((x + 13·m0) + (16·m1)·13) >> 8')]),
+    st('Associate(·)', 'move the 16 out, other order: 13·(16·m1) → 16·(13·m1)', [M.a, M.b, M.t, M.m0E, M.m1t, uX('((x + 13·m0) + 16·(m1·13)) >> 8')]),
+    st('Commute(·)', 'move the 16 out, other order: 13·(16·m1) → 16·(13·m1)', [M.a, M.b, M.t, M.m0E, M.m1t, uX('((x + 13·m0) + 16·(13·m1)) >> 8')]),
+    st('Shift(4,4)', '(E + 2⁴·F) >> 8 = ((E >> 4) + F) >> 4,  v = E >> 4', [M.a, M.b, M.t, M.m0E, M.m1t, M.v, M.u4]),
+    st('Swap', 'm1 and v do not read each other, so order is free', [M.a, M.b, M.t, M.m0E, M.v, M.m1t, M.u4]),
+    st('Reduce(4, E₁)', 'x + 13t ≡ 0 (mod 2⁸)  ⇒  m1 = (11·(v & 15)) & 15', [M.a, M.b, M.t, M.m0E, M.v, M.m1E, M.u4]),
+    A[11], A[12], A[13],
+  ];
+  const mDom = Array.from({ length: 3328 }, (_, x) => ({ x }));
+  const mProg = lines => ({ inputs: ['x'], lines, ret: ['u'] });
+  let seq = 'A', mi = 0;
+  function drawMont() {
+    const states = seq === 'A' ? A : B, s = states[mi], x = +$('mx').value;
+    dial($('mont-dial'), states, mi, k => { mi = Math.max(0, Math.min(states.length - 1, k)); drawMont(); });
+    const prog = mProg(s.lines);
+    const out = programHTML(prog, { x }, { prev: mi ? mProg(states[mi - 1].lines) : null, bits: domainBits(`m${seq}${mi}`, prog, mDom) });
+    $('mont-prog').innerHTML = out.html;
+    const u = out.r.ret[0], good = (256 * u) % 13 === x % 13;
+    $('mont-res').innerHTML = `u = ${u} <span class="${good ? 'ok' : 'bad'}">${good ? '✓' : '✗'}</span>`;
+    const key = `mc${seq}${mi}`;
+    if (!cache.has(key)) cache.set(key, mDom.every(d => run(prog, d).ret[0] === run(mProg(A[0].lines), d).ret[0]));
+    $('mont-check').innerHTML = cache.get(key) ? '<span class="ok">✓</span> same u as P₁ for all 3328 inputs' : '<span class="bad">✗</span> differs from P₁';
+  }
+  $('mx').oninput = () => { $('mx-o').textContent = $('mx').value; drawMont(); };
+  document.querySelectorAll('[data-seq]').forEach(b => b.onclick = () => {
+    seq = b.dataset.seq; mi = 0;
+    document.querySelectorAll('[data-seq]').forEach(o => o.setAttribute('aria-pressed', o === b));
+    drawMont();
+  });
+
+  /* ChangeRadix disabled for now
+  // ---------------- ChangeRadix ----------------
+  const R = {
+    s: L('s', U, [0, 255], '3·x', e => 3 * e.x),
+    h: L('h', U, null, '16·x1', e => 16 * e.x1),
+    x: L('x', U, [0, 85], 'x0 + h', e => e.x0 + e.h),
+    y0s: L('y0', U, [0, 15], 's & 15', e => e.s & 15),
+    y1s: L('y1', U, [0, 15], 's >> 4', e => e.s >> 4),
+    a: L('a', U, [0, 45], '3·x0', e => 3 * e.x0),
+    y0a: L('y0', U, [0, 15], 'a & 15', e => e.a & 15),
+    c: L('c', U, [0, 2], 'a >> 4', e => e.a >> 4),
+    b: L('b', U, [0, 15], '3·x1', e => 3 * e.x1),
+    y1: L('y1', U, [0, 15], 'b + c', e => e.b + e.c),
+  };
+  const RS = [
+    { rule: 'source', hint: 'start: s = 3x on one 8-bit limb', inputs: ['x'], ret: ['s'], lines: [R.s] },
+    { rule: 'ChangeRadix(in)', hint: 'input is now x0, x1; rebuild x = x0 + 16·x1', inputs: ['x0', 'x1'], ret: ['s'], lines: [R.h, R.x, R.s] },
+    { rule: 'ChangeRadix(out)', hint: 'output is now y0 = s & 15, y1 = s >> 4', inputs: ['x0', 'x1'], ret: ['y0', 'y1'], lines: [R.h, R.x, R.s, R.y0s, R.y1s] },
+    { rule: 'Reduce(4, E₀)', hint: 's = 3x0 + 16·(3x1) ≡ 3x0 (mod 2⁴), so y0 = (3x0) & 15', inputs: ['x0', 'x1'], ret: ['y0', 'y1'], lines: [R.h, R.x, R.s, R.a, R.y0a, R.y1s] },
+    { rule: 'Reduce(4, E₁)', hint: '3x0 = y0 + 16·c  ⇒  s >> 4 = 3x1 + c', inputs: ['x0', 'x1'], ret: ['y0', 'y1'], lines: [R.h, R.x, R.s, R.a, R.y0a, R.c, R.b, R.y1] },
+    { rule: 'Delete s', hint: 'no line reads s', inputs: ['x0', 'x1'], ret: ['y0', 'y1'], lines: [R.h, R.x, R.a, R.y0a, R.c, R.b, R.y1] },
+    { rule: 'Delete x', hint: 'no line reads x', inputs: ['x0', 'x1'], ret: ['y0', 'y1'], lines: [R.h, R.a, R.y0a, R.c, R.b, R.y1] },
+    { rule: 'Delete h', hint: 'end: digits in, digits out, no conversion', inputs: ['x0', 'x1'], ret: ['y0', 'y1'], lines: [R.a, R.y0a, R.c, R.b, R.y1] },
+  ];
+  const rIn = (x, s) => s.inputs.length === 1 ? { x } : { x0: x & 15, x1: x >> 4 };
+  const nib = (v, n) => `<span class="nib">${Array.from({ length: n }, (_, k) => { const bit = (v >> (n - 1 - k)) & 1; return `<span class="${bit ? 'one' : ''}">${bit}</span>`; }).join('')}</span>`;
+  let ri = 0;
+  function drawRadix() {
+    const s = RS[ri], x = +$('rx').value;
+    dial($('radix-dial'), RS, ri, k => { ri = Math.max(0, Math.min(RS.length - 1, k)); drawRadix(); });
+    const prog = { inputs: s.inputs, lines: s.lines, ret: s.ret };
+    const dom = Array.from({ length: 86 }, (_, v) => rIn(v, s));
+    const prev = ri ? { lines: RS[ri - 1].lines } : null;
+    const out = programHTML(prog, rIn(x, s), { prev, bits: domainBits(`r${ri}`, prog, dom) });
+    $('radix-prog').innerHTML = out.html;
+    const splitIn = s.inputs.length === 2, splitOut = s.ret.length === 2;
+    const y = 3 * x;
+    $('radix-bits').innerHTML =
+      `<span class="bitlabel">in ${splitIn ? 'x1 | x0' : 'x'}</span><span class="bits">${splitIn ? nib(x >> 4, 4) + nib(x & 15, 4) : nib(x, 8)}</span>` +
+      `<span class="bitlabel">out ${splitOut ? 'y1 | y0' : 's'}</span><span class="bits">${splitOut ? nib(y >> 4, 4) + nib(y & 15, 4) : nib(y, 8)}</span>`;
+    const dec = s.ret.length === 2 ? out.r.ret[0] + 16 * out.r.ret[1] : out.r.ret[0];
+    $('radix-res').innerHTML = `${dec} = 3·${x} <span class="${dec === y ? 'ok' : 'bad'}">${dec === y ? '✓' : '✗'}</span>`;
+    const allOk = dom.every((d, v) => { const rr = run(prog, d).ret; return (rr.length === 2 ? rr[0] + 16 * rr[1] : rr[0]) === 3 * v; });
+    $('radix-check').innerHTML = allOk ? '<span class="ok">✓</span> output = 3x for all 86 inputs' : '<span class="bad">✗</span> output differs';
+  }
+  $('rx').oninput = () => { $('rx-o').textContent = $('rx').value; drawRadix(); };
+
+  */
+
+  // ---------------- Safety ----------------
+  let wrap = false, bTy = 'i8', sel = 'Q1';
+  const I8 = 'i8';
+  const nodes = () => ({
+    P:  { name: 'P',  label: '(x+z)+y', lines: [L('a', I8, null, 'x + z', e => e.x + e.z), L('s', I8, null, 'a + y', e => e.a + e.y)] },
+    Pa: { name: '',   label: '(z+x)+y', lines: [L('a', I8, null, 'z + x', e => e.z + e.x), L('s', I8, null, 'a + y', e => e.a + e.y)] },
+    Q1: { name: 'Q₁', label: 'z+(x+y)', lines: [L('b', bTy, null, 'x + y', e => e.x + e.y), L('s', I8, null, 'z + b', e => e.z + e.b)] },
+    Q2: { name: 'Q₂', label: '(x+y)+z', lines: [L('b', bTy, null, 'x + y', e => e.x + e.y), L('s', I8, null, 'b + z', e => e.b + e.z)] },
+    Pp: { name: 'P′', label: 'x+(y+z)', lines: [L('c', I8, null, 'y + z', e => e.y + e.z), L('s', I8, null, 'x + c', e => e.x + e.c)] },
+    Mi: { name: '',   label: 'x+(z+y)', lines: [L('c', I8, null, 'z + y', e => e.z + e.y), L('s', I8, null, 'x + c', e => e.x + e.c)] },
+  });
+  const uDom = [];
+  for (let x = 0; x <= 80; x++) for (let y = 0; y <= 80; y++) for (let z = -80; z <= -40; z++) uDom.push({ x, y, z });
+  const pos = { P: [70, 50], Pa: [230, 50], Q1: [390, 50], Q2: [550, 50], Pp: [710, 50], Mi: [390, 150] };
+  const top = [['P', 'Pa', 'Commute'], ['Pa', 'Q1', 'Associate'], ['Q1', 'Q2', 'Commute'], ['Q2', 'Pp', 'Associate']];
+  const bottom = [['P', 'Mi', 'Associate'], ['Mi', 'Pp', 'Commute']];
+  function drawSafe() {
+    const ns = nodes(), inp = { x: +$('ux').value, y: +$('uy').value, z: +$('uz').value };
+    const safe = {};
+    for (const k in ns) safe[k] = domainBits(`u${k}${bTy}${wrap}`, { inputs: ['x', 'y', 'z'], lines: ns[k].lines, ret: ['s'] }, uDom, wrap).safe;
+    const W = 112, H = 34;
+    const edge = ([a, b, lab]) => {
+      const [x1, y1] = pos[a], [x2, y2] = pos[b];
+      const cls = safe[a] && safe[b] ? 'safe' : 'unsafe';
+      let d, lx, ly;
+      if (y1 === y2) { d = `M${x1 + W / 2},${y1} L${x2 - W / 2},${y2}`; lx = (x1 + x2) / 2; ly = y1 + H / 2 + 14; }
+      else if (y2 > y1) { d = `M${x1},${y1 + H / 2} L${x1},${y2} L${x2 - W / 2},${y2}`; lx = (x1 + x2) / 2; ly = y2 + 22; }
+      else { d = `M${x1 + W / 2},${y1} L${x2},${y1} L${x2},${y2 + H / 2}`; lx = (x1 + x2) / 2; ly = y1 + 22; }
+      return `<path class="edge ${cls}" d="${d}"/><text class="lbl" x="${lx}" y="${ly}" text-anchor="middle">${lab}</text>`;
+    };
+    let svg = `<svg viewBox="0 0 780 195" role="img" aria-label="Two paths from P to P prime">`;
+    svg += top.map(edge).join('') + bottom.map(edge).join('');
+    for (const k in pos) {
+      const [x, y] = pos[k];
+      svg += `<g class="node ${safe[k] ? 'safe' : 'unsafe'} ${sel === k ? 'sel' : ''}" data-k="${k}" tabindex="0" role="button" aria-label="${ns[k].label}">
+        <rect x="${x - W / 2}" y="${y - H / 2}" width="${W}" height="${H}" rx="8"/>
+        <text x="${x}" y="${y + 5}" text-anchor="middle">${ns[k].label}</text>
+        ${ns[k].name ? `<text class="name" x="${x}" y="${y - H / 2 - 7}" text-anchor="middle">${ns[k].name}</text>` : ''}</g>`;
+    }
+    $('u-diagram').innerHTML = svg + '</svg>';
+
+    // gauge: x + y against the word limit of b
+    const xy = inp.x + inp.y, hi = 170, pct = v => v / hi * 100;
+    const lim = RANGES[bTy][1];
+    $('u-gauge').innerHTML = `<div class="gauge-bar"><div class="red" style="left:${Math.min(100, pct(lim + 1))}%;right:0"></div><div class="pin" style="left:calc(${pct(xy)}% - 1px)"></div></div>
+      <div class="gauge-scale"><span>x + y = ${xy}</span><span>${bTy} limit ${lim}</span></div>`;
+
+    const n = ns[sel];
+    const prog = { inputs: ['x', 'y', 'z'], lines: n.lines, ret: ['s'] };
+    const out = programHTML(prog, inp, { bits: domainBits(`u${sel}${bTy}${wrap}`, prog, uDom, wrap), wrap });
+    $('u-prog').innerHTML = out.html;
+    const stopped = !wrap && out.r.stop >= 0, sum = inp.x + inp.y + inp.z;
+    $('u-res').innerHTML = stopped ? `<span class="bad">overflow</span>` : `s = ${out.r.ret[0]} <span class="${out.r.ret[0] === sum ? 'ok' : 'bad'}">${out.r.ret[0] === sum ? '✓' : '✗'}</span>`;
+  }
+  ['ux', 'uy', 'uz'].forEach(id => $(id).oninput = () => { $(id + '-o').textContent = $(id).value; drawSafe(); });
+  $('u-diagram').onclick = e => { const g = e.target.closest('.node'); if (g) { sel = g.dataset.k; drawSafe(); } };
+  $('u-diagram').onkeydown = e => { const g = e.target.closest('.node'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); sel = g.dataset.k; drawSafe(); } };
+  const toggle = (attr, set) => document.querySelectorAll(`[data-${attr}]`).forEach(b => b.onclick = () => {
+    document.querySelectorAll(`[data-${attr}]`).forEach(o => o.setAttribute('aria-pressed', o === b));
+    set(b.dataset[attr]); drawSafe();
+  });
+  toggle('sem', v => { wrap = v === 'wrap'; });
+  toggle('b', v => { bTy = v; });
+
+  // ---------------- tabs and keys ----------------
+  let tab = 'mont';
+  const show = t => {
+    tab = t;
+    document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tab === t));
+    ['mont', 'safe'].forEach(id => { $(id).hidden = id !== t; });
+  };
+  document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => show(b.dataset.tab));
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d) return;
+    if (tab === 'mont') { const n = (seq === 'A' ? A : B).length; mi = Math.max(0, Math.min(n - 1, mi + d)); drawMont(); }
+    // if (tab === 'radix') { ri = Math.max(0, Math.min(RS.length - 1, ri + d)); drawRadix(); }
+  });
+  const h = { montgomery: 'mont', safety: 'safe' }[location.hash.slice(1)];
+  show(h || 'mont');
+  drawMont(); drawSafe(); // drawRadix();
+})();
+</script>
+</body>
+</html>
