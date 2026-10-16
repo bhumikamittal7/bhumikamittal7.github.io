@@ -180,6 +180,7 @@ section > h2 {
   line-height: 1.8;
 }
 .contact .email { white-space: nowrap; font-size: 0.76rem; }
+.contact .office { display: block; font-size: 0.76rem; line-height: 1.5; margin: 4px 0 8px; }
 .contact a { display: block; width: fit-content; }
 
 /* dated lists: news, teaching, talks */
@@ -280,7 +281,8 @@ ul.prose li { margin: 3px 0; }
     text-align: center;
   }
   .contact .email { flex-basis: 100%; font-size: 0.8rem; }
-  .contact br { display: none; }
+  .contact .email + br { display: none; }
+  .contact .office { flex-basis: 100%; }
   .page-title { font-size: 2rem; }
   .dated li { grid-template-columns: 5rem 1fr; gap: 12px; }
   .dated.short li { grid-template-columns: 3.6rem 1fr; }
