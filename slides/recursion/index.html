@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ===================================================================
+     DECK TITLE (shown in the browser tab)
+     =================================================================== -->
+<title>Recursion</title>
+
+<!-- Fonts and math (KaTeX). Leave as is. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"></script>
+
+
+<!-- ███████████████████████████████████████████████████████████████████
+     STYLES
+     ███████████████████████████████████████████████████████████████████ -->
+<style>
+/* =====================================================================
+   STYLES
+   Sections 1–7 make the deck work. To change colors or fonts, edit
+   1. THEME. Put styles for your own slides in 8. YOUR OWN STYLES.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. THEME — colors and fonts used everywhere
+   --------------------------------------------------------------------- */
+:root{
+  --ink:#111;         /* text and lines            */
+  --muted:#6f6f6f;    /* secondary text            */
+  --faint:#ececec;    /* subtle borders            */
+  --hl:#ffe45c;       /* highlighter yellow        */
+  --bg:#fff;          /* background                */
+  --code-bg:#f7f7f7;  /* code block background     */
+  --sans:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:'JetBrains Mono',Menlo,Consolas,monospace;
+}
+
+
+/* ---------------------------------------------------------------------
+   2. STAGE — every slide is a fixed 1600×900 canvas, scaled to the window
+   --------------------------------------------------------------------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden;font-family:var(--sans)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1600px;height:900px;flex:none;transform-origin:center;overflow:hidden}
+
+/* Slide: content is centered horizontally and vertically */
+.slide{position:absolute;inset:0;padding:70px 120px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .5s, visibility 0s linear .5s, transform .5s}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .5s, transform .5s}
+.slide.past{transform:translateX(-24px)}
+
+/* Slide counter (bottom right) and progress bar (bottom) */
+#num{position:fixed;right:34px;bottom:22px;font-size:14px;color:#bbb;z-index:5}
+#bar{position:fixed;left:0;bottom:0;height:4px;background:var(--ink);transition:width .5s;z-index:5}
+
+
+/* ---------------------------------------------------------------------
+   3. TEXT & LAYOUT HELPERS
+   --------------------------------------------------------------------- */
+.title{font-size:96px;font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.big  {font-size:60px;font-weight:780;letter-spacing:-.02em;line-height:1.15}
+.text {font-size:34px;line-height:1.45}
+.muted{color:var(--muted)}
+.left {text-align:left}
+.row  {display:flex;gap:60px;align-items:center;justify-content:center}   /* side by side */
+.col  {display:flex;flex-direction:column;align-items:center}             /* stacked      */
+.katex{font-size:1.08em}
+svg text{font-family:var(--sans)}
+
+
+/* ---------------------------------------------------------------------
+   4. COMPONENTS
+   --------------------------------------------------------------------- */
+/* Box with a small caps label — definitions, theorems, key facts */
+.box  {border:2px solid var(--ink);border-radius:14px;padding:22px 34px;text-align:left}
+.label{font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+
+/* Code block. Wrap each line in <span class="ln"> to highlight it on a click */
+pre.code{font-family:var(--mono);font-variant-ligatures:none;font-size:26px;line-height:1.6;text-align:left;white-space:pre;
+  background:var(--code-bg);border:1.5px solid var(--faint);border-radius:12px;padding:18px 26px;display:inline-block}
+pre.code .ln{display:block;border-radius:4px;transition:background-color .4s}
+pre.code .ln.on{background:var(--hl)}
+
+/* Screenshot or paper page: tilted, with a soft shadow.
+   Tilt with style="rotate:-2deg"; set width/height on the .shot */
+.shot{border:1.5px solid #ddd;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.14);background:#fff;overflow:hidden;flex:none}
+.shot img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Cards: picture on top, title / one-liner / bottom line below */
+.cards{display:flex;gap:40px;align-items:stretch}
+.card{width:420px;border:2px solid var(--ink);border-radius:16px;overflow:hidden;background:#fff;text-align:left;display:flex;flex-direction:column}
+.card .pic{height:250px;background:#e9e9e9 center/cover no-repeat}
+.card .body{padding:18px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .name{font-size:30px;font-weight:800}
+.card .name span{font-size:22px;font-weight:500;color:var(--muted);margin-left:8px}
+.card .desc{font-size:21px;line-height:1.4}
+.card .foot{margin-top:auto;padding-top:8px;border-top:1.5px solid var(--faint);font-size:22px;font-weight:700}
+
+/* Source / credit line, bottom right of a slide */
+.src{position:absolute;right:34px;bottom:42px;max-width:1000px;font-size:13px;color:#9a9a9a;text-align:right}
+
+/* Highlighter: yellow sweep behind text */
+.hl{background-image:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);
+  background-repeat:no-repeat;background-size:0% 100%;padding:0 .12em;margin:0 -.12em}
+.hl.on,.hl:not([data-f]){background-size:100% 100%}
+
+
+/* ---------------------------------------------------------------------
+   5. CLICK-TO-REVEAL (fragments)
+   data-f="1"   hidden until the 1st click on this slide, data-f="2" the 2nd, ...
+   data-off="1" visible until the 1st click, then fades away
+   Optional extra class on a data-f element to change how it enters:
+     zoom · from-left · from-right · fade
+   --------------------------------------------------------------------- */
+[data-f]{transition:opacity .55s var(--d,0s), transform .6s cubic-bezier(.2,.75,.2,1) var(--d,0s), background-size .7s var(--d,0s), background-color .4s}
+[data-f]:not(.hl):not(.ln){opacity:0;transform:translateY(18px)}
+[data-f].zoom:not(.hl){transform:scale(.86)}
+[data-f].from-left:not(.hl){transform:translateX(-50px)}
+[data-f].from-right:not(.hl){transform:translateX(50px)}
+[data-f].fade:not(.hl){transform:none}
+[data-f].on:not(.hl):not(.ln){opacity:1;transform:none}
+[data-off]{transition:opacity .45s}
+[data-off].off{opacity:0}
+
+
+/* ---------------------------------------------------------------------
+   6. AUTOMATIC ANIMATIONS (no click needed)
+   .auto-up         rises in when the slide opens
+   .draw (SVG)      line draws itself; needs pathLength="1" on the element.
+                    Draws when its data-f group appears, or on slide open with .auto
+   --------------------------------------------------------------------- */
+.auto-up{opacity:0;transform:translateY(16px)}
+.slide.active .auto-up{animation:up .8s cubic-bezier(.2,.75,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes up{to{opacity:1;transform:none}}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--d,0s)}
+.on .draw,.draw.on,.slide.active .draw.auto{stroke-dashoffset:0}
+
+
+/* ---------------------------------------------------------------------
+   7. PRINT / PDF — open index.html?print, then Print → Save as PDF
+   --------------------------------------------------------------------- */
+@page{size:1600px 900px;margin:0}
+.print *{transition:none!important;animation:none!important}
+.print,.print body{height:auto;overflow:visible}
+.print #viewport{position:static;display:block}
+.print #stage{transform:none!important;height:auto;overflow:visible}
+.print .slide{position:relative;height:900px;opacity:1;visibility:visible;transform:none;break-after:page}
+.print .auto-up{opacity:1;transform:none}
+.print .draw{stroke-dashoffset:0}
+.print #num,.print #bar{display:none}
+
+
+/* ---------------------------------------------------------------------
+   8. YOUR OWN STYLES — anything specific to this deck goes here
+   --------------------------------------------------------------------- */
+/* photo with an overlay (circle around the smallest doll) */
+.photo{position:relative;flex:none}
+.photo img{display:block;width:100%}
+.photo svg{position:absolute;inset:0}
+
+/* step label above a slide: "1 · intuition" */
+.kicker{font-size:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+
+/* KaTeX line that highlights like a code line: class="mline ln" data-f="n" */
+.mline{display:block;border-radius:8px;padding:4px 14px;transition:background-color .4s}
+.mline.ln.on{background:var(--hl)}
+
+/* call tree */
+.tree text{font-family:var(--mono);text-anchor:middle}
+.tree .fn{font-size:30px;font-weight:600}
+.tree .badge text{font-family:var(--sans);font-size:28px;font-weight:800}
+.cap{position:absolute;left:0;right:0;font-size:34px}
+
+/* call stack: frames stack bottom-up; the running frame is yellow */
+.stack{position:relative;width:520px;height:400px}
+.tree.big-fn .fn{font-size:42px}
+.stack .s{position:absolute;inset:0;display:flex;flex-direction:column-reverse;gap:12px}
+.frame{border:2.5px solid var(--ink);border-radius:12px;padding:14px 20px;background:#fff;display:flex;align-items:baseline;gap:22px;text-align:left}
+.frame b{font-family:var(--mono);font-size:30px}
+.frame span{font-size:22px;color:var(--muted)}
+.frame.run{background:var(--hl)}
+.frame.run span{color:var(--ink)}
+.stack-base{width:560px;border-top:4px solid var(--ink);margin-top:14px;padding-top:8px;font-size:18px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* objective list */
+.goals{display:grid;grid-template-columns:auto 1fr;gap:26px 30px;align-items:baseline;text-align:left;font-size:38px}
+.goals .n{font-size:28px;font-weight:800;width:52px;height:52px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transform:translateY(8px)}
+
+/* proof table */
+.pf{display:grid;grid-template-columns:230px 1fr;gap:24px 36px;align-items:baseline;text-align:left}
+.pf .k{font-size:20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pf .v{font-size:34px}
+
+/* numbers that grow */
+.stat{display:flex;flex-direction:column;align-items:center}
+.stat .v{font-size:66px;font-weight:820;letter-spacing:-.03em}
+.stat .k{font-family:var(--mono);font-size:26px;color:var(--muted);margin-top:4px}
+
+/* a highlighted line with data-off clears its highlight instead of fading out */
+.ln[data-off].off{opacity:1}
+pre.code .ln.on.off,.mline.ln.on.off{background:transparent}
+.slide [data-f][data-off].off:not(.ln){opacity:0}
+
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- ███████████████████████████████████████████████████████████████████
+     SLIDES
+     Each <section class="slide"> is one slide, shown in file order.
+     To add a slide: copy a whole <section>…</section> block.
+     To reveal something on a click: add data-f="1" (1st click),
+     data-f="2" (2nd click), … Numbers restart on every slide.
+     Math: \( inline \) or \[ display \]. Write < & as &lt; &amp;
+     ███████████████████████████████████████████████████████████████████ -->
+
+<!-- shared doll outline, used on slide 3 -->
+<svg width="0" height="0" style="position:absolute">
+  <defs><path id="doll" d="M -50 -62 C -68 -150, 68 -150, 50 -62 C 98 -30, 96 140, 0 140 C -96 140, -98 -30, -50 -62 Z" vector-effect="non-scaling-stroke"/></defs>
+</svg>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     1 · Title  (0:00–0:10)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="title auto-up" style="--d:.2s">Recursion</div>
+  <svg width="520" height="16" style="margin-top:26px">
+    <path class="draw auto" pathLength="1" d="M2 8 C 140 2, 300 14, 516 6" stroke="#111" stroke-width="5" fill="none" stroke-linecap="round" style="--d:.7s"/>
+  </svg>
+  <div class="text muted auto-up" style="--d:.9s;margin-top:22px">How can a function call itself without running forever?</div>
+  <div class="auto-up" style="--d:1.2s;margin-top:80px;font-size:28px;font-weight:600">Bhumika Mittal</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     2 · Hook: how many dolls?  (0:10–1:00)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="row" style="gap:70px">
+    <div class="photo" style="width:820px">
+      <img src="assets/img/dolls-lineup.jpg" alt="A set of Russian nesting dolls, one opened to show smaller dolls inside">
+      <svg viewBox="0 0 820 545" data-f="2" class="fade">
+        <ellipse class="draw" pathLength="1" cx="289" cy="72" rx="50" ry="66" fill="none" stroke="#111" stroke-width="5" transform="rotate(-6 289 72)"/>
+      </svg>
+    </div>
+    <div class="left" style="width:500px">
+      <div class="big" style="font-size:56px">How many dolls?</div>
+      <div class="text muted" style="margin-top:14px;font-size:30px">You can only open<br>one doll at a time.</div>
+      <div class="text" data-f="1" style="margin-top:48px">Open one: count <b>1</b>,<br>then count <span class="hl" data-f="1" style="--d:.4s">what's inside</span>.</div>
+      <div class="text" data-f="2" style="margin-top:30px">Stop at the doll<br>that <span class="hl" data-f="2" style="--d:.4s">doesn't open</span>.</div>
+    </div>
+  </div>
+  <div class="src">Photo: Fanghong, background removed by Gnomz007 · Wikimedia Commons, CC BY-SA 3.0</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     3 · Two rules (the dolls, abstracted)  (1:00–1:45)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="row" style="gap:90px">
+    <svg width="420" height="520" viewBox="-210 -260 420 540" stroke="#111" stroke-width="3.5">
+      <use href="#doll" transform="translate(0 0) scale(1.9)" fill="#fff"/>
+      <use href="#doll" transform="translate(0 52) scale(1.4)" fill="#fff"/>
+      <use href="#doll" transform="translate(0 100) scale(.95)" fill="#fff"/>
+      <use href="#doll" transform="translate(0 140) scale(.55)" fill="#fff"/>
+      <g data-f="2" class="fade"><use href="#doll" transform="translate(0 140) scale(.55)" fill="#ffe45c"/></g>
+    </svg>
+    <div class="left" style="width:780px">
+      <div data-f="1">
+        <div class="label">recursive case</div>
+        <div style="font-size:38px">\(\text{dolls}(d) = 1 + \text{dolls}(\text{the doll inside } d)\)</div>
+      </div>
+      <div data-f="2" style="margin-top:46px">
+        <div class="label">base case</div>
+        <div style="font-size:38px">\(\text{dolls}(d) = 1 \quad\) if \(d\) doesn't open</div>
+      </div>
+      <div class="box" data-f="3" style="margin-top:60px;font-size:32px;line-height:1.45">
+        <div class="label">recursion</div>
+        Solve a problem using the answer to a <span class="hl" data-f="3" style="--d:.4s">smaller copy of the same problem</span>, until it is small enough to answer directly.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     4 · Fibonacci  (1:45–2:35)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <svg width="1030" height="290" viewBox="-5 0 1030 290">
+    <defs><marker id="ah5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#111"/></marker></defs>
+    <g font-size="58" font-weight="800" text-anchor="middle">
+      <rect x="0"   y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3"/><text x="60"  y="240">0</text>
+      <rect x="150" y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3"/><text x="210" y="240">1</text>
+      <rect x="300" y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3"/><text x="360" y="240">1</text>
+      <rect x="450" y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3"/><text x="510" y="240">2</text>
+      <rect x="600" y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3"/><text x="660" y="240">3</text>
+      <g data-off="1">
+        <rect x="750" y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3" stroke-dasharray="10 8"/>
+        <rect x="900" y="160" width="120" height="120" rx="16" fill="#fff" stroke="#111" stroke-width="3" stroke-dasharray="10 8"/>
+        <text x="810" y="240" fill="#bbb">?</text><text x="960" y="240" fill="#bbb">?</text>
+      </g>
+      <g data-f="1" class="zoom" style="transform-origin:885px 220px">
+        <rect x="750" y="160" width="120" height="120" rx="16" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="810" y="240">5</text>
+        <rect x="900" y="160" width="120" height="120" rx="16" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="960" y="240">8</text>
+      </g>
+    </g>
+    <g data-f="2" class="fade" fill="none" stroke="#111" stroke-width="3">
+      <path class="draw" pathLength="1" d="M510 156 C 540 30, 800 30, 835 148" marker-end="url(#ah5)"/>
+      <path class="draw" pathLength="1" d="M660 156 C 680 95, 770 95, 790 148" marker-end="url(#ah5)" style="--d:.25s"/>
+      <text x="672" y="44" font-size="32" font-weight="700" fill="#111" stroke="none" text-anchor="middle">2 + 3</text>
+    </g>
+  </svg>
+  <div class="box" data-f="3" style="margin-top:56px;font-size:40px;line-height:1.7">
+    <div class="label">Fibonacci numbers</div>
+    <span class="hl" data-f="4">\(F(0) = 0, \quad F(1) = 1\)</span><br>
+    \(F(n) = F(n-1) + F(n-2) \qquad \text{for } n \ge 2\)
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     5 · Definition becomes code  (2:35–3:25)
+     A line with data-f="1" data-off="2" highlights on click 1 and clears on click 2.
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="row" style="gap:80px;align-items:center">
+    <div class="left">
+    <div class="label">math</div>
+    <div class="box" style="font-size:36px;line-height:1.5;padding:18px 20px;white-space:nowrap">
+      <span class="mline ln" data-f="1" data-off="2">\(F(0) = 0\)</span>
+      <span class="mline ln" data-f="1" data-off="2">\(F(1) = 1\)</span>
+      <span class="mline ln" data-f="2" data-off="3">\(F(n) = F(n-1) + F(n-2)\)</span>
+    </div>
+    </div>
+    <div style="font-size:48px;color:#999">→</div>
+    <div class="left">
+      <div class="label">python</div>
+<pre class="code" style="font-size:32px"><span class="ln">def fib(n):</span><span class="ln" data-f="1" data-off="2">    if n &lt;= 1:</span><span class="ln" data-f="1" data-off="2">        return n</span><span class="ln" data-f="2" data-off="3">    return fib(n - 1) + fib(n - 2)</span></pre>
+    </div>
+  </div>
+  <div class="text" data-f="1" style="margin-top:56px;height:50px;position:relative;width:1300px">
+    <span data-off="2" style="position:absolute;left:0;right:0"><code style="font-family:var(--mono)">return n</code> covers both base cases: 0 → 0 and 1 → 1</span>
+    <span data-f="2" data-off="3" style="position:absolute;left:0;right:0">The function calls itself, on <b>smaller</b> inputs</span>
+    <span data-f="3" style="position:absolute;left:0;right:0">The code <span class="hl" data-f="3" style="--d:.3s">is</span> the definition. &nbsp;<span class="muted">(We assume \(n \ge 0\).)</span></span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     6 · Trace fib(4)  (3:25–5:20) — the heart of the lecture
+     clicks 1–3: calls go down · 4: base cases answer · 5–7: answers go up
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="kicker" style="margin-bottom:10px">what happens when we call</div>
+  <div style="position:relative;width:1400px;height:700px">
+    <svg class="tree" width="1400" height="540" viewBox="0 -20 1400 540" overflow="visible">
+<rect x="610" y="8" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="700" y="50" class="fn">fib(4)</text>
+<g data-f="1" class="fade"><path class="draw" pathLength="1" d="M700 72 L380 148" stroke="#111" stroke-width="2.5"/><path class="draw" pathLength="1" d="M700 72 L1020 148" stroke="#111" stroke-width="2.5"/><rect x="290" y="148" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="380" y="190" class="fn">fib(3)</text><rect x="930" y="148" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="1020" y="190" class="fn">fib(2)</text></g>
+<g data-f="2" class="fade"><path class="draw" pathLength="1" d="M380 212 L220 288" stroke="#111" stroke-width="2.5"/><path class="draw" pathLength="1" d="M380 212 L540 288" stroke="#111" stroke-width="2.5"/><path class="draw" pathLength="1" d="M1020 212 L890 288" stroke="#111" stroke-width="2.5"/><path class="draw" pathLength="1" d="M1020 212 L1150 288" stroke="#111" stroke-width="2.5"/><rect x="130" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="220" y="330" class="fn">fib(2)</text><rect x="450" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><rect data-f="4" class="fade" x="450" y="288" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="540" y="330" class="fn">fib(1)</text><rect x="800" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><rect data-f="4" class="fade" x="800" y="288" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="890" y="330" class="fn">fib(1)</text><rect x="1060" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><rect data-f="4" class="fade" x="1060" y="288" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="1150" y="330" class="fn">fib(0)</text></g>
+<g data-f="3" class="fade"><path class="draw" pathLength="1" d="M220 352 L110 428" stroke="#111" stroke-width="2.5"/><path class="draw" pathLength="1" d="M220 352 L330 428" stroke="#111" stroke-width="2.5"/><rect x="20" y="428" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><rect data-f="4" class="fade" x="20" y="428" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="110" y="470" class="fn">fib(1)</text><rect x="240" y="428" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><rect data-f="4" class="fade" x="240" y="428" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="330" y="470" class="fn">fib(0)</text></g>
+<g data-f="7" class="zoom badge" style="transform-origin:794px 6px"><circle cx="794" cy="6" r="25" fill="#111"/><text x="794" y="16" fill="#fff">3</text></g>
+<g data-f="6" class="zoom badge" style="transform-origin:474px 146px"><circle cx="474" cy="146" r="25" fill="#111"/><text x="474" y="156" fill="#fff">2</text></g>
+<g data-f="5" class="zoom badge" style="transform-origin:1114px 146px"><circle cx="1114" cy="146" r="25" fill="#111"/><text x="1114" y="156" fill="#fff">1</text></g>
+<g data-f="5" class="zoom badge" style="transform-origin:314px 286px"><circle cx="314" cy="286" r="25" fill="#111"/><text x="314" y="296" fill="#fff">1</text></g>
+<g data-f="4" class="zoom badge" style="transform-origin:634px 286px"><circle cx="634" cy="286" r="25" fill="#111"/><text x="634" y="296" fill="#fff">1</text></g>
+<g data-f="4" class="zoom badge" style="transform-origin:984px 286px"><circle cx="984" cy="286" r="25" fill="#111"/><text x="984" y="296" fill="#fff">1</text></g>
+<g data-f="4" class="zoom badge" style="transform-origin:1244px 286px"><circle cx="1244" cy="286" r="25" fill="#111"/><text x="1244" y="296" fill="#fff">0</text></g>
+<g data-f="4" class="zoom badge" style="transform-origin:204px 426px"><circle cx="204" cy="426" r="25" fill="#111"/><text x="204" y="436" fill="#fff">1</text></g>
+<g data-f="4" class="zoom badge" style="transform-origin:424px 426px"><circle cx="424" cy="426" r="25" fill="#111"/><text x="424" y="436" fill="#fff">0</text></g>
+    </svg>
+    <div class="cap" style="top:600px" data-f="4" data-off="5">Base cases answer <b>immediately</b>: no more calls.</div>
+    <div class="cap" style="top:600px" data-f="5" data-off="6">Each <code style="font-family:var(--mono)">fib(2)</code> gets 1 + 0 = 1. &nbsp;Now: what does <code style="font-family:var(--mono)">fib(3)</code> return?</div>
+    <div class="cap" style="top:600px" data-f="6" data-off="7"><code style="font-family:var(--mono)">fib(3)</code> = 1 + 1 = <b>2</b></div>
+    <div class="cap" style="top:600px" data-f="7"><span class="hl" data-f="7" style="--d:.4s">9 calls</span>, one at a time. Calls go <b>down</b>, answers come <b>up</b>.</div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     7 · The call stack: where waiting calls live  (5:20–6:35)
+     click 1: deepest point on the left · 2: later, on the right
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="kicker" style="margin-bottom:40px">where do the waiting calls live?</div>
+  <div class="row" style="gap:50px;align-items:center">
+    <svg class="tree big-fn" width="790" height="305" viewBox="0 -20 1400 540">
+<path d="M700 72 L380 148" stroke="#bbb" stroke-width="2.5"/>
+<path d="M700 72 L1020 148" stroke="#bbb" stroke-width="2.5"/>
+<path d="M380 212 L220 288" stroke="#bbb" stroke-width="2.5"/>
+<path d="M380 212 L540 288" stroke="#bbb" stroke-width="2.5"/>
+<path d="M1020 212 L890 288" stroke="#bbb" stroke-width="2.5"/>
+<path d="M1020 212 L1150 288" stroke="#bbb" stroke-width="2.5"/>
+<path d="M220 352 L110 428" stroke="#bbb" stroke-width="2.5"/>
+<path d="M220 352 L330 428" stroke="#bbb" stroke-width="2.5"/>
+<rect x="610" y="8" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="700" y="50" class="fn">fib(4)</text>
+<rect x="290" y="148" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="380" y="190" class="fn">fib(3)</text>
+<rect x="930" y="148" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="1020" y="190" class="fn">fib(2)</text>
+<rect x="130" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="220" y="330" class="fn">fib(2)</text>
+<rect x="450" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="540" y="330" class="fn">fib(1)</text>
+<rect x="800" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="890" y="330" class="fn">fib(1)</text>
+<rect x="1060" y="288" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="1150" y="330" class="fn">fib(0)</text>
+<rect x="20" y="428" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="110" y="470" class="fn">fib(1)</text>
+<rect x="240" y="428" width="180" height="64" rx="12" fill="#fff" stroke="#111" stroke-width="3"/><text x="330" y="470" class="fn">fib(0)</text>
+<g data-off="1" class="fade"><rect x="610" y="8" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="700" y="50" class="fn">fib(4)</text></g>
+<g data-f="1" data-off="2" class="fade"><path d="M700 72 L380 148" stroke="#111" stroke-width="7"/><path d="M380 212 L220 288" stroke="#111" stroke-width="7"/><path d="M220 352 L110 428" stroke="#111" stroke-width="7"/><rect x="610" y="8" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="700" y="50" class="fn">fib(4)</text><rect x="290" y="148" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="380" y="190" class="fn">fib(3)</text><rect x="130" y="288" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="220" y="330" class="fn">fib(2)</text><rect x="20" y="428" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="110" y="470" class="fn">fib(1)</text></g>
+<g data-f="2" class="fade"><path d="M700 72 L1020 148" stroke="#111" stroke-width="7"/><path d="M1020 212 L1150 288" stroke="#111" stroke-width="7"/><rect x="610" y="8" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="700" y="50" class="fn">fib(4)</text><rect x="930" y="148" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="1020" y="190" class="fn">fib(2)</text><rect x="1060" y="288" width="180" height="64" rx="12" fill="#ffe45c" stroke="#111" stroke-width="3"/><text x="1150" y="330" class="fn">fib(0)</text></g>
+    </svg>
+    <div class="col">
+      <div class="stack">
+<div class="s fade" data-off="1"><div class="frame run"><b>fib(4)</b><span>n = 4 · just called</span></div></div>
+<div class="s fade" data-f="1" data-off="2"><div class="frame"><b>fib(4)</b><span>n = 4 · waiting on fib(3)</span></div><div class="frame"><b>fib(3)</b><span>n = 3 · waiting on fib(2)</span></div><div class="frame"><b>fib(2)</b><span>n = 2 · waiting on fib(1)</span></div><div class="frame run"><b>fib(1)</b><span>base case · returns 1</span></div></div>
+<div class="s fade" data-f="2"><div class="frame"><b>fib(4)</b><span>n = 4 · has 2 · waiting on fib(2)</span></div><div class="frame"><b>fib(2)</b><span>n = 2 · has 1 · waiting on fib(0)</span></div><div class="frame run"><b>fib(0)</b><span>base case · returns 0</span></div></div>
+      </div>
+      <div class="stack-base">call stack</div>
+    </div>
+  </div>
+  <div style="position:relative;width:1300px;height:50px;margin-top:50px" class="text">
+    <div class="cap" data-off="1">Python keeps one <b>frame</b> per unfinished call.</div>
+    <div class="cap" data-f="1" data-off="2">Each frame has its <b>own</b> n, and remembers what it is waiting for.</div>
+    <div class="cap" data-f="2">The stack is the <b>path</b> from the root to the current call.</div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     8 · Check: a base case is not enough  (6:35–7:20)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="row" style="gap:90px;align-items:center">
+<pre class="code" style="font-size:32px"><span class="ln">def countdown(n):</span><span class="ln">    if n == 0:</span><span class="ln">        return</span><span class="ln">    print(n)</span><span class="ln" data-f="3">    countdown(n - 2)</span></pre>
+    <div class="left" style="width:600px;font-size:36px">
+      <div><code style="font-family:var(--mono)">countdown(4)</code></div>
+      <div data-f="1" style="font-family:var(--mono);margin:8px 0 0 40px">4 &nbsp;2 &nbsp;<b>stop ✓</b></div>
+      <div style="margin-top:44px"><code style="font-family:var(--mono)">countdown(5)</code> <span data-off="2" class="muted">&nbsp;?</span></div>
+      <div data-f="2" style="font-family:var(--mono);margin:8px 0 0 40px">5 &nbsp;3 &nbsp;1 &nbsp;−1 &nbsp;−3 &nbsp;…</div>
+      <div data-f="2" style="--d:.6s;font-family:var(--mono);font-size:22px;margin:22px 0 0 40px;padding:10px 16px;border:1.5px solid var(--faint);border-radius:8px;background:var(--code-bg)">RecursionError: maximum recursion<br>depth exceeded</div>
+      <div data-f="2" class="muted" style="--d:.9s;font-size:24px;margin:10px 0 0 40px">the stack filled up: about 1000 frames</div>
+    </div>
+  </div>
+  <div class="big" data-f="3" style="margin-top:60px;font-size:44px">A base case only helps if every call <span class="hl" data-f="3" style="--d:.4s">moves toward it</span>.</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     9 · Why is the answer right?  (7:20–8:25)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="box" style="margin-bottom:56px">
+    <div class="label">claim</div>
+    <div style="font-size:40px">For every \(n \ge 0\): &nbsp;\(\texttt{fib}(n) = F(n)\)</div>
+  </div>
+  <div class="pf">
+    <div class="k" data-f="1">base cases</div>
+    <div class="v" data-f="1">\(\texttt{fib}(0) = 0 = F(0), \quad \texttt{fib}(1) = 1 = F(1)\)</div>
+    <div class="k" data-f="2">assume</div>
+    <div class="v" data-f="2">\(\texttt{fib}(k) = F(k)\) for every \(0 \le k &lt; n\)</div>
+    <div class="k" data-f="3">step <span style="text-transform:none;letter-spacing:0">\(n \ge 2\)</span></div>
+    <div class="v" data-f="3">\(\texttt{fib}(n) = \texttt{fib}(n-1) + \texttt{fib}(n-2)\) <span class="hl" data-f="3" style="--d:.5s">\(= F(n-1) + F(n-2)\)</span> \(= F(n)\)</div>
+  </div>
+  <div class="big" data-f="4" style="margin-top:64px;font-size:42px">Trusting the smaller call <span class="hl" data-f="4" style="--d:.4s">is</span> the induction hypothesis.</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     10 · Back to the dolls  (8:25–8:45)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="row" style="gap:70px">
+    <div class="photo" style="width:820px">
+      <img src="assets/img/dolls-lineup.jpg" alt="The same set of nesting dolls, smallest doll circled">
+      <svg viewBox="0 0 820 545">
+        <ellipse cx="289" cy="72" rx="50" ry="66" fill="none" stroke="#111" stroke-width="5" transform="rotate(-6 289 72)"/>
+      </svg>
+    </div>
+    <div class="left" style="width:500px">
+      <div class="big" style="font-size:56px">What if there were no smallest doll?</div>
+      <div class="text" data-f="1" style="margin-top:44px">You'd open dolls <span class="hl" data-f="1" style="--d:.4s">forever</span>.</div>
+      <div class="text muted" data-f="1" style="--d:.5s;margin-top:10px">That's <code style="font-family:var(--mono)">countdown(5)</code>.</div>
+    </div>
+  </div>
+  <div class="src">Photo: Fanghong, background removed by Gnomz007 · Wikimedia Commons, CC BY-SA 3.0</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     11 · Find the three parts: a new function  (8:45–9:30)
+     Audience names each part before the click reveals it.
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="kicker">find the three parts</div>
+  <svg width="640" height="140" viewBox="-4 -4 648 148" style="margin-bottom:6px">
+    <g stroke="#111" stroke-width="3" style="font-family:var(--mono)" font-size="34" font-weight="600">
+      <rect x="0" y="0" width="640" height="140" rx="18" fill="#fff"/><text x="34" y="82" stroke="none">3</text>
+      <rect x="90" y="16" width="534" height="108" rx="16" fill="#fff"/><text x="122" y="82" stroke="none">1</text>
+      <rect x="178" y="32" width="430" height="76" rx="14" fill="#fff"/><text x="210" y="82" stroke="none">4</text>
+      <rect x="266" y="48" width="326" height="44" rx="10" fill="#fff"/>
+      <rect data-f="1" class="fade" x="266" y="48" width="326" height="44" rx="10" fill="#ffe45c"/>
+      <text x="429" y="80" stroke="none" text-anchor="middle" font-size="26">[ ]</text>
+    </g>
+  </svg>
+  <div class="muted" style="font-size:26px;margin-bottom:34px">A list is either empty, or one item followed by a <b style="color:var(--ink)">smaller list</b>.</div>
+<pre class="code" style="font-size:32px"><span class="ln">def total(xs):</span><span class="ln" data-f="1">    if xs == []:</span><span class="ln" data-f="1">        return 0</span><span class="ln">    return <span class="hl" data-f="3">xs[0] +</span> <span class="hl" data-f="2">total(xs[1:])</span></span></pre>
+  <div class="row" style="gap:80px;margin-top:40px;font-size:34px">
+    <div data-f="1"><b>1</b> &nbsp;base case</div>
+    <div data-f="2"><b>2</b> &nbsp;smaller problem</div>
+    <div data-f="3"><b>3</b> &nbsp;combine</div>
+  </div>
+</section>
+
+
+<!-- ███████████████████████████ END OF SLIDES ██████████████████████████ -->
+
+</div></div>
+<div id="num"></div>
+<div id="bar"></div>
+
+<!-- ███████████████████████████████████████████████████████████████████
+     SCRIPT
+     ███████████████████████████████████████████████████████████████████ -->
+<script>
+/* =====================================================================
+   SCRIPT — makes the slides work. You don't need to edit this.
+
+   Keys:  → Space Enter  next      ← Backspace  back
+          Home / End     first / last slide      F  fullscreen
+   Click anywhere on a slide to go to the next step.
+   URL:   index.html#5     opens slide 5
+          index.html?print shows all slides for Print → Save as PDF
+   ===================================================================== */
+(function(){
+
+const slides = [...document.querySelectorAll('.slide')];
+const stage  = document.getElementById('stage');
+const PRINT  = new URLSearchParams(location.search).has('print');
+let cur = 0, step = 0;
+
+
+/* ---------------------------------------------------------------------
+   1. Count the clicks each slide needs (its highest data-f / data-off)
+   --------------------------------------------------------------------- */
+slides.forEach(s => {
+  s.steps = 0;
+  s.querySelectorAll('[data-f],[data-off]').forEach(e => {
+    s.steps = Math.max(s.steps, +(e.dataset.f || 0), +(e.dataset.off || 0));
+  });
+});
+
+
+/* ---------------------------------------------------------------------
+   2. Show slide s at step n: turn fragments on / off
+   --------------------------------------------------------------------- */
+function show(s, n){
+  s.querySelectorAll('[data-f]').forEach(e => e.classList.toggle('on', n >= +e.dataset.f));
+  s.querySelectorAll('[data-off]').forEach(e => e.classList.toggle('off', n >= +e.dataset.off));
+}
+
+
+/* ---------------------------------------------------------------------
+   3. Move between slides
+   --------------------------------------------------------------------- */
+function go(n, st){
+  n = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === n);
+    s.classList.toggle('past', i < n);
+  });
+  cur = n; step = st || 0;
+  show(slides[cur], step);
+  document.getElementById('num').textContent = (cur + 1) + ' / ' + slides.length;
+  document.getElementById('bar').style.width = ((cur + 1) / slides.length * 100) + '%';
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+function next(){
+  if (step < slides[cur].steps) show(slides[cur], ++step);
+  else if (cur < slides.length - 1) go(cur + 1);
+}
+function prev(){
+  if (step > 0) show(slides[cur], --step);
+  else if (cur > 0) go(cur - 1, slides[cur - 1].steps);
+}
+
+
+/* ---------------------------------------------------------------------
+   4. Keyboard, mouse, and window size
+   --------------------------------------------------------------------- */
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); next(); }
+  else if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+  else if (e.key === 'Home') go(0);
+  else if (e.key === 'End')  go(slides.length - 1);
+  else if (e.key === 'f' || e.key === 'F') {
+    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  }
+});
+stage.addEventListener('click', e => { if (!e.target.closest('a,button')) next(); });
+
+function fit(){
+  const k = Math.min(innerWidth / 1600, innerHeight / 900);
+  stage.style.transform = `scale(${k})`;
+}
+addEventListener('resize', fit);
+
+
+/* ---------------------------------------------------------------------
+   5. Start: render math, then open the slide named in the URL
+   --------------------------------------------------------------------- */
+addEventListener('DOMContentLoaded', () => {
+  if (window.renderMathInElement) renderMathInElement(document.body, {
+    delimiters: [{left:'\\[', right:'\\]', display:true}, {left:'\\(', right:'\\)', display:false}],
+    throwOnError: false
+  });
+
+  if (PRINT) {   // every slide visible, fully revealed, one per page
+    document.documentElement.classList.add('print');
+    slides.forEach(s => { s.classList.add('active'); show(s, s.steps); });
+    return;
+  }
+  fit();
+  go((parseInt(location.hash.slice(1)) || 1) - 1);
+});
+
+})();
+</script>
+</body>
+</html>
