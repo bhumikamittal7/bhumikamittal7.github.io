@@ -344,3 +344,15 @@ ul.prose li { margin: 3px 0; }
 @media (max-width: 640px) {
   .areas { grid-template-columns: 1fr; gap: 12px; }
 }
+
+.seeking {
+  text-align: center;
+  margin: 36px auto 0;
+  padding: 14px 0;
+  max-width: none;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-style: italic;
+  font-size: 0.93rem;
+}
