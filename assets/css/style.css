@@ -75,6 +75,40 @@ p { margin: 0 0 1em; }
   text-decoration: none;
   line-height: 1.15;
 }
+/* kolam wordmark, tinted with the text colour via mask */
+.site-name .name-en {
+  display: block;
+  width: 9.773em;
+  height: 1.15em;
+  background-color: currentColor;
+  -webkit-mask: url(/assets/img/name-kolam.svg) no-repeat left center / contain;
+  mask: url(/assets/img/name-kolam.svg) no-repeat left center / contain;
+}
+/* homepage: click the name to see it large */
+.kolam-dialog {
+  width: min(92vw, 760px);
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: #3b2a20;
+  color: #efe6da;
+}
+.kolam-dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
+.kolam-dialog img { display: block; width: 100%; height: auto; padding: 40px 24px 12px; }
+.kolam-dialog p { margin: 0; padding: 4px 24px 22px; font-size: 0.9rem; line-height: 1.6; }
+.kolam-dialog a { color: #f2b48c; }
+.kolam-dialog .close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  border: 0;
+  background: none;
+  color: #efe6da;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.kolam-dialog .close:focus:not(:focus-visible) { outline: none; }
 .site-name .name-hi {
   display: block;
   margin-top: 2px;

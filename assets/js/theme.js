@@ -14,6 +14,20 @@
       });
     }
 
+    // homepage only: the name opens the kolam dialog instead of reloading
+    var kolam = document.getElementById('kolam');
+    var name = document.querySelector('.site-name');
+    if (kolam && name && kolam.showModal) {
+      name.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        kolam.showModal();
+      });
+      kolam.addEventListener('click', function (e) {
+        if (e.target === kolam || e.target.classList.contains('close')) kolam.close();
+      });
+    }
+
     var btn = document.getElementById('theme-toggle');
     if (!btn) return;
     btn.addEventListener('click', function () {
